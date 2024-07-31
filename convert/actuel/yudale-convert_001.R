@@ -24,8 +24,10 @@ a3<-56
 m.sp<-m[2:length(m)]
 ###
 text.1<-text
-text.1[m.sp]<-paste0(text.1[m.sp],"@")
+#text.1[m.sp]<-paste0(text.1[m.sp],"@")
+text.1[m.sp]<-paste0("@",text.1[m.sp])
 text.1[m.sp[1:10]]
+text.2<-text.1
 #wks.
 #####
 # m<-grep("[()]",text.1)
@@ -54,14 +56,25 @@ text.1[56:100]
 # 
 # text.1[m3]
 actm<-c(56,577)
-text.1[56]<-paste0(text.1[56],"#")
+text.1[56]<-paste0("#",text.1[56])
 text.1[actm]
-text.1[577]<-paste0(text.1[577],"#")
+text.1[577]<-paste0("#",text.1[577])
 
 #dramatis_personae
 cast<-37
-text.1[37]<-paste0(text.1[37],"^")
+text.1[37]<-paste0("^"text.1[37])
 
+#interpunktion to the end of sentence
+m<-grep("(^[?!.-])"),text.1)
+text.1[43]
+text.2[43]
+  gsub("(^[?!.-])(.*)","\\2\\1",text.2[43])
+
+#remove speaker niqqud
+text.cor<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semikorrigiert.txt")
+m<-grep("@.+:",text.cor)
+text.cor[m]
+text.cor[m]<-gsub("(\\p{M})","",text.cor[m],perl = T)  
 #pagebreaks
 m<-grep("[0-9]{1,2}",text.1)
 length(m)
@@ -69,3 +82,4 @@ length(m)
 ###
 writeLines(text.1,"~/boxHKW/21S/DH/local/EXC2020/dybbuk/TEI/yudale_ezd_pre.txt")
 
+writeLines(text.cor,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_002.txt")
