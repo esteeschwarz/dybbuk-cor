@@ -75,11 +75,22 @@ text.cor<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd
 m<-grep("@.+:",text.cor)
 text.cor[m]
 text.cor[m]<-gsub("(\\p{M})","",text.cor[m],perl = T)  
-#pagebreaks
-m<-grep("[0-9]{1,2}",text.1)
-length(m)
+
+# remove linebreaks
+text.cor<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_002.txt")
+reg1<-"((?<!:)\n)([^)(@#$])"
+reg2<-"^(" #whole stage line
+m<-grep(reg1,text.cor)
+text.cor.tx<-readtext::readtext("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_002.txt")$text
+text.cor.tx.2<-gsub(reg1," \\1",text.cor.tx,perl = T)
+# #pagebreaks
+# m<-grep("[0-9]{1,2}",text.1)
+# length(m)
 #no. first correct in transcription source
 ###
 writeLines(text.1,"~/boxHKW/21S/DH/local/EXC2020/dybbuk/TEI/yudale_ezd_pre.txt")
 
-writeLines(text.cor,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_002.txt")
+writeLines(text.cor.tx.2,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_002.txt")
+
+library(xml2)
+
