@@ -4,6 +4,8 @@
 # base convert .txt to eazydrama markup for further TEI conversion
 ##################################################################
 # Q:
+# not run
+tempfun<-function(){
 src<-"~/boxHKW/21S/DH/local/EXC2020/dybbuk/yudale_xml-edited006.14312-FIN/yudale_xml-edited006.14312-FIN.m.txt"
 text<-readLines(src)
 # regex arrays
@@ -94,8 +96,21 @@ writeLines(text.cor.tx.2,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudal
 
 text.cor.3<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_002.txt")
 text.cor.3[359]
-library(xml2)
+} #end legacy function
+######################
+# edit in textfile manually
 
 ### convert with local ezdrama parser:
 ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
-system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text)
+system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
+
+library(xml2)
+xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
+       
+speaker.who.cor<-data.frame(neg=c("fishl","freydede","freydle","freyde","rz"),pos=c("fishel","freydele","freydele","freydele","rze"))
+library(purrr)
+xmlt2<-xmltop%>%xml_ns_strip()
+tei<-xml_find_all(xmlt2,"//TEI")
+allsp<-xml_find_all(tei,"//sp")
+xml_attr(allsp,"who")
+       
