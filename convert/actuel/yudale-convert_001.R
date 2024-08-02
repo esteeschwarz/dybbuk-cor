@@ -103,7 +103,7 @@ text.cor.3[359]
 ### convert with local ezdrama parser:
 ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
 system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
-
+print("finished python ezd")
 library(xml2)
 xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
        
@@ -118,7 +118,7 @@ sp.who<-xml_attr(allsp,"who")
 #sp.who<-paste0(sp.who)
 sp.who.u<-unique(sp.who)       
 m<-sp.who%in%speaker.who.cor$neg
-sum(sp.who.neg)
+#sum(sp.who.neg)
 sp.who.all<-data.frame(sp=sp.who,cor=sp.who)
 for (k in 1:length(sp.who.all$sp)){
   sp<-sp.who.all$sp[k]
@@ -131,10 +131,17 @@ for (k in 1:length(sp.who.all$sp)){
 xml_set_attr(allsp,"who",sp.who.all$cor)
 
 sp.who.t<-xml_attr(allsp,"who")
-unique(sp.who.t)
+#unique(sp.who.t)
 # wks.
-write_xml(xmltop,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml")
+write_xml(xmlt2,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml")
 # wks. TODO reformat xmlformat.pl...
-# next: remove () in <stage>, remove : in <speaker>
+# next: remove () in <stage>, remove : in <speaker>, castlist role, single line stage directions
 
-
+text.m<-readLines(ezd_markup_text)
+#m<-grepl("^[(][^)(]{1,150}[)]{1}\\.$",text.m) #grep all single line stage directions
+sum(m)
+head(text.m[m])
+text.m[m]
+text.m[m]<-paste0("$",text.m[m])
+text.m[m]<-gsub("[)(]","",text.m[m])
+#writeLines(text.m,ezd_markup_text)
