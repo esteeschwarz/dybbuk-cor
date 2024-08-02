@@ -101,13 +101,20 @@ text.cor.3[359]
 # edited in textfile manually
 #############################
 ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
+ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
 
 # single line stage direction markup:
-text.m<-readLines(ezd_markup_text)
+text.m<-readLines(ezd_markup_text.sf)
 m<-grepl("^[(][^)(]{1,150}[)]{1}\\.$",text.m) #grep all single line stage directions
+
+# TODO: check transcript for . at the end of each stage line!!!
+m3<-grepl("^[(][^)(]{1,150}[)]\\.?$",text.m) #grep all single line stage directions
+
 sum(m)
+sum(m3) # +7 lines!!!
 head(text.m[m])
-text.m[m]
+m<-m3
+text.m[m3]
 text.m[m]<-paste0("$",text.m[m])
 text.m[m]<-gsub("[)(]","",text.m[m])
 #writeLines(text.m,ezd_markup_text)
@@ -158,6 +165,7 @@ m<-grepl(".{4}(/?edit).{4}",xml_text(allsp))
 sum(m)
 #gsub("<(/?edit).{4}","p\\1p",xml_text(allsp[m]))
 # R doesnt find, has converted yet into <> 
+
 xmltarget<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 write_xml(xmlt2,xmltarget)
 # wks. TODO reformat xmlformat.pl...
