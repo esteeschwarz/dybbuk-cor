@@ -104,7 +104,7 @@ ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yud
 
 # single line stage direction markup:
 text.m<-readLines(ezd_markup_text)
-#m<-grepl("^[(][^)(]{1,150}[)]{1}\\.$",text.m) #grep all single line stage directions
+m<-grepl("^[(][^)(]{1,150}[)]{1}\\.$",text.m) #grep all single line stage directions
 sum(m)
 head(text.m[m])
 text.m[m]
@@ -170,4 +170,7 @@ m<-grepl("&lt;(/?edit)&gt;",xmlt)
 sum(m)
 xmlt[m]<-gsub("&lt;(/?edit)&gt;","<\\1>",xmlt[m])
 writeLines(xmlt,xmltarget)
+library(tools)
+file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
+system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
 # wks. ##########################################

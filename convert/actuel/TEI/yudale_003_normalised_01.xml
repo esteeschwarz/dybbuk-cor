@@ -31,69 +31,69 @@
     <profileDesc>
       <particDesc>
         <listPerson>
-          <person sex="MALE" xml:id="le">
-            <persName>אלע</persName>
-          </person>
-          <person sex="MALE" xml:id="freydele">
-            <persName>פריידעלע</persName>
-          </person>
-          <person sex="MALE" xml:id="y dle">
-            <persName>יודאלע</persName>
-          </person>
-          <person sex="MALE" xml:id="khzn">
-            <persName>חזן</persName>
-          </person>
-          <person sex="MALE" xml:id="rze">
-            <persName>ראזע</persName>
-          </person>
-          <person sex="MALE" xml:id="khr">
-            <persName>קאהר</persName>
-          </person>
           <person sex="MALE" xml:id="rz">
             <persName>ראזא</persName>
+          </person>
+          <person sex="MALE" xml:id="fishl">
+            <persName>פישל</persName>
+          </person>
+          <person sex="MALE" xml:id="freyde">
+            <persName>פריידע</persName>
+          </person>
+          <person sex="MALE" xml:id="vldmn">
+            <persName>וואלדמאן</persName>
           </person>
           <person sex="MALE" xml:id="beyde">
             <persName>ביידע</persName>
           </person>
+          <person sex="MALE" xml:id="isr">
+            <persName>איסר</persName>
+          </person>
+          <person sex="MALE" xml:id="khr">
+            <persName>קאהר</persName>
+          </person>
+          <person sex="MALE" xml:id="ikhne">
+            <persName>יאכנע</persName>
+          </person>
+          <person sex="MALE" xml:id="le">
+            <persName>אלע</persName>
+          </person>
+          <person sex="MALE" xml:id="freydle">
+            <persName>פריידאלע</persName>
+          </person>
+          <person sex="MALE" xml:id="freydede">
+            <persName>פריידעדע</persName>
+          </person>
+          <person sex="MALE" xml:id="rze">
+            <persName>ראזע</persName>
+          </person>
+          <person sex="MALE" xml:id="freydele">
+            <persName>פריידעלע</persName>
+          </person>
+          <person sex="MALE" xml:id="ir khm">
+            <persName>ירוחם</persName>
+          </person>
+          <person sex="MALE" xml:id="lteril">
+            <persName>אלטעריל</persName>
+          </person>
+          <person sex="MALE" xml:id="">
+            <persName>
+            </persName>
+          </person>
           <person sex="MALE" xml:id="bermn">
             <persName>בערמאן</persName>
           </person>
-          <person sex="MALE" xml:id="isr">
-            <persName>איסר</persName>
+          <person sex="MALE" xml:id="khzn">
+            <persName>חזן</persName>
+          </person>
+          <person sex="MALE" xml:id="y dle">
+            <persName>יודאלע</persName>
           </person>
           <person sex="MALE" xml:id="edelmn">
             <persName>עדעלמאן</persName>
           </person>
           <person sex="MALE" xml:id="db rh">
             <persName>דבורה</persName>
-          </person>
-          <person sex="MALE" xml:id="freydle">
-            <persName>פריידאלע</persName>
-          </person>
-          <person sex="MALE" xml:id="freyde">
-            <persName>פריידע</persName>
-          </person>
-          <person sex="MALE" xml:id="lteril">
-            <persName>אלטעריל</persName>
-          </person>
-          <person sex="MALE" xml:id="ikhne">
-            <persName>יאכנע</persName>
-          </person>
-          <person sex="MALE" xml:id="ir khm">
-            <persName>ירוחם</persName>
-          </person>
-          <person sex="MALE" xml:id="">
-            <persName>
-            </persName>
-          </person>
-          <person sex="MALE" xml:id="vldmn">
-            <persName>וואלדמאן</persName>
-          </person>
-          <person sex="MALE" xml:id="fishl">
-            <persName>פישל</persName>
-          </person>
-          <person sex="MALE" xml:id="freydede">
-            <persName>פריידעדע</persName>
           </person>
           <person sex="MALE" xml:id="fishel">
             <persName>פישעל</persName>
