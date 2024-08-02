@@ -98,10 +98,27 @@ text.cor.3<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_e
 text.cor.3[359]
 } #end legacy function
 ######################
-# edit in textfile manually
+# edited in textfile manually
+#############################
+ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
+
+# single line stage direction markup:
+text.m<-readLines(ezd_markup_text)
+#m<-grepl("^[(][^)(]{1,150}[)]{1}\\.$",text.m) #grep all single line stage directions
+sum(m)
+head(text.m[m])
+text.m[m]
+text.m[m]<-paste0("$",text.m[m])
+text.m[m]<-gsub("[)(]","",text.m[m])
+#writeLines(text.m,ezd_markup_text)
+#wks.
+###################################
 
 ### convert with local ezdrama parser:
-ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
+#ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
+
+
+
 system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
 print("finished python ezd")
 library(xml2)
@@ -129,19 +146,28 @@ for (k in 1:length(sp.who.all$sp)){
   
 }
 xml_set_attr(allsp,"who",sp.who.all$cor)
+head(xml_text(allsp))
 
 sp.who.t<-xml_attr(allsp,"who")
 #unique(sp.who.t)
 # wks.
-write_xml(xmlt2,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml")
+
+# <edit>markup restore
+# &lt;edit&gt;digit6.30&lt;/edit&gt
+m<-grepl(".{4}(/?edit).{4}",xml_text(allsp))
+sum(m)
+#gsub("<(/?edit).{4}","p\\1p",xml_text(allsp[m]))
+# R doesnt find, has converted yet into <> 
+xmltarget<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
+write_xml(xmlt2,xmltarget)
 # wks. TODO reformat xmlformat.pl...
 # next: remove () in <stage>, remove : in <speaker>, castlist role, single line stage directions
 
-text.m<-readLines(ezd_markup_text)
-#m<-grepl("^[(][^)(]{1,150}[)]{1}\\.$",text.m) #grep all single line stage directions
+# <edit>markup restore
+##### >>> THIS HAS to be future done according the dracor editorial annotation scheme!!!!!!!
+xmlt<-readLines(xmltarget)
+m<-grepl("&lt;(/?edit)&gt;",xmlt)
 sum(m)
-head(text.m[m])
-text.m[m]
-text.m[m]<-paste0("$",text.m[m])
-text.m[m]<-gsub("[)(]","",text.m[m])
-#writeLines(text.m,ezd_markup_text)
+xmlt[m]<-gsub("&lt;(/?edit)&gt;","<\\1>",xmlt[m])
+writeLines(xmlt,xmltarget)
+# wks. ##########################################
