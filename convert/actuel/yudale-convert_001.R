@@ -64,10 +64,10 @@ text.1[577]<-paste0("#",text.1[577])
 
 #dramatis_personae
 cast<-37
-text.1[37]<-paste0("^"text.1[37])
+text.1[37]<-paste0("^",text.1[37])
 
 #interpunktion to the end of sentence
-m<-grep("(^[?!.-])"),text.1)
+m<-grep("(^[?!.-])",text.1)
 text.1[43]
 text.2[43]
   gsub("(^[?!.-])(.*)","\\2\\1",text.2[43])
@@ -108,9 +108,33 @@ library(xml2)
 xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
        
 speaker.who.cor<-data.frame(neg=c("fishl","freydede","freydle","freyde","rz"),pos=c("fishel","freydele","freydele","freydele","rze"))
+speaker.who.cor$neg<-paste0("#",speaker.who.cor$neg)
+speaker.who.cor$pos<-paste0("#",speaker.who.cor$pos)
 library(purrr)
 xmlt2<-xmltop%>%xml_ns_strip()
 tei<-xml_find_all(xmlt2,"//TEI")
 allsp<-xml_find_all(tei,"//sp")
-xml_attr(allsp,"who")
-       
+sp.who<-xml_attr(allsp,"who")
+#sp.who<-paste0(sp.who)
+sp.who.u<-unique(sp.who)       
+m<-sp.who%in%speaker.who.cor$neg
+sum(sp.who.neg)
+sp.who.all<-data.frame(sp=sp.who,cor=sp.who)
+for (k in 1:length(sp.who.all$sp)){
+  sp<-sp.who.all$sp[k]
+  m2<-sp==speaker.who.cor$neg
+  sp.cor<-speaker.who.cor$pos[m2]
+  if(sum(m2)>0)
+    sp.who.all$cor[k]<-sp.cor
+  
+}
+xml_set_attr(allsp,"who",sp.who.all$cor)
+
+sp.who.t<-xml_attr(allsp,"who")
+unique(sp.who.t)
+# wks.
+write_xml(xmltop,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml")
+# wks. TODO reformat xmlformat.pl...
+# next: remove () in <stage>, remove : in <speaker>
+
+
