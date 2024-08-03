@@ -14,4 +14,4 @@
 `pip install yiddish`
 
 #### xmlformat for prettify .xml
-brew install xmlformat (Mac)
+`brew install xmlformat` (Mac)
