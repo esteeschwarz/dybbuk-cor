@@ -1,9 +1,9 @@
 # 14317.coding.info
 #### TODO
-- pagebreak tagging
-- castlist speaker:role
-- stage directions remove `().`
-- speaker remove `:`
+- [x] pagebreak tagging
+- [x] castlist speaker:role
+- [x] stage directions remove `().`
+- [x] speaker remove `:`
 
 
 #### python for local ezdrama
