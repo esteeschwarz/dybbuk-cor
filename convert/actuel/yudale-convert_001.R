@@ -98,13 +98,32 @@ text.cor.3<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_e
 text.cor.3[359]
 } #end legacy function
 ######################
+prepare.python<-function(){
+  library(reticulate)
+ #use_virtualenv("r-miniconda")
+# use_python_version()
+ #py_eval("1+1")
+#py_list_packages()
+#py_install("transliterate")
+# py_discover_config()
+ #py_config()
+ use_miniconda("/Users/guhl/Library/r-miniconda/bin/python")
+ # use_python_version("3.10")
+# install_python(version = '3.10')
 # edited in textfile manually
+#virtualenv_list()
+#virtualenv_remove("r-reticulate")
+#virtualenv_create(version = "3.10")
+#install_python(version = '3.10')
+}
+prepare.python()
 #############################
 ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
 ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
 
 # single line stage direction markup:
-text.m<-readLines(ezd_markup_text.sf)
+text.m<-readLines(ezd_markup_text)
+#text.m<-readLines(ezd_markup_text.sf)
 m<-grepl("^[(][^)(]{1,150}[)]{1}\\.$",text.m) #grep all single line stage directions
 
 # TODO: check transcript for . at the end of each stage line!!!
@@ -117,7 +136,11 @@ m<-m3
 text.m[m3]
 text.m[m]<-paste0("$",text.m[m])
 text.m[m]<-gsub("[)(]","",text.m[m])
-#writeLines(text.m,ezd_markup_text)
+
+# pagebreak
+text.m.pb<-gsub(":?([0-9]{1,2}):?",'<!--<pb n="\\1"/>-->',text.m)
+text.m.pb[1:50]
+#writeLines(text.m.pb,ezd_markup_text)
 #wks.
 ###################################
 
@@ -125,9 +148,13 @@ text.m[m]<-gsub("[)(]","",text.m[m])
 #ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
 
 
+ library(reticulate)
 
 system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
 print("finished python ezd")
+# 2nd way:
+# library(reticulate)
+# source_python()
 library(xml2)
 xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
        
@@ -172,15 +199,39 @@ allspk<-xml_find_all(allsp,"speaker")
 allspk.m<-gsub("[:]","",xml_text(allspk))
 xml_text(allspk)<-allspk.m
 # wks.
+# remove () in stage
 allstage<-xml_find_all(tei,"//stage")
 allstage.m<-gsub("[)(]","",xml_text(allstage))
 xml_text(allstage)<-allstage.m
+#wks.
+##############################
+# castlist speaker role:
+castlist<-xml_find_all(tei,"//castItem")
+cast.txt<-xml_text(castlist)
+m<-grep("-",cast.txt)
+library(stringi)
+#library(purrr)
+role<-stri_split_regex(cast.txt," - ",simplify = T)
+m4<-role[,2]!=""
+k<-4
+for (k in 1:length(cast.txt)){
+  sp.role<-role[k,2]
+  sp.desc<-role[k,1]
+  xml_set_text(castlist[k],sp.desc)
+  if (sp.role!=""){
+    xml_add_child(castlist[k],"role")
+    
+    xml_set_text(xml_child(castlist[k]),sp.role)
+    xml_text(xml_child(castlist[k]))
+  }
+  
+}
 #write_xml(xmlt2,xmltarget)
 xmltemp<-tempfile()
 write_xml(xmlt2,xmltemp)
 # wks. TODO reformat xmlformat.pl...
-# next: remove () in <stage>, remove : in <speaker>, castlist role, single line stage directions
-# <edit>markup restore
+# next: remove () in <stage>CHK, remove : in <speaker>CHK, castlist role, single line stage directions CHK
+# <edit>markup restore CHK
 ##### >>> THIS HAS to be future done according the dracor editorial annotation scheme!!!!!!!
 xmlt<-readLines(xmltemp)
 m<-grepl("&lt;(/?edit)&gt;",xmlt)
