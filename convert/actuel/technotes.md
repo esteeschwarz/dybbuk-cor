@@ -5,3 +5,6 @@
 `pip install bs4`
 `pip install transliterate`
 `pip install yiddish`
+
+#### xmlformat for prettify .xml
+brew install xmlformat (Mac)

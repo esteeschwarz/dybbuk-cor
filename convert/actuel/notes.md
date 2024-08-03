@@ -6,6 +6,8 @@
 - ראזע statt ראזא : digit 34.5/9 : zweimalig andere schreibweise im druck
 - דבירה statt דבורה : digit 34.10 : schlechter druck (type nicht vollständig)
 - גֶעאַנְטְוָוארטֶעט : digit 43.30: doppelpunkt im text (wiedergegebene rede)
-- ירוהם : OCR fehler nicht korrigiert
-- פריידאלע : digit 8.16, einmalige anderschreibung im speaker, 3x im text
+- ירוהם : transkriptionsfehler
+- פריידאלע : digit 8.16, einmalige andersschreibung im speaker, 3x im text
 - פריידע : digit 9.30 1x andersschreibung
+
+die transkriptionsfehler wurden korrigiert. andersschreibung wurde beibehalten, dafür die `<sp who="xxx">` angepasst und der mehrheitlich verwendeten `xml:id` für diesen speaker in der `<particDesc>` zugeordnet. falsch übertragene bindestriche (hyphenation) wurden entfernt und mit einer `<edit>verweis</edit>` note annotiert, welche noch dem dracor annotationsschema angepasst werden kann.
