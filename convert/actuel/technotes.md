@@ -4,6 +4,7 @@
 - [x] castlist speaker:role
 - [x] stage directions remove `().`
 - [x] speaker remove `:`
+- [ ] add play meta information
 
 
 #### python for local ezdrama
