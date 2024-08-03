@@ -237,6 +237,16 @@ xmlt<-readLines(xmltemp)
 m<-grepl("&lt;(/?edit)&gt;",xmlt)
 sum(m)
 xmlt[m]<-gsub("&lt;(/?edit)&gt;","<\\1>",xmlt[m])
+# pagebreaks restore
+# regpb<-'<comment>&lt;(pb n="[0-9]{1,2}"/)&gt;</comment>'
+# regpb<-'<comment>&lt;(pb n="[0-9]{1,2}"/)&gt;</comment>'
+regp1<-"([0-9]{1,2}):"
+regp2<-":([0-9]{1,2})"
+m1<-grepl(regp1,xmlt)
+m2<-grepl(regp2,xmlt)
+sum(m1)
+xmlt[m1]<-gsub(regp1,'<pb n="\\1"/>',xmlt[m1])
+xmlt[m2]<-gsub(regp2,'<pb n="\\1"/>',xmlt[m2])
 writeLines(xmlt,xmltarget)
 library(tools)
 file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
