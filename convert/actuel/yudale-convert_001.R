@@ -167,13 +167,22 @@ sum(m)
 # R doesnt find, has converted yet into <> 
 
 xmltarget<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
-write_xml(xmlt2,xmltarget)
+# remove : in speaker
+allspk<-xml_find_all(allsp,"speaker")
+allspk.m<-gsub("[:]","",xml_text(allspk))
+xml_text(allspk)<-allspk.m
+# wks.
+allstage<-xml_find_all(tei,"//stage")
+allstage.m<-gsub("[)(]","",xml_text(allstage))
+xml_text(allstage)<-allstage.m
+#write_xml(xmlt2,xmltarget)
+xmltemp<-tempfile()
+write_xml(xmlt2,xmltemp)
 # wks. TODO reformat xmlformat.pl...
 # next: remove () in <stage>, remove : in <speaker>, castlist role, single line stage directions
-
 # <edit>markup restore
 ##### >>> THIS HAS to be future done according the dracor editorial annotation scheme!!!!!!!
-xmlt<-readLines(xmltarget)
+xmlt<-readLines(xmltemp)
 m<-grepl("&lt;(/?edit)&gt;",xmlt)
 sum(m)
 xmlt[m]<-gsub("&lt;(/?edit)&gt;","<\\1>",xmlt[m])
