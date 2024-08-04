@@ -199,7 +199,7 @@ sum(m)
 #gsub("<(/?edit).{4}","p\\1p",xml_text(allsp[m]))
 # R doesnt find, has converted yet into <> 
 
-xmltarget<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
+# xmltarget<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 # remove : in speaker
 allspk<-xml_find_all(allsp,"speaker")
 allspk.m<-gsub("[:]","",xml_text(allspk))
@@ -288,6 +288,8 @@ castlist
 done<-expression(role.3[k,4]==1)
 eval(done)
 done.set<-expression(role.3[k,4]<-1)
+
+####### WAIT
 for (k in 1:length(castlist)){
   sp.role<-role.3[k,1]
   sp.desc<-role.3[k,2]
@@ -295,28 +297,39 @@ for (k in 1:length(castlist)){
   m.cg<-role.3[,3]==sp.cg
   m.cg.w<-which(m.cg)
   castlist
+  eval(done)
 #  xml_set_text(castlist[k],sp.desc)
   if (sp.cg!=""&!eval(done)){
-    xml_set_text(castlist[k],"")
-    xml_replace(castlist[[k]],"castGroup")
-    cg<-xml_find_all(castlist[k],"//castGroup")
-    cg[[1]]
-    for (r in 1:length(m.cg.w)) {
-    xml_add_child(cg,"castItem")
-    ci<-xml_find_all(cg,"castItem")
-    length(ci[[1]])
+   # xml_set_text(castlist[k],"")
+    #instead create new node
+   # cg.node<-list()
+    cg.node<-xml_new_root("castGroup")
     
-#    for (c in 1:length(ci)){
+    #xml_replace(castlist[[k]],"castGroup")
+    #cg<-xml_find_all(castlist[k],"//castGroup")
+    #cg[[1]]
+    for (r in 1:length(m.cg.w)) {
+    xml_add_child(cg.node,"castItem")
+    }
+    ci<-xml_find_all(cg.node,"//castItem")
+    #xml_add_child()
+    length(ci)
+    ci
+    c<-1
+    for (c in 1:length(ci)){
       #if(!eval(done)){
-        xml_add_child(ci[[r]],"role",role.3[m.cg.w[r],1])
+        xml_add_child(ci,"role")
         
       #}
       eval(done.set)
  #   }
+      cg.node
     eval(done.set)
     }
-    xml_add_child(cg,"roleDesc",sp.desc)
+    xml_add_child(cg.node,"roleDesc",sp.desc)
+    xml_replace(castlist[[k]],cg.node)
     eval(done.set)
+    
     
   }
     castlist[[2]]
@@ -365,3 +378,5 @@ file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
 system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
 # wks. ##########################################
 }
+xmltarget<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
+write.final.xml()
