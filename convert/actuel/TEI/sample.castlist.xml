@@ -1,0 +1,12 @@
+<castList>
+        <head>Personen.</head>
+        <castItem><role>Herr Delmas,</role>
+          <roleDesc>Vater.</roleDesc></castItem>
+        <castGroup>
+          <castItem><role>Der ältere Delmas,</role></castItem>
+          <castItem><role>Der jüngere Delmas,</role></castItem>
+          <roleDesc>Brüder acht oder neun Jahr alt, und nur zwey Jahr von einander
+            unterschieden.</roleDesc>
+        </castGroup>
+        <castItem><role>Eine Hofmeisterin.</role></castItem>
+      </castList>

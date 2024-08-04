@@ -118,6 +118,7 @@ prepare.python<-function(){
 }
 prepare.python()
 #############################
+process.ezd<-function(){
 ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
 ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
 
@@ -140,6 +141,8 @@ text.m[m]<-gsub("[)(]","",text.m[m])
 # pagebreak
 text.m.pb<-gsub(":?([0-9]{1,2}):?",'<!--<pb n="\\1"/>-->',text.m)
 text.m.pb[1:50]
+######################################
+# MIND: not activate, will overwrite markup text! only if changes applied in script.
 #writeLines(text.m.pb,ezd_markup_text)
 #wks.
 ###################################
@@ -152,16 +155,19 @@ text.m.pb[1:50]
 
 system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
 print("finished python ezd")
+} #end process .txt
 # 2nd way:
 # library(reticulate)
 # source_python()
-library(xml2)
-xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
-       
+xml.cor.1<-function(){
+  library(xml2)
+  library(purrr)
+  
+  xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
+  
 speaker.who.cor<-data.frame(neg=c("fishl","freydede","freydle","freyde","rz"),pos=c("fishel","freydele","freydele","freydele","rze"))
 speaker.who.cor$neg<-paste0("#",speaker.who.cor$neg)
 speaker.who.cor$pos<-paste0("#",speaker.who.cor$pos)
-library(purrr)
 xmlt2<-xmltop%>%xml_ns_strip()
 tei<-xml_find_all(xmlt2,"//TEI")
 allsp<-xml_find_all(tei,"//sp")
@@ -204,39 +210,144 @@ allstage<-xml_find_all(tei,"//stage")
 allstage.m<-gsub("[)(]","",xml_text(allstage))
 xml_text(allstage)<-allstage.m
 #wks.
+return(tei)
+} #end xml.cor.1
+process.ezd() # performs ezd transformation and writes to file
+tei<-xml.cor.1() # reads from created .xml to finalize xml
 ##############################
 # castlist speaker role:
+xml.cor.2<-function(){
 castlist<-xml_find_all(tei,"//castItem")
 cast.txt<-xml_text(castlist)
-m<-grep("-",cast.txt)
+m.desc<-grep("-",cast.txt)
 library(stringi)
 #library(purrr)
 role<-stri_split_regex(cast.txt," - ",simplify = T)
+role.2<-stri_split_regex(role[,1],"\\+!",simplify = T)
+role.3<-cbind(role.2[,1],role[,2],gsub("[^0-9]","",role.2[,2]),0)
+###
 m4<-role[,2]!=""
-k<-4
-for (k in 1:length(cast.txt)){
-  sp.role<-role[k,2]
-  sp.desc<-role[k,1]
-  xml_set_text(castlist[k],sp.desc)
-  if (sp.role!=""){
-    xml_add_child(castlist[k],"role")
+m5.1<-role.3[,3]!=""&role.3[,2]!=""
+m5.2<-role.3[,3]!=""&role.3[,2]==""
+k<-2
+m6.1<-role.3[,1:3]==""
+m6.2<-grep(".*",role.3[m6.1])
+m6.2<-grepl("\n",role.3[,1])
+role.3[m6.2,1]
+role.3<-role.3[!m6.2,]
+role.3
+castlist
+xml_remove(castlist[[which(m6.2)]]) # removes empty entry in castlist
+#castlist.r<-xml_remove(castlist[which(m6.2)])
+#castlist.r<-castlist[1:12]
+castlist.elm<-xml_find_all(tei,"//castList")
+castlist.elm
+castlist<-xml_find_all(tei,"//castItem") # refresh after deleting!
+castlist
+xml_text(castlist)
+get.cg.ingroup<-function(x)grepl(",",xml_text(x))
+cg.sep<-lapply(castlist, get.cg.ingroup)
+cg.sep.u<-unlist(cg.sep)
+cg.group<-xml_text(castlist[cg.sep.u])
+cg.single<-stri_split_regex(cg.group,",",simplify = T)
+cg.single<-gsub("^ ","",cg.single)
+cg.single
+role.3[cg.sep.u,1]
+df<-cbind(t(cg.single),role.3[cg.sep.u,2],role.3[cg.sep.u,3],role.3[cg.sep.u,4])
+role.3.2<-rbind(role.3[!cg.sep.u,],df)
+role.3.2[,1]<-gsub("[+0-9cg!.]","",role.3.2[,1])
+role.3<-role.3.2
+for (k in 1:length(role.3[,2])){
+  cg<-role.3[k,3]
+  if (role.3[k,2]==""&role.3[k,3]!=""){
+    m5.3<-role.3[,3]==cg&role.3[,2]!=""
+    if(sum(m5.3)>0)
+      role.3[k,2]<-role.3[m5.3,2]
+  }
+}
+return(role.3)
+} #end xml.cor.2
+###################
+#process.ezd() # performs ezd transformation and writes to file
+#############
+tei<-xml.cor.1() # reads from created .xml to finalize xml
+################
+role.3<-xml.cor.2()
+###################
+castlist<-xml_find_all(tei,"//castItem")
+castlist.elm<-xml_find_all(tei,"//castList")
+
+########################################
+#m7.1<-grep(",",xml_text(castlist.elm[[1]]))
+k<-12
+#length(castlist.elm[[1]][[1]])
+#c1<-xml_replace(castlist.elm,castlist.r)
+#rol
+k<-2
+castlist
+done<-expression(role.3[k,4]==1)
+eval(done)
+done.set<-expression(role.3[k,4]<-1)
+for (k in 1:length(castlist)){
+  sp.role<-role.3[k,1]
+  sp.desc<-role.3[k,2]
+  sp.cg<-role.3[k,3]
+  m.cg<-role.3[,3]==sp.cg
+  m.cg.w<-which(m.cg)
+  castlist
+#  xml_set_text(castlist[k],sp.desc)
+  if (sp.cg!=""&!eval(done)){
+    xml_set_text(castlist[k],"")
+    xml_replace(castlist[[k]],"castGroup")
+    cg<-xml_find_all(castlist[k],"//castGroup")
+    cg[[1]]
+    for (r in 1:length(m.cg.w)) {
+    xml_add_child(cg,"castItem")
+    ci<-xml_find_all(cg,"castItem")
+    length(ci[[1]])
     
-    xml_set_text(xml_child(castlist[k]),sp.role)
-    xml_text(xml_child(castlist[k]))
+#    for (c in 1:length(ci)){
+      #if(!eval(done)){
+        xml_add_child(ci[[r]],"role",role.3[m.cg.w[r],1])
+        
+      #}
+      eval(done.set)
+ #   }
+    eval(done.set)
+    }
+    xml_add_child(cg,"roleDesc",sp.desc)
+    eval(done.set)
+    
+  }
+    castlist[[2]]
+  #  xml_text()
+   # xml_set_text(cg.role.desc,sp.cg)
+  
+  if (sp.desc!=""&sp.cg==""&!eval(done)){
+    xml_set_text(castlist[k],"")
+    xml_add_child(castlist[k],"role",sp.role)
+    xml_add_child(castlist[k],"roleDesc",sp.desc)
+    role.3[k,4]<-1
+    eval(done.set)
+#    xml_set_text(xml_child(castlist[k]),sp.role)
+ #   xml_text(xml_child(castlist[k]))
   }
   
 }
 #write_xml(xmlt2,xmltarget)
 xmltemp<-tempfile()
-write_xml(xmlt2,xmltemp)
+write_xml(tei,xmltemp)
 # wks. TODO reformat xmlformat.pl...
 # next: remove () in <stage>CHK, remove : in <speaker>CHK, castlist role, single line stage directions CHK
-# <edit>markup restore CHK
+# <edit>markup restore CHK 
 ##### >>> THIS HAS to be future done according the dracor editorial annotation scheme!!!!!!!
 xmlt<-readLines(xmltemp)
+# editorial markup
+# this method has to be changed, editorial annotation better in comment element in .txt
 m<-grepl("&lt;(/?edit)&gt;",xmlt)
 sum(m)
 xmlt[m]<-gsub("&lt;(/?edit)&gt;","<\\1>",xmlt[m])
+### wks.
 # pagebreaks restore
 # regpb<-'<comment>&lt;(pb n="[0-9]{1,2}"/)&gt;</comment>'
 # regpb<-'<comment>&lt;(pb n="[0-9]{1,2}"/)&gt;</comment>'
@@ -247,8 +358,10 @@ m2<-grepl(regp2,xmlt)
 sum(m1)
 xmlt[m1]<-gsub(regp1,'<pb n="\\1"/>',xmlt[m1])
 xmlt[m2]<-gsub(regp2,'<pb n="\\1"/>',xmlt[m2])
+write.final.xml<-function(){
 writeLines(xmlt,xmltarget)
 library(tools)
 file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
 system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
 # wks. ##########################################
+}

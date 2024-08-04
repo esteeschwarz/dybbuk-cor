@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <TEI xml:id="insert_id" xml:lang="insert_lang">
  <teiHeader>
   <fileDesc>
@@ -31,50 +30,26 @@
   <profileDesc>
    <particDesc>
     <listPerson>
-     <person sex="MALE" xml:id="le">
-      <persName>אלע</persName>
-     </person>
      <person sex="MALE" xml:id="fishl">
       <persName>פישל</persName>
-     </person>
-     <person sex="MALE" xml:id="ir khm">
-      <persName>ירוחם</persName>
-     </person>
-     <person sex="MALE" xml:id="freyde">
-      <persName>פריידע</persName>
-     </person>
-     <person sex="MALE" xml:id="ikhne">
-      <persName>יאכנע</persName>
-     </person>
-     <person sex="MALE" xml:id="y dle">
-      <persName>יודאלע</persName>
-     </person>
-     <person sex="MALE" xml:id="beyde">
-      <persName>ביידע</persName>
-     </person>
-     <person sex="MALE" xml:id="rz">
-      <persName>ראזא</persName>
-     </person>
-     <person sex="MALE" xml:id="khr">
-      <persName>קאהר</persName>
-     </person>
-     <person sex="MALE" xml:id="freydede">
-      <persName>פריידעדע</persName>
-     </person>
-     <person sex="MALE" xml:id="fishel">
-      <persName>פישעל</persName>
      </person>
      <person sex="MALE" xml:id="lteril">
       <persName>אלטעריל</persName>
      </person>
-     <person sex="MALE" xml:id="rze">
-      <persName>ראזע</persName>
-     </person>
-     <person sex="MALE" xml:id="vldmn">
-      <persName>וואלדמאן</persName>
+     <person sex="MALE" xml:id="rz">
+      <persName>ראזא</persName>
      </person>
      <person sex="MALE" xml:id="">
       <persName></persName>
+     </person>
+     <person sex="MALE" xml:id="ikhne">
+      <persName>יאכנע</persName>
+     </person>
+     <person sex="MALE" xml:id="beyde">
+      <persName>ביידע</persName>
+     </person>
+     <person sex="MALE" xml:id="fishel">
+      <persName>פישעל</persName>
      </person>
      <person sex="MALE" xml:id="isr">
       <persName>איסר</persName>
@@ -82,27 +57,51 @@
      <person sex="MALE" xml:id="bermn">
       <persName>בערמאן</persName>
      </person>
-     <person sex="MALE" xml:id="edelmn">
-      <persName>עדעלמאן</persName>
-     </person>
      <person sex="MALE" xml:id="khzn">
       <persName>חזן</persName>
+     </person>
+     <person sex="MALE" xml:id="le">
+      <persName>אלע</persName>
      </person>
      <person sex="MALE" xml:id="freydele">
       <persName>פריידעלע</persName>
      </person>
-     <person sex="MALE" xml:id="freydle">
-      <persName>פריידאלע</persName>
+     <person sex="MALE" xml:id="khr">
+      <persName>קאהר</persName>
+     </person>
+     <person sex="MALE" xml:id="y dle">
+      <persName>יודאלע</persName>
+     </person>
+     <person sex="MALE" xml:id="freyde">
+      <persName>פריידע</persName>
+     </person>
+     <person sex="MALE" xml:id="rze">
+      <persName>ראזע</persName>
+     </person>
+     <person sex="MALE" xml:id="vldmn">
+      <persName>וואלדמאן</persName>
+     </person>
+     <person sex="MALE" xml:id="edelmn">
+      <persName>עדעלמאן</persName>
+     </person>
+     <person sex="MALE" xml:id="freydede">
+      <persName>פריידעדע</persName>
      </person>
      <person sex="MALE" xml:id="db rh">
       <persName>דבורה</persName>
+     </person>
+     <person sex="MALE" xml:id="freydle">
+      <persName>פריידאלע</persName>
+     </person>
+     <person sex="MALE" xml:id="ir khm">
+      <persName>ירוחם</persName>
      </person>
     </listPerson>
    </particDesc>
   </profileDesc>
   <revisionDesc>
    <listChange>
-    <change when="2024-08-03">DESCRIBE CHANGE</change>
+    <change when="2024-08-04">DESCRIBE CHANGE</change>
    </listChange>
   </revisionDesc>
  </teiHeader>
@@ -126,27 +125,112 @@
   <front>
    <castList>
     <head>פֶּערְזָאנֶען:</head>
-    <castItem>הֶערְצֶעל וַואלְדְמאן<role>איין בּאנקיער.</role>
+    <castItem>
+     <role>הֶערְצֶעל וַואלְדְמאן</role>
+     <roleDesc>איין בּאנקיער.</roleDesc>
     </castItem>
-    <castItem>רָאזא</castItem>
-    <castItem>אַלְטֶערִיל<role>זיינע קינדער.</role>
+    <castGroup>
+     <castItem>
+      <role>רָאזא </role>
+      <role>רָאזא </role>
+      <role>דְבורָה‘לֶע</role>
+      <role>דְבורָה‘לֶע</role>
+      <role>קאָהר</role>
+     </castItem>
+     <castItem>
+      <role>אַלְטֶערִיל</role>
+      <role>אַלְטֶערִיל</role>
+      <role>פריידאלען</role>
+      <role>פריידאלען</role>
+      <role>געסטע</role>
+     </castItem>
+     <roleDesc>זיינע קינדער.</roleDesc>
+     <castItem>
+      <role>יוּדען</role>
+     </castItem>
+     <castItem>
+      <role>יוּדענעס עטצ</role>
+     </castItem>
+     <roleDesc>זיינע קינדער.</roleDesc>
+     <castItem/>
+     <castItem/>
+     <roleDesc>זייערע קינדער.</roleDesc>
+     <castItem/>
+     <castItem/>
+     <roleDesc>זייערע קינדער.</roleDesc>
+     <castItem/>
+     <castItem/>
+     <castItem/>
+     <castItem/>
+     <roleDesc/>
+    </castGroup>
+    <castGroup>
+     <castItem/>
+     <castItem/>
+     <roleDesc>זיינע קינדער.</roleDesc>
+     <castItem/>
+     <castItem/>
+     <roleDesc>זייערע קינדער.</roleDesc>
+     <castItem/>
+     <castItem/>
+     <roleDesc>זייערע קינדער.</roleDesc>
+     <castItem/>
+     <castItem/>
+     <castItem/>
+     <castItem/>
+     <roleDesc/>
+    </castGroup>
+    <castItem>
+     <role>יוּדַאלֶע</role>
+     <roleDesc>זיין נעפפע (בּלינד).</roleDesc>
     </castItem>
-    <castItem>יוּדַאלֶע<role>זיין נעפפע (בּלינד).</role>
+    <castItem>
+     <role>יִרוחָם</role>
+     <roleDesc>חזן.</roleDesc>
     </castItem>
-    <castItem>יִרוחָם<role>חזן.</role>
+    <castItem>
+     <role>יַאכְנֶע</role>
+     <roleDesc>זיין פרוי.</roleDesc>
     </castItem>
-    <castItem>יַאכְנֶע<role>זיין פרוי.</role>
-    </castItem>
-    <castItem>דְבורָה‘לֶע</castItem>
-    <castItem>פריידאלען<role>זייערע קינדער.</role>
-    </castItem>
+    <castGroup>
+     <castItem/>
+     <castItem/>
+     <roleDesc>זייערע קינדער.</roleDesc>
+     <castItem/>
+     <castItem/>
+     <roleDesc>זייערע קינדער.</roleDesc>
+     <castItem/>
+     <castItem/>
+     <castItem/>
+     <castItem/>
+     <roleDesc/>
+    </castGroup>
+    <castGroup>
+     <castItem/>
+     <castItem/>
+     <roleDesc>זייערע קינדער.</roleDesc>
+     <castItem/>
+     <castItem/>
+     <castItem/>
+     <castItem/>
+     <roleDesc/>
+    </castGroup>
     <castItem>בֶּערְמַאן</castItem>
-    <castItem>אִיסָר<role>פּראָצענטניק.</role>
+    <castItem>
+     <role>אִיסָר</role>
+     <roleDesc>פּראָצענטניק.</roleDesc>
     </castItem>
-    <castItem>פְּרָאפֶעסָאר עֶדעלְמָאן<role>אויגען דאָקטער.</role>
+    <castItem>
+     <role>פְּרָאפֶעסָאר עֶדעלְמָאן</role>
+     <roleDesc>אויגען דאָקטער.</roleDesc>
     </castItem>
-    <castItem>קאָהר, געסטע, יוּדען, יוּדענעס עטצ.</castItem>
-    <castItem></castItem>
+    <castGroup>
+     <castItem/>
+     <castItem/>
+     <castItem/>
+     <castItem/>
+     <roleDesc/>
+    </castGroup>
    </castList>
   </front>
   <body>
