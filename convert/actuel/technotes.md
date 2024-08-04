@@ -5,6 +5,8 @@
 - [x] stage directions remove `().`
 - [x] speaker remove `:`
 - [ ] add play meta information
+- [ ] transliterate author/ play name
+- [ ] assign sex to personlist items
 
 
 #### python for local ezdrama
