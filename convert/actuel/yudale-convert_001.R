@@ -21,7 +21,8 @@ path.dir<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI"
 #path.dir<-"https://raw.githubusercontent/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI"
 chose.file<-""
 chose.file<-"yudale_ezd_pre_semicor_003.txt" # last used working version
-chose.file<-"yudale_ezd_pre_semicor_003STfwd.txt" # forward edited version 
+#chose.file<-"yudale_ezd_pre_semicor_003STfwd.txt" # forward edited version 
+### > chose finalised .xml output file at script bottom
 path.chose.file<-paste(path.dir,chose.file,sep = "/")
 path.chose.file
 if (chose.file!="")
