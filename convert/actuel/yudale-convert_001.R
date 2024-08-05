@@ -321,6 +321,8 @@ for (k in 1:length(castlist)){
     xml_add_child(xml_child(cg.node,r),"role",role.3[m.cg.w[r],1])
     }
     ci<-xml_find_all(cg.node,"//castItem")
+    
+   # xml_remove(castlist,)
     #xml_add_child()
     length(ci)
     ci
@@ -361,8 +363,44 @@ for (k in 1:length(castlist)){
 #    xml_set_text(xml_child(castlist[k]),sp.role)
  #   xml_text(xml_child(castlist[k]))
   }
+    #k<-2
+   
+    k
   print(k)
+ }
+sp.cg<-unique(role.3[,3])
+sp.cg<-as.double(sp.cg)
+sp.cg<-sp.cg[!is.na(sp.cg)]
+sp.cg
+m1<-role.3[,3]%in%sp.cg
+m<-which(m)
+
+cg<-1
+castnew<-xml_find_all(tei,"//castList")
+
+for (cg in sp.cg){
+m2<-match(cg,role.3[,3])  
+m1[m2]<-F
+m1
 }
+nodes.to.remove<-which(m1)
+#m<-role.3[,3]==cg
+#  m<-which(m)
+#  m<-1:length(role.3[,3])
+ # m<-m[m<length(castlist)]
+  nodes.to.remove<-nodes.to.remove[nodes.to.remove<length(castlist)]
+  nodes.to.remove<-nodes.to.remove[!is.na(nodes.to.remove)]
+ # nodes.to.remove<-nodes.to.remove+1
+  rm<-3
+  #for (rm in nodes.to.remove){
+    xml_remove(
+      castlist[nodes.to.remove],free = T
+      )
+    print(nodes.to.remove)
+   # print(xml_text(castnew[rm]))
+  #}
+  castlist
+#}
 #write_xml(xmlt2,xmltarget)
 xmltemp<-tempfile()
 write_xml(tei,xmltemp)
@@ -404,3 +442,4 @@ write.final.xml<-function(xmltarget){
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 write.final.xml(xmltarget.dev)
+write.final.xml(xmltarget.prod)
