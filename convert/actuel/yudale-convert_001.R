@@ -4,6 +4,17 @@
 # base convert .txt to eazydrama markup for further TEI conversion
 ##################################################################
 # Q:
+
+### set T if new ezd parsing from actualised .txt source
+run.ezdrama=F
+### else F will use the latest first stage .xml output of ezdrama for further
+### xml adaptations
+###################
+### for device dependent routine if apply ezd (above = T), T on lapsi
+run.python.prepare=F
+### run with all sources from git
+run.src.git = T
+check.local()
 # not run
 tempfun<-function(){
 src<-"~/boxHKW/21S/DH/local/EXC2020/dybbuk/yudale_xml-edited006.14312-FIN/yudale_xml-edited006.14312-FIN.m.txt"
@@ -98,8 +109,8 @@ text.cor.3<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_e
 text.cor.3[359]
 } #end legacy function
 ######################
-prepare.python<-function(run){
-  if (run==T){
+prepare.python<-function(run=F){
+  if (run){
   library(reticulate)
  #use_virtualenv("r-miniconda")
 # use_python_version()
@@ -117,19 +128,34 @@ prepare.python<-function(run){
 #virtualenv_create(version = "3.10")
 #install_python(version = '3.10')
   }
+  return(run)
 }
 ### for device dependent routine
-run.python.prepare=T
-if(file.exists("~/checkdevice.R"))
-  source("~/checkdevice.R")
-prepare.python(run.python.prepare)
+#run.python.prepare=T
+check.local<-function(){
+if (!run.src.git)
+  if(file.exists("~/checkdevice.R"))
+    source("~/checkdevice.R")
+    return(run.python.prepare)
+return(run.src.git)
+}
+check.local()
+check.python<-prepare.python(check.local())
+check.python
 #############################
-process.ezd<-function(){
-ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
-ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
 
+process.ezd<-function(check.python){
+check.local()
+check.src<-function(check.local){
+  ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
+  ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
+  ezd_markup_text.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
+  ifelse(check.python,return(ezd_markup_text),ezd_markup_text.git)
+}
 # single line stage direction markup:
+ezd_markup_text<-check.src()
 text.m<-readLines(ezd_markup_text)
+#text.m<-readLines(check.src())
 #text.m<-readLines(ezd_markup_text.sf)
 m<-grepl("^[(][^)(]{1,150}[)]{1}\\.$",text.m) #grep all single line stage directions
 
@@ -157,19 +183,23 @@ text.m.pb[1:50]
 #ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
 
 
- library(reticulate)
-
-system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
-print("finished python ezd")
-} #end process .txt
+ #library(reticulate)
+if(run.ezdrama&check.python)
+  system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
+  print("finished python ezd")
+} #end ezd process .txt
 # 2nd way:
 # library(reticulate)
 # source_python()
 xml.cor.1<-function(){
   library(xml2)
   library(purrr)
-  
-  xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
+  xml.src.local<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml"
+  xml.src.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml"
+xml.src<-ifelse(run.src.git,xml.src.git,xml.src.local)
+xmltop<-read_xml(xml.src)
+
+  # xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
   
 speaker.who.cor<-data.frame(neg=c("fishl","freydede","freydle","freyde","rz"),pos=c("fishel","freydele","freydele","freydele","rze"))
 speaker.who.cor$neg<-paste0("#",speaker.who.cor$neg)
@@ -218,8 +248,9 @@ xml_text(allstage)<-allstage.m
 #wks.
 return(tei)
 } #end xml.cor.1
-process.ezd() # performs ezd transformation and writes to file
-tei<-xml.cor.1() # reads from created .xml to finalize xml
+# if(run.ezdrama)
+#   process.ezd() # performs ezd transformation and writes to file
+#tei<-xml.cor.1() # reads from created .xml to finalize xml
 ##############################
 # castlist speaker role:
 xml.cor.2<-function(){
@@ -244,8 +275,7 @@ role.3<-role.3[!m6.2,]
 role.3
 castlist
 xml_remove(castlist[[which(m6.2)]]) # removes empty entry in castlist
-#castlist.r<-xml_remove(castlist[which(m6.2)])
-#castlist.r<-castlist[1:12]
+
 castlist.elm<-xml_find_all(tei,"//castList")
 castlist.elm
 castlist<-xml_find_all(tei,"//castItem") # refresh after deleting!
@@ -275,20 +305,18 @@ return(role.3)
 } #end xml.cor.2
 ###################
 #process.ezd() # performs ezd transformation and writes to file
+if(run.ezdrama)
+  process.ezd() # performs ezd transformation and writes to file
 #############
 tei<-xml.cor.1() # reads from created .xml to finalize xml
 ################
-role.3<-xml.cor.2()
+# castgroup editing
+role.3<-xml.cor.2() # gets castlist df template for castgroup/role editing
 ###################
 castlist<-xml_find_all(tei,"//castItem")
 castlist.elm<-xml_find_all(tei,"//castList")
 
 ########################################
-#m7.1<-grep(",",xml_text(castlist.elm[[1]]))
-#k<-12
-#length(castlist.elm[[1]][[1]])
-#c1<-xml_replace(castlist.elm,castlist.r)
-#rol
 #k<-2
 castlist
 done<-expression(role.3[k,4]==1)
@@ -305,103 +333,51 @@ for (k in 1:length(castlist)){
   castlist
   eval(done)
   sp.cg!=""&!eval(done)
-#  xml_set_text(castlist[k],sp.desc)
   if (sp.cg!=""&!eval(done)){
-   # xml_set_text(castlist[k],"")
-    #instead create new node
+  # instead create new node
    # cg.node<-list()
     cg.node<-xml_new_root("castGroup")
-    
-    #xml_replace(castlist[[k]],"castGroup")
-    #cg<-xml_find_all(castlist[k],"//castGroup")
-    #cg[[1]]
     k
     for (r in 1:length(m.cg.w)) {
     xml_add_child(cg.node,"castItem")
     xml_add_child(xml_child(cg.node,r),"role",role.3[m.cg.w[r],1])
     }
-    ci<-xml_find_all(cg.node,"//castItem")
-    
-   # xml_remove(castlist,)
-    #xml_add_child()
-    length(ci)
-    ci
-    c<-1
-    #
-    r
-   # for (c in 1:length(ci)){
-      #if(!eval(done)){
-    r
-    xml_children(ci)
     xml_child(cg.node,1)
-        # xml_add_child(xml_child(cg.node,r),"role",role.3[m.cg.w[r],1])
-        # 
-      #}
       eval(done.set)
- #   }
-      
-      cg.node
-    eval(done.set)
-  #  }
     xml_add_child(cg.node,"roleDesc",sp.desc)
     xml_replace(castlist[[k]],cg.node)
-    eval(done.set)
     m<-role.3[,3]==sp.cg
-    role.3[m,4]<-1
-    
+    role.3[m,4]<-1 # done set 1
   }
-    castlist[[2]]
-  #  xml_text()
-   # xml_set_text(cg.role.desc,sp.cg)
-  
   if (sp.desc!=""&sp.cg==""&!eval(done)){
     xml_set_text(castlist[k],"")
     xml_add_child(castlist[k],"role",sp.role)
     xml_add_child(castlist[k],"roleDesc",sp.desc)
     role.3[k,4]<-1
     eval(done.set)
-#    xml_set_text(xml_child(castlist[k]),sp.role)
- #   xml_text(xml_child(castlist[k]))
   }
-    #k<-2
-   
-    k
   print(k)
  }
+# remove obsolete nodes in castlist
 sp.cg<-unique(role.3[,3])
 sp.cg<-as.double(sp.cg)
 sp.cg<-sp.cg[!is.na(sp.cg)]
 sp.cg
 m1<-role.3[,3]%in%sp.cg
 m<-which(m)
-
-cg<-1
 castnew<-xml_find_all(tei,"//castList")
-
 for (cg in sp.cg){
 m2<-match(cg,role.3[,3])  
 m1[m2]<-F
 m1
 }
 nodes.to.remove<-which(m1)
-#m<-role.3[,3]==cg
-#  m<-which(m)
-#  m<-1:length(role.3[,3])
- # m<-m[m<length(castlist)]
   nodes.to.remove<-nodes.to.remove[nodes.to.remove<length(castlist)]
   nodes.to.remove<-nodes.to.remove[!is.na(nodes.to.remove)]
- # nodes.to.remove<-nodes.to.remove+1
-  rm<-3
-  #for (rm in nodes.to.remove){
     xml_remove(
       castlist[nodes.to.remove],free = T
       )
     print(nodes.to.remove)
-   # print(xml_text(castnew[rm]))
-  #}
-  castlist
-#}
-#write_xml(xmlt2,xmltarget)
 xmltemp<-tempfile()
 write_xml(tei,xmltemp)
 # wks. TODO reformat xmlformat.pl...
@@ -409,6 +385,7 @@ write_xml(tei,xmltemp)
 # <edit>markup restore CHK 
 ##### >>> THIS HAS to be future done according the dracor editorial annotation scheme!!!!!!!
 xmlt<-readLines(xmltemp)
+# TODO: consistent markup > +!xxx!+
 # editorial markup
 # this method has to be changed, editorial annotation better in comment element in .txt
 m<-grepl("&lt;(/?edit)&gt;",xmlt)
@@ -425,6 +402,7 @@ m2<-grepl(regp2,xmlt)
 sum(m1)
 xmlt[m1]<-gsub(regp1,'<pb n="\\1"/>',xmlt[m1])
 xmlt[m2]<-gsub(regp2,'<pb n="\\1"/>',xmlt[m2])
+### wks.
 write.final.xml<-function(xmltarget){
 writeLines(xmlt,xmltarget)
 library(tools)
@@ -442,4 +420,4 @@ write.final.xml<-function(xmltarget){
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 write.final.xml(xmltarget.dev)
-write.final.xml(xmltarget.prod)
+#write.final.xml(xmltarget.prod)
