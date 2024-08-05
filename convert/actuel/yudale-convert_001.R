@@ -285,16 +285,16 @@ castlist.elm<-xml_find_all(tei,"//castList")
 
 ########################################
 #m7.1<-grep(",",xml_text(castlist.elm[[1]]))
-k<-12
+#k<-12
 #length(castlist.elm[[1]][[1]])
 #c1<-xml_replace(castlist.elm,castlist.r)
 #rol
-k<-2
+#k<-2
 castlist
 done<-expression(role.3[k,4]==1)
 eval(done)
 done.set<-expression(role.3[k,4]<-1)
-
+k<-2
 ####### WAIT
 for (k in 1:length(castlist)){
   sp.role<-role.3[k,1]
@@ -304,6 +304,7 @@ for (k in 1:length(castlist)){
   m.cg.w<-which(m.cg)
   castlist
   eval(done)
+  sp.cg!=""&!eval(done)
 #  xml_set_text(castlist[k],sp.desc)
   if (sp.cg!=""&!eval(done)){
    # xml_set_text(castlist[k],"")
@@ -314,28 +315,37 @@ for (k in 1:length(castlist)){
     #xml_replace(castlist[[k]],"castGroup")
     #cg<-xml_find_all(castlist[k],"//castGroup")
     #cg[[1]]
+    k
     for (r in 1:length(m.cg.w)) {
     xml_add_child(cg.node,"castItem")
+    xml_add_child(xml_child(cg.node,r),"role",role.3[m.cg.w[r],1])
     }
     ci<-xml_find_all(cg.node,"//castItem")
     #xml_add_child()
     length(ci)
     ci
     c<-1
-    for (c in 1:length(ci)){
+    #
+    r
+   # for (c in 1:length(ci)){
       #if(!eval(done)){
-        xml_add_child(ci,"role")
-        
+    r
+    xml_children(ci)
+    xml_child(cg.node,1)
+        # xml_add_child(xml_child(cg.node,r),"role",role.3[m.cg.w[r],1])
+        # 
       #}
       eval(done.set)
  #   }
+      
       cg.node
     eval(done.set)
-    }
+  #  }
     xml_add_child(cg.node,"roleDesc",sp.desc)
     xml_replace(castlist[[k]],cg.node)
     eval(done.set)
-    
+    m<-role.3[,3]==sp.cg
+    role.3[m,4]<-1
     
   }
     castlist[[2]]
@@ -351,7 +361,7 @@ for (k in 1:length(castlist)){
 #    xml_set_text(xml_child(castlist[k]),sp.role)
  #   xml_text(xml_child(castlist[k]))
   }
-  
+  print(k)
 }
 #write_xml(xmlt2,xmltarget)
 xmltemp<-tempfile()
