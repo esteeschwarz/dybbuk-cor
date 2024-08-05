@@ -30,71 +30,71 @@
   <profileDesc>
    <particDesc>
     <listPerson>
-     <person sex="MALE" xml:id="edelmn">
-      <persName>עדעלמאן</persName>
-     </person>
-     <person sex="MALE" xml:id="vldmn">
-      <persName>וואלדמאן</persName>
-     </person>
-     <person sex="MALE" xml:id="le">
-      <persName>אלע</persName>
+     <person sex="MALE" xml:id="freydle">
+      <persName>פריידאלע</persName>
      </person>
      <person sex="MALE" xml:id="rz">
       <persName>ראזא</persName>
      </person>
+     <person sex="MALE" xml:id="isr">
+      <persName>איסר</persName>
+     </person>
+     <person sex="MALE" xml:id="vldmn">
+      <persName>וואלדמאן</persName>
+     </person>
      <person sex="MALE" xml:id="freydele">
       <persName>פריידעלע</persName>
-     </person>
-     <person sex="MALE" xml:id="khzn">
-      <persName>חזן</persName>
-     </person>
-     <person sex="MALE" xml:id="fish  l">
-      <persName>פישׁׁל</persName>
-     </person>
-     <person sex="MALE" xml:id="freydede">
-      <persName>פריידעדע</persName>
-     </person>
-     <person sex="MALE" xml:id="khr">
-      <persName>קאהר</persName>
-     </person>
-     <person sex="MALE" xml:id="fish  el">
-      <persName>פישׁׁעל</persName>
-     </person>
-     <person sex="MALE" xml:id="ikhne">
-      <persName>יאכנע</persName>
-     </person>
-     <person sex="MALE" xml:id="freydle">
-      <persName>פריידאלע</persName>
-     </person>
-     <person sex="MALE" xml:id="y dle">
-      <persName>יודאלע</persName>
-     </person>
-     <person sex="MALE" xml:id="ir khm">
-      <persName>ירוחם</persName>
-     </person>
-     <person sex="MALE" xml:id="db rh">
-      <persName>דבורה</persName>
-     </person>
-     <person sex="MALE" xml:id="beyde">
-      <persName>ביידע</persName>
-     </person>
-     <person sex="MALE" xml:id="bermn">
-      <persName>בערמאן</persName>
-     </person>
-     <person sex="MALE" xml:id="lteril">
-      <persName>אלטעריל</persName>
      </person>
      <person sex="MALE" xml:id="">
       <persName></persName>
      </person>
+     <person sex="MALE" xml:id="y dle">
+      <persName>יודאלע</persName>
+     </person>
+     <person sex="MALE" xml:id="edelmn">
+      <persName>עדעלמאן</persName>
+     </person>
+     <person sex="MALE" xml:id="beyde">
+      <persName>ביידע</persName>
+     </person>
+     <person sex="MALE" xml:id="khr">
+      <persName>קאהר</persName>
+     </person>
+     <person sex="MALE" xml:id="le">
+      <persName>אלע</persName>
+     </person>
+     <person sex="MALE" xml:id="khzn">
+      <persName>חזן</persName>
+     </person>
+     <person sex="MALE" xml:id="lteril">
+      <persName>אלטעריל</persName>
+     </person>
+     <person sex="MALE" xml:id="freydede">
+      <persName>פריידעדע</persName>
+     </person>
+     <person sex="MALE" xml:id="fish  el">
+      <persName>פישׁׁעל</persName>
+     </person>
      <person sex="MALE" xml:id="freyde">
       <persName>פריידע</persName>
+     </person>
+     <person sex="MALE" xml:id="db rh">
+      <persName>דבורה</persName>
+     </person>
+     <person sex="MALE" xml:id="fish  l">
+      <persName>פישׁׁל</persName>
+     </person>
+     <person sex="MALE" xml:id="bermn">
+      <persName>בערמאן</persName>
      </person>
      <person sex="MALE" xml:id="rze">
       <persName>ראזע</persName>
      </person>
-     <person sex="MALE" xml:id="isr">
-      <persName>איסר</persName>
+     <person sex="MALE" xml:id="ikhne">
+      <persName>יאכנע</persName>
+     </person>
+     <person sex="MALE" xml:id="ir khm">
+      <persName>ירוחם</persName>
      </person>
     </listPerson>
    </particDesc>
@@ -439,7 +439,7 @@
     </sp>
     <sp who="#isr">
      <speaker>איסר</speaker>
-     <p>אַלְטֶערִיל דֶער בֶּן יָחִיד פוּן דֶעם גְרוׂיסֶען גְבִיר ר‘ הֶערְצֶעלֶע <edit>digit6.30</edit>וַואלְדמַאן חַא חַא חַא אוּן װָאס טְהוּט דָא אַלְטֶערִיל? <pb n="7"/>
+     <p>אַלְטֶערִיל דֶער בֶּן יָחִיד פוּן דֶעם גְרוׂיסֶען גְבִיר ר‘ הֶערְצֶעלֶע <note type="editorial" resp="#ST">editdigit6.30</note> וַואלְדמַאן חַא חַא חַא אוּן װָאס טְהוּט דָא אַלְטֶערִיל? <pb n="7"/>
      </p>
     </sp>
     <sp who="#freydele">
@@ -1723,7 +1723,7 @@
     </sp>
     <sp who="#rze">
      <speaker>ראזא</speaker>
-     <p>גָאלְד! פֶערפְלוּכְטֶעס גָאלְד! מֶענְשֶׁען פֶערְוַואנְדֶעלְסְטוּ אִין בֶּעסְ<edit>digit35.30</edit>טִיעֶן! פוּן מַלְאָכִים מַאכְסְטוּ טֵייפֶעל, אָה גָאט! נוּּר דוּ אַלֵיין וֵוייסְט</p>
+     <p>גָאלְד! פֶערפְלוּכְטֶעס גָאלְד! מֶענְשֶׁען פֶערְוַואנְדֶעלְסְטוּ אִין בֶּעסְ <note type="editorial" resp="#ST">editdigit35.30</note>טִיעֶן! פוּן מַלְאָכִים מַאכְסְטוּ טֵייפֶעל, אָה גָאט! נוּּר דוּ אַלֵיין וֵוייסְט</p>
      <p>
       <pb n="34"/> אַצִינְד מַיין צֶערְבְּרָאכֶען הֶערְץ! וָואס זָאל אִיךְ טְהוּן? הֶעלְף מִיר גָאטֶענְיוּ! הֶעלְף מִיר! <stage>אָב</stage>
      </p>
@@ -2655,7 +2655,7 @@
     </sp>
     <sp who="#vldmn">
      <speaker>וואלדמאן</speaker>
-     <p>אוּנְעֶרְפַארֶענֶעס קִינְד װָאס דוּ בִּיסְט! דִיר אִיז דָאס <edit>digit55.28</edit>פְרוׂיעֶנְגֶעשְׁׁלֶעכְט נָאךְְ נִישְׁׁט בֶּעקַאנְט, נָאךְְ פְרֶעמְד! דוּ וֵוייסְט נָאךְְ נִישְׁׁט דָאס אֵיין פְרוׂי קֶען װֵיינֶען װֶען זִי וִוׂיל, קֶען חַלֶשְׁׁ‘ן װֶען זִי װִיל, קֶען אוׂיךְְ זַײן מְשׁׁוּגָע װֶען זִי װִיל.</p>
+     <p>אוּנְעֶרְפַארֶענֶעס קִינְד װָאס דוּ בִּיסְט! דִיר אִיז דָאס <note type="editorial" resp="#ST">editdigit55.28</note>פְרוׂיעֶנְגֶעשְׁׁלֶעכְט נָאךְְ נִישְׁׁט בֶּעקַאנְט, נָאךְְ פְרֶעמְד! דוּ וֵוייסְט נָאךְְ נִישְׁׁט דָאס אֵיין פְרוׂי קֶען װֵיינֶען װֶען זִי וִוׂיל, קֶען חַלֶשְׁׁ‘ן װֶען זִי װִיל, קֶען אוׂיךְְ זַײן מְשׁׁוּגָע װֶען זִי װִיל.</p>
      <p>
       <pb n="54"/>
      </p>

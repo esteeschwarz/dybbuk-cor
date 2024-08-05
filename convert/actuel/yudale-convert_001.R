@@ -21,7 +21,7 @@ path.dir<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI"
 #path.dir<-"https://raw.githubusercontent/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI"
 chose.file<-""
 chose.file<-"yudale_ezd_pre_semicor_003.txt" # last used working version
-#chose.file<-"yudale_ezd_pre_semicor_003STfwd.txt" # forward edited version 
+chose.file<-"yudale_ezd_pre_semicor_003STfwd.txt" # forward edited version 
 path.chose.file<-paste(path.dir,chose.file,sep = "/")
 path.chose.file
 if (chose.file!="")
@@ -482,8 +482,14 @@ xmlt<-readLines(xmltemp)
 # editorial markup
 # this method has to be changed, editorial annotation better in comment element in .txt
 m<-grepl("&lt;(/?edit)&gt;",xmlt)
-sum(m)
-xmlt[m]<-gsub("&lt;(/?edit)&gt;","<\\1>",xmlt[m])
+m<-grep("\\+!.+!\\+",xmlt)
+m2<-grep("edit",xmlt[m]) # for editorial notes
+xmlt[m][m2]
+m<-m[m2]
+#sum(m)
+xmlt[m]<-gsub("\\+!(.+)!\\+",'<note type="editorial" resp="#ST">\\1</note>',xmlt[m])
+#xmlt[m]<-gsub("&lt;(/?edit)&gt;","<\\1>",xmlt[m])
+
 ### wks.
 # pagebreaks restore
 # regpb<-'<comment>&lt;(pb n="[0-9]{1,2}"/)&gt;</comment>'
@@ -513,4 +519,4 @@ write.final.xml<-function(xmltarget){
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 write.final.xml(xmltarget.dev)
-#write.final.xml(xmltarget.prod)
+write.final.xml(xmltarget.prod)
