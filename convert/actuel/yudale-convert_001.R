@@ -6,15 +6,28 @@
 # Q:
 
 ### set T if new ezd parsing from actualised .txt source
-run.ezdrama=F
+run.ezdrama=T
 ### else F will use the latest first stage .xml output of ezdrama for further
 ### xml adaptations
 ###################
 ### for device dependent routine if apply ezd (above = T), T on lapsi
-run.python.prepare=F
+run.python.prepare=T
 ### run with all sources from git
-run.src.git = T
-check.local()
+run.src.git = F
+#check.local()
+### chose .txt file explicitly, comment in/out for configuration
+path.chose<-function(){
+path.dir<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI"
+#path.dir<-"https://raw.githubusercontent/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI"
+chose.file<-""
+#chose.file<-"yudale_ezd_pre_semicor_003.txt" # last used working version
+chose.file<-"yudale_ezd_pre_semicor_003STfwd.txt" # forward edited version 
+path.chose.file<-paste(path.dir,chose.file,sep = "/")
+path.chose.file
+if (chose.file!="")
+  chose.file<-path.chose.file
+return(chose.file)
+}
 # not run
 tempfun<-function(){
 src<-"~/boxHKW/21S/DH/local/EXC2020/dybbuk/yudale_xml-edited006.14312-FIN/yudale_xml-edited006.14312-FIN.m.txt"
@@ -143,17 +156,32 @@ check.local()
 check.python<-prepare.python(check.local())
 check.python
 #############################
-
-process.ezd<-function(check.python){
-check.local()
 check.src<-function(check.local){
+  
   ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
-  ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
+  # ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
   ezd_markup_text.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
-  ifelse(check.python,return(ezd_markup_text),ezd_markup_text.git)
+  #ifelse(check.python,return(ezd_markup_text),ezd_markup_text.git)
+  if(check.python)
+    return(path.chose())
 }
 # single line stage direction markup:
 ezd_markup_text<-check.src()
+ezd_markup_text
+process.ezd<-function(check.python){
+check.local()
+# check.src<-function(check.local){
+# 
+#   ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
+#  # ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
+#   ezd_markup_text.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
+#   #ifelse(check.python,return(ezd_markup_text),ezd_markup_text.git)
+#   if(check.python)
+#     return(path.chose())
+# }
+# # single line stage direction markup:
+# ezd_markup_text<-check.src()
+ezd_markup_text
 text.m<-readLines(ezd_markup_text)
 #text.m<-readLines(check.src())
 #text.m<-readLines(ezd_markup_text.sf)
@@ -184,6 +212,7 @@ text.m.pb[1:50]
 
 
  #library(reticulate)
+ezd_markup_text
 if(run.ezdrama&check.python)
   system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
   print("finished python ezd")
@@ -194,8 +223,15 @@ if(run.ezdrama&check.python)
 xml.cor.1<-function(){
   library(xml2)
   library(purrr)
-  xml.src.local<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml"
-  xml.src.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml"
+  library(tools)
+ 
+  # file.ns.ex<-file_ext(ezd_markup_text)
+  file.base<-file_path_sans_ext(ezd_markup_text)
+  file.xml<-paste0(file.base,".xml")
+  file.xml
+#  xml.src.local<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml"
+  xml.src.local<-file.xml
+    xml.src.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml"
 xml.src<-ifelse(run.src.git,xml.src.git,xml.src.local)
 xmltop<-read_xml(xml.src)
 
@@ -306,7 +342,7 @@ return(role.3)
 ###################
 #process.ezd() # performs ezd transformation and writes to file
 if(run.ezdrama)
-  process.ezd() # performs ezd transformation and writes to file
+  process.ezd(check.python) # performs ezd transformation and writes to file
 #############
 tei<-xml.cor.1() # reads from created .xml to finalize xml
 ################
@@ -320,7 +356,7 @@ castlist.elm<-xml_find_all(tei,"//castList")
 #k<-2
 castlist
 done<-expression(role.3[k,4]==1)
-eval(done)
+#eval(done)
 done.set<-expression(role.3[k,4]<-1)
 k<-2
 ####### WAIT

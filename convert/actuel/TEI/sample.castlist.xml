@@ -10,3 +10,26 @@
         </castGroup>
         <castItem><role>Eine Hofmeisterin.</role></castItem>
       </castList>
+      
+----
+
+<castGroup rend="braced">
+ <castItem>Balthasar</castItem>
+ <castItem>Caspar</castItem>
+ <roleDesc>Jäger</roleDesc>
+</castGroup>
+
+> group marked with curly bracket: https://dracor.org/doc/odd
+> kinder
+
+----
+<castItem type="list">Constables, Drawer, Turnkey, etc.</castItem>
+<castItem type="list">
+ <roleDesc>Constables,</roleDesc>
+ <roleDesc>Drawer,</roleDesc>
+ <roleDesc>Turnkey,</roleDesc>
+ etc.
+
+</castItem>
+
+> minor characters seperated by comma
