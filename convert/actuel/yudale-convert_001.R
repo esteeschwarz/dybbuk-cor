@@ -286,18 +286,41 @@ return(tei)
 } #end xml.cor.1
 # if(run.ezdrama)
 #   process.ezd() # performs ezd transformation and writes to file
-#tei<-xml.cor.1() # reads from created .xml to finalize xml
+#tei<-xml.cor.1() # reads from created .xml to finalize xml # run for test castediting
 ##############################
 # castlist speaker role:
 xml.cor.2<-function(){
 castlist<-xml_find_all(tei,"//castItem")
 cast.txt<-xml_text(castlist)
+cast.txt
 m.desc<-grep("-",cast.txt)
 library(stringi)
 #library(purrr)
 role<-stri_split_regex(cast.txt," - ",simplify = T)
+role
+#role.markup<-stri_extract_all_regex(rol)
 role.2<-stri_split_regex(role[,1],"\\+!",simplify = T)
-role.3<-cbind(role.2[,1],role[,2],gsub("[^0-9]","",role.2[,2]),0)
+role.2
+role.markup<-gsub("!\\+","",role.2[,2])
+role.markup
+markup.array<-c(group="cg",rend="brace",type="list")
+markup.array
+markup.what<-list()
+mk<-markup.array[1]
+for (mk in markup.array){
+m.1<-grep(mk,role.markup)
+m.1
+markup.what[[mk]]<-m.1
+}
+length(markup.what)
+markup.what
+role.3<-cbind(role.2[,1],role[,2],gsub("[^0-9]","",role.2[,2]),0,NA,NA)
+role.3[markup.what[[1]],5]<-names(markup.what)[1]
+role.3[markup.what[[2]],5]<-names(markup.what)[2]
+role.3[markup.what[[3]],5]<-names(markup.what)[3]
+role.3[markup.what[[1]],6]<-names(markup.array)[1]
+role.3[markup.what[[2]],6]<-names(markup.array)[2]
+role.3[markup.what[[3]],6]<-names(markup.array)[3]
 ###
 m4<-role[,2]!=""
 m5.1<-role.3[,3]!=""&role.3[,2]!=""
@@ -306,7 +329,7 @@ k<-2
 m6.1<-role.3[,1:3]==""
 m6.2<-grep(".*",role.3[m6.1])
 m6.2<-grepl("\n",role.3[,1])
-role.3[m6.2,1]
+#role.3[m6.2,1]
 role.3<-role.3[!m6.2,]
 role.3
 castlist
@@ -317,6 +340,18 @@ castlist.elm
 castlist<-xml_find_all(tei,"//castItem") # refresh after deleting!
 castlist
 xml_text(castlist)
+
+##############
+get.casttype.list<-function(){
+  m<-grep("list",role.3[,5])
+  cg.group<-role.3[m,1]
+#  cg.single<-stri_split_regex(cg.group,",",simplify = T)
+ # cg.single<-gsub("^ ","",cg.single)
+  #cg.single<-paste(cg.single)
+}
+
+##############
+group.list.dep<-function(){
 get.cg.ingroup<-function(x)grepl(",",xml_text(x))
 cg.sep<-lapply(castlist, get.cg.ingroup)
 cg.sep.u<-unlist(cg.sep)
@@ -337,6 +372,17 @@ for (k in 1:length(role.3[,2])){
       role.3[k,2]<-role.3[m5.3,2]
   }
 }
+}
+role.3[is.na(role.3)]<-""
+for (k in 1:length(role.3[,2])){
+  cg<-role.3[k,3]
+  if (role.3[k,2]==""&role.3[k,3]!=""){
+    m5.3<-role.3[,3]==cg&role.3[,2]!=""
+    if(sum(m5.3)>0)
+      role.3[k,2]<-role.3[m5.3,2]
+  }
+}
+
 return(role.3)
 } #end xml.cor.2
 ###################
@@ -353,26 +399,30 @@ castlist<-xml_find_all(tei,"//castItem")
 castlist.elm<-xml_find_all(tei,"//castList")
 
 ########################################
-#k<-2
+k<-2
 castlist
 done<-expression(role.3[k,4]==1)
 #eval(done)
 done.set<-expression(role.3[k,4]<-1)
-k<-2
+
 ####### WAIT
 for (k in 1:length(castlist)){
   sp.role<-role.3[k,1]
   sp.desc<-role.3[k,2]
   sp.cg<-role.3[k,3]
+  sp.id<-role.3[k,6]
+  sp.id.value<-role.3[k,5]
   m.cg<-role.3[,3]==sp.cg
   m.cg.w<-which(m.cg)
   castlist
   eval(done)
   sp.cg!=""&!eval(done)
-  if (sp.cg!=""&!eval(done)){
+  if (sp.cg!=""&sp.id.value!="list"&!eval(done)){
   # instead create new node
    # cg.node<-list()
     cg.node<-xml_new_root("castGroup")
+    if (!is.na(sp.id))
+      xml_set_attr(cg.node,sp.id,sp.id.value)
     k
     for (r in 1:length(m.cg.w)) {
     xml_add_child(cg.node,"castItem")
@@ -385,6 +435,13 @@ for (k in 1:length(castlist)){
     m<-role.3[,3]==sp.cg
     role.3[m,4]<-1 # done set 1
   }
+  k
+  if (sp.id.value=="list"){
+    xml_set_attr(castlist[k],sp.id,sp.id.value)
+    xml_set_text(castlist[k],sp.role)
+    eval(done.set)
+  }
+    
   if (sp.desc!=""&sp.cg==""&!eval(done)){
     xml_set_text(castlist[k],"")
     xml_add_child(castlist[k],"role",sp.role)
