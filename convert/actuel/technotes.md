@@ -1,9 +1,10 @@
 # 14317.coding.info
 #### TODO
 - [x] pagebreak tagging
-- [x] castlist speaker:role
+- [x] castlist speaker:role & castgroups
 - [x] stage directions remove `().`
 - [x] speaker remove `:`
+- [ ] validate .xml
 - [ ] add play meta information
 - [ ] transliterate author/ play name
 - [ ] assign sex to personlist items
