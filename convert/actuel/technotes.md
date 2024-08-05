@@ -4,6 +4,7 @@
 - [x] castlist speaker:role & castgroups
 - [x] stage directions remove `().`
 - [x] speaker remove `:`
+- [x] tag editorial notes
 - [ ] front: title page, frontispiz, STmarkup in .txt and convert
 - [ ] code verse passages in txt
 - [ ] validate .xml

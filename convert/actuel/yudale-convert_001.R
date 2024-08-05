@@ -519,4 +519,4 @@ write.final.xml<-function(xmltarget){
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 write.final.xml(xmltarget.dev)
-write.final.xml(xmltarget.prod)
+#write.final.xml(xmltarget.prod)
