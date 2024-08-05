@@ -98,7 +98,8 @@ text.cor.3<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_e
 text.cor.3[359]
 } #end legacy function
 ######################
-prepare.python<-function(){
+prepare.python<-function(run){
+  if (run==T){
   library(reticulate)
  #use_virtualenv("r-miniconda")
 # use_python_version()
@@ -115,8 +116,13 @@ prepare.python<-function(){
 #virtualenv_remove("r-reticulate")
 #virtualenv_create(version = "3.10")
 #install_python(version = '3.10')
+  }
 }
-prepare.python()
+### for device dependent routine
+run.python.prepare=T
+if(file.exists("~/checkdevice.R"))
+  source("~/checkdevice.R")
+prepare.python(run.python.prepare)
 #############################
 process.ezd<-function(){
 ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
@@ -371,12 +377,20 @@ m2<-grepl(regp2,xmlt)
 sum(m1)
 xmlt[m1]<-gsub(regp1,'<pb n="\\1"/>',xmlt[m1])
 xmlt[m2]<-gsub(regp2,'<pb n="\\1"/>',xmlt[m2])
-write.final.xml<-function(){
+write.final.xml<-function(xmltarget){
 writeLines(xmlt,xmltarget)
 library(tools)
 file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
 system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
 # wks. ##########################################
 }
-xmltarget<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
-write.final.xml()
+write.final.xml<-function(xmltarget){
+  writeLines(xmlt,xmltarget)
+  library(tools)
+  file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
+  system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
+  # wks. ##########################################
+}
+xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
+xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
+write.final.xml(xmltarget.dev)
