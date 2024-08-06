@@ -7,8 +7,8 @@
 - [x] tag editorial notes
 - [x] remove whitespace in speaker id's
 - [ ] front: title page, frontispiz, STmarkup in .txt and convert
-- [ ] code verse passages in txt
-- [ ] validate .xml
+- [x] code verse passages in txt
+- [x] validate .xml
 - [ ] add play meta information
 - [ ] transliterate author/ play name
 - [ ] assign sex to personlist items
@@ -33,4 +33,6 @@ issues:
 - <note type = "editorial"> : attribut [type] for <note> not recognized though [recommended in dracor TEI documentation](https://dracor.org/doc/odd#TEI.note)
 - <note resp = "xxx"> : dito
 - <sp who = "#khr">, line xml1293: empty line, not <p>, chk in transcript > textline was assigned $stage, txt557
-- empty speaker in castlist (first)
+- empty speaker in castlist (first) > solved with above
+- <pb> are wrapped in <p> or <l> elements, have to stand alone if not within paragraph
+- 
