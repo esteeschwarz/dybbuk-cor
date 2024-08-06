@@ -32,7 +32,7 @@ issues:
 - xml:id = "jr kham" / remove spaces in xml:ids
 - \<note type = "editorial"> : attribut [type] for \<note> not recognized though [recommended in dracor TEI documentation](https://dracor.org/doc/odd#TEI.note)
 - \<note resp = "xxx"> : dito
-- \<sp who = "#khr" line xml1293: empty line, not <p>, chk in transcript /  textline was assigned $stage, txt557
+- \<sp who = "#khr" line xml1293: empty line, not \<p>, chk in transcript /  textline was assigned $stage, txt557
 - empty speaker in castlist (first) / solved with above
 - \<pb> are wrapped in \<p> or \<l> elements, have to stand alone if not within paragraph
 - 
