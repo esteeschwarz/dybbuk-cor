@@ -304,7 +304,7 @@ role.2<-stri_split_regex(role[,1],"\\+!",simplify = T)
 role.2
 role.markup<-gsub("!\\+","",role.2[,2])
 role.markup
-markup.array<-c(group="cg",rend="brace",type="list")
+markup.array<-c(group="cg",rend="braced",type="list")
 markup.array
 markup.what<-list()
 mk<-markup.array[1]

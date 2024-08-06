@@ -395,7 +395,9 @@ class Parser():
         ## yiddish ids transliterated
         elif re.search('[אאַאָבבֿגדהוװוּױזחטייִײײַככּךלמםנןסעפּפֿףצץקרששׂתּת]', speaker.text.lower()):
             clean_who = yiddish.transliterate(speaker.text.strip('.,:!; '))
-            clean_who = re.sub(r'[\u0591-\u05BD\u05C1\u05C2\\u05C7]', ' ', clean_who)
+          #  clean_who = re.sub(r'[\u0591-\u05BD\u05C1\u05C2\\u05C7]', ' ', clean_who)
+          # inserts whitespace into id's, remove this
+            clean_who = re.sub(r'[\u0591-\u05BD\u05C1\u05C2\\u05C7]', '', clean_who)
         else:
             clean_who = speaker.text.strip('.,:!; ').lower()
             clean_who = self.__clean_after_translit(clean_who)
