@@ -493,8 +493,17 @@ xmlt[m]<-gsub("\\+!(.+)!\\+",'<note type="editorial" resp="#ST">\\1</note>',xmlt
 
 ### wks.
 # pagebreaks restore
-# regpb<-'<comment>&lt;(pb n="[0-9]{1,2}"/)&gt;</comment>'
-# regpb<-'<comment>&lt;(pb n="[0-9]{1,2}"/)&gt;</comment>'
+# the first two pb before <text> have to be commented in txt else they mess up,
+# the suggested parser [9:] pattern doesnt work with this text to create pb elements
+# also i didnt found any command in the parser to perform that action
+
+regp0<-'<comment>&lt;pb n="([0-9]{1,2})"/&gt;</comment>'
+#regpb<-'<comment>&lt;(pb n="[0-9]{1,2}"/)&gt;</comment>'
+m1<-grepl(regp0,xmlt)
+#m2<-grepl(regp2,xmlt)
+sum(m1)
+xmlt[m1]<-gsub(regp0,'<pb n="\\1"/>',xmlt[m1])
+#xmlt[m2]<-gsub(regp2,'<pb n="\\1"/>',xmlt[m2])
 regp1<-"([0-9]{1,2}):"
 regp2<-":([0-9]{1,2})"
 m1<-grepl(regp1,xmlt)

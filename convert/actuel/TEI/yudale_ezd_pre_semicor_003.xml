@@ -30,14 +30,32 @@
     <profileDesc>
       <particDesc>
         <listPerson>
+          <person sex="MALE" xml:id="khr">
+            <persName>קאהר</persName>
+          </person>
           <person sex="MALE" xml:id="fishl">
             <persName>פישׁׁל</persName>
+          </person>
+          <person sex="MALE" xml:id="freyde">
+            <persName>פריידע</persName>
+          </person>
+          <person sex="MALE" xml:id="freydede">
+            <persName>פריידעדע</persName>
+          </person>
+          <person sex="MALE" xml:id="khzn">
+            <persName>חזן</persName>
+          </person>
+          <person sex="MALE" xml:id="bermn">
+            <persName>בערמאן</persName>
+          </person>
+          <person sex="MALE" xml:id="rze">
+            <persName>ראזע</persName>
           </person>
           <person sex="MALE" xml:id="dbrh">
             <persName>דבורה</persName>
           </person>
-          <person sex="MALE" xml:id="le">
-            <persName>אלע</persName>
+          <person sex="MALE" xml:id="isr">
+            <persName>איסר</persName>
           </person>
           <person sex="MALE" xml:id="rz">
             <persName>ראזא</persName>
@@ -45,57 +63,39 @@
           <person sex="MALE" xml:id="irkhm">
             <persName>ירוחם</persName>
           </person>
-          <person sex="MALE" xml:id="lteril">
-            <persName>אלטעריל</persName>
-          </person>
-          <person sex="MALE" xml:id="bermn">
-            <persName>בערמאן</persName>
-          </person>
-          <person sex="MALE" xml:id="freydede">
-            <persName>פריידעדע</persName>
-          </person>
-          <person sex="MALE" xml:id="freydele">
-            <persName>פריידעלע</persName>
-          </person>
-          <person sex="MALE" xml:id="beyde">
-            <persName>ביידע</persName>
-          </person>
-          <person sex="MALE" xml:id="isr">
-            <persName>איסר</persName>
-          </person>
-          <person sex="MALE" xml:id="khzn">
-            <persName>חזן</persName>
-          </person>
-          <person sex="MALE" xml:id="fishel">
-            <persName>פישׁׁעל</persName>
-          </person>
-          <person sex="MALE" xml:id="ikhne">
-            <persName>יאכנע</persName>
-          </person>
-          <person sex="MALE" xml:id="freydle">
-            <persName>פריידאלע</persName>
-          </person>
-          <person sex="MALE" xml:id="freyde">
-            <persName>פריידע</persName>
-          </person>
-          <person sex="MALE" xml:id="edelmn">
-            <persName>עדעלמאן</persName>
-          </person>
-          <person sex="MALE" xml:id="khr">
-            <persName>קאהר</persName>
+          <person sex="MALE" xml:id="ydle">
+            <persName>יודאלע</persName>
           </person>
           <person sex="MALE" xml:id="">
             <persName>
             </persName>
           </person>
+          <person sex="MALE" xml:id="beyde">
+            <persName>ביידע</persName>
+          </person>
+          <person sex="MALE" xml:id="lteril">
+            <persName>אלטעריל</persName>
+          </person>
+          <person sex="MALE" xml:id="freydele">
+            <persName>פריידעלע</persName>
+          </person>
+          <person sex="MALE" xml:id="edelmn">
+            <persName>עדעלמאן</persName>
+          </person>
+          <person sex="MALE" xml:id="fishel">
+            <persName>פישׁׁעל</persName>
+          </person>
           <person sex="MALE" xml:id="vldmn">
             <persName>וואלדמאן</persName>
           </person>
-          <person sex="MALE" xml:id="ydle">
-            <persName>יודאלע</persName>
+          <person sex="MALE" xml:id="le">
+            <persName>אלע</persName>
           </person>
-          <person sex="MALE" xml:id="rze">
-            <persName>ראזע</persName>
+          <person sex="MALE" xml:id="freydle">
+            <persName>פריידאלע</persName>
+          </person>
+          <person sex="MALE" xml:id="ikhne">
+            <persName>יאכנע</persName>
           </person>
         </listPerson>
       </particDesc>
@@ -127,13 +127,13 @@
       <castList>
         <head>פֶּערְזָאנֶען:</head>
         <castItem>הֶערְצֶעל וַואלְדְמאן - איין בּאנקיער.</castItem>
-        <castItem>רָאזַא+!cg1brace!+</castItem>
-        <castItem>אַלְטֶערִיל+!cg1brace!+ - זיינע קינדער.</castItem>
+        <castItem>רָאזַא+!cg1braced!+</castItem>
+        <castItem>אַלְטֶערִיל+!cg1braced!+ - זיינע קינדער.</castItem>
         <castItem>יוּדַאלֶע - זיין נעפפע (בּלינד).</castItem>
         <castItem>יְרוּחָם - חזן.</castItem>
         <castItem>יַאכְנֶע - זיין פרוׂי.</castItem>
-        <castItem>דְבוׂרָה‘לֶע+!cg2brace!+</castItem>
-        <castItem>פְרֵיידַאלֶע+!cg2brace!+ - זייערע קינדער.</castItem>
+        <castItem>דְבוׂרָה‘לֶע+!cg2braced!+</castItem>
+        <castItem>פְרֵיידַאלֶע+!cg2braced!+ - זייערע קינדער.</castItem>
         <castItem>בֶּערְמַאן</castItem>
         <castItem>אִיסָר - פּראָצענטניק.</castItem>
         <castItem>פְּרָאפֶעסָאר עֶדֶעלְמָאן - אוׂיגען דאָקטער.</castItem>
