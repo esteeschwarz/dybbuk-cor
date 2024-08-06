@@ -16,11 +16,13 @@ run.python.prepare=T
 run.src.git = F
 #check.local()
 ### chose .txt file explicitly, comment in/out for configuration
-path.chose<-function(){
-path.dir<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI"
-#path.dir<-"https://raw.githubusercontent/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI"
-chose.file<-""
-chose.file<-"yudale_ezd_pre_semicor_003.txt" # last used working version
+### set in L168, check.src()
+path.chose<-function(file,local=TRUE){
+ifelse(local,
+  path.dir<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI",
+path.dir<-"https://raw.githubusercontent/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI")
+chose.file<-file
+#chose.file<-"yudale_ezd_pre_semicor_003.txt" # last used working version
 #chose.file<-"yudale_ezd_pre_semicor_003STfwd.txt" # forward edited version 
 ### > chose finalised .xml output file at script bottom
 path.chose.file<-paste(path.dir,chose.file,sep = "/")
@@ -30,7 +32,7 @@ if (chose.file!="")
 return(chose.file)
 }
 # not run
-tempfun<-function(){
+temp.dep<-function(){
 src<-"~/boxHKW/21S/DH/local/EXC2020/dybbuk/yudale_xml-edited006.14312-FIN/yudale_xml-edited006.14312-FIN.m.txt"
 text<-readLines(src)
 # regex arrays
@@ -163,8 +165,11 @@ check.src<-function(check.local){
   # ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
   ezd_markup_text.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
   #ifelse(check.python,return(ezd_markup_text),ezd_markup_text.git)
+  #chose.file<-"yudale_ezd_pre_semicor_003.txt" # last used working version
+  #chose.file<-"yudale_ezd_pre_semicor_003STfwd.txt" # forward edited version 
+  
   if(check.python)
-    return(path.chose())
+    return(path.chose("yudale_ezd_pre_semicor_003.txt",local = T))
 }
 # single line stage direction markup:
 ezd_markup_text<-check.src()
@@ -304,7 +309,7 @@ role.2<-stri_split_regex(role[,1],"\\+!",simplify = T)
 role.2
 role.markup<-gsub("!\\+","",role.2[,2])
 role.markup
-markup.array<-c(group="cg",rend="braced",type="list")
+markup.array<-c(group="cg",rend="braced",corresp="list")
 markup.array
 markup.what<-list()
 mk<-markup.array[1]
@@ -472,7 +477,16 @@ nodes.to.remove<-which(m1)
       castlist[nodes.to.remove],free = T
       )
     print(nodes.to.remove)
-xmltemp<-tempfile()
+### wks.
+########
+# edit TEI header
+    xml_set_attr(tei,"xmlns","http://www.tei-c.org/ns/1.0")
+    xml_set_attr(tei,"xml:id","tochange")
+    xml_set_attr(tei,"xml:lang","ger")
+    
+    
+    xmltemp<-tempfile()
+
 write_xml(tei,xmltemp)
 # wks. TODO reformat xmlformat.pl...
 # next: remove () in <stage>CHK, remove : in <speaker>CHK, castlist role, single line stage directions CHK
@@ -488,7 +502,9 @@ m2<-grep("edit",xmlt[m]) # for editorial notes
 xmlt[m][m2]
 m<-m[m2]
 #sum(m)
-xmlt[m]<-gsub("\\+!(.+)!\\+",'<note type="editorial" resp="#ST">\\1</note>',xmlt[m])
+xmlt[m]<-gsub("\\+!(.+)!\\+",'<note>\\1</note>',xmlt[m])
+### the following is not validated
+#xmlt[m]<-gsub("\\+!(.+)!\\+",'<note type="editorial" resp="#ST">\\1</note>',xmlt[m])
 #xmlt[m]<-gsub("&lt;(/?edit)&gt;","<\\1>",xmlt[m])
 
 ### wks.
@@ -512,21 +528,25 @@ sum(m1)
 xmlt[m1]<-gsub(regp1,'<pb n="\\1"/>',xmlt[m1])
 xmlt[m2]<-gsub(regp2,'<pb n="\\1"/>',xmlt[m2])
 ### wks.
-write.final.xml<-function(xmltarget){
-writeLines(xmlt,xmltarget)
+########
+# add xml header
+xmlhead<-readLines(path.chose("xml_dracor_header.xml", local = T))
+xmlt.plus.header<-c(xmlhead,xmlt)
+write.final.xml<-function(xmlsrc,xmltarget){
+writeLines(xmlsrc,xmltarget)
 library(tools)
 file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
 system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
 # wks. ##########################################
 }
-write.final.xml<-function(xmltarget){
-  writeLines(xmlt,xmltarget)
-  library(tools)
-  file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
-  system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
-  # wks. ##########################################
-}
+# write.final.xml<-function(xmltarget){
+#   writeLines(xmlt,xmltarget)
+#   library(tools)
+#   file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
+#   system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
+#   # wks. ##########################################
+# }
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
-write.final.xml(xmltarget.dev)
-#write.final.xml(xmltarget.prod)
+write.final.xml(xmlt.plus.header,xmltarget.dev)
+#write.final.xml(xmlt.plus.header,xmltarget.prod)

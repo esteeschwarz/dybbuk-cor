@@ -5,6 +5,7 @@
 - [x] stage directions remove `().`
 - [x] speaker remove `:`
 - [x] tag editorial notes
+- [x] remove whitespace in speaker id's
 - [ ] front: title page, frontispiz, STmarkup in .txt and convert
 - [ ] code verse passages in txt
 - [ ] validate .xml
@@ -27,8 +28,9 @@
 - scheme: <https://dracor.org/schema.rng>
 
 issues:
-- <comment> > <note>
+- <comment> > <note> (no <comment> element allowed)
 - xml:id = "jr kham" > remove spaces in xml:ids
-- <note type = "editorial"> : [type] not recognized; is recommended in dracor TEI documentation
+- <note type = "editorial"> : attribut [type] for <note> not recognized though [recommended in dracor TEI documentation](https://dracor.org/doc/odd#TEI.note)
 - <note resp = "xxx"> : dito
-- <sp who = "#khr">, line xml1293: empty line, not <p>, chk in transcript
+- <sp who = "#khr">, line xml1293: empty line, not <p>, chk in transcript > textline was assigned $stage, txt557
+- empty speaker in castlist (first)
