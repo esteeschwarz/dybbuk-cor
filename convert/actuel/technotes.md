@@ -22,3 +22,13 @@
 
 #### xmlformat for prettify .xml
 `brew install xmlformat` (Mac)
+
+#### validation
+- scheme: <https://dracor.org/schema.rng>
+
+issues:
+- <comment> > <note>
+- xml:id = "jr kham" > remove spaces in xml:ids
+- <note type = "editorial"> : [type] not recognized; is recommended in dracor TEI documentation
+- <note resp = "xxx"> : dito
+- <sp who = "#khr">, line xml1293: empty line, not <p>, chk in transcript
