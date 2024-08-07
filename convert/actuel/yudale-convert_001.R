@@ -159,7 +159,7 @@ check.local()
 check.python<-prepare.python(check.local())
 check.python
 #############################
-check.src<-function(check.local){
+check.src<-function(what){
   
   ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
   # ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
@@ -167,14 +167,18 @@ check.src<-function(check.local){
   #ifelse(check.python,return(ezd_markup_text),ezd_markup_text.git)
   #chose.file<-"yudale_ezd_pre_semicor_003.txt" # last used working version
   #chose.file<-"yudale_ezd_pre_semicor_003STfwd.txt" # forward edited version 
-  
+  ezd_markup_text<-file_path_sans_ext(ezd_markup_text)
+  ifelse(what=="xml",ezd_markup_text <- paste0(ezd_markup_text,".xml"),
+         ezd_markup_text <- paste0(ezd_markup_text,".txt"))
   if(check.python)
     return(path.chose("yudale_ezd_pre_semicor_003.txt",local = T))
+  return(ezd_markup_text)
+  
 }
 # single line stage direction markup:
-ezd_markup_text<-check.src()
+ezd_markup_text<-check.src(what = "xml")
 ezd_markup_text
-process.ezd<-function(check.python){
+process.ezd<-function(check.python,ezd_markup_text){
 check.local()
 # check.src<-function(check.local){
 # 
@@ -186,9 +190,12 @@ check.local()
 #     return(path.chose())
 # }
 # # single line stage direction markup:
-# ezd_markup_text<-check.src()
-ezd_markup_text
-text.m<-readLines(ezd_markup_text)
+ ezd_markup_text<-check.src("txt")
+#  ezd_markup_text<- paste0(ezd_markup_text,".txt")
+  
+### depr., we will do this in xml  
+fun.depr.2<-function(){
+  text.m<-readLines(ezd_markup_text)
 #text.m<-readLines(check.src())
 #text.m<-readLines(ezd_markup_text.sf)
 m<-grepl("^[(][^)(]{1,150}[)]{1}\\.$",text.m) #grep all single line stage directions
@@ -211,6 +218,7 @@ text.m.pb[1:50]
 # MIND: not activate, will overwrite markup text! only if changes applied in script.
 #writeLines(text.m.pb,ezd_markup_text)
 #wks.
+}
 ###################################
 
 ### convert with local ezdrama parser:
@@ -218,7 +226,7 @@ text.m.pb[1:50]
 
 
  #library(reticulate)
-ezd_markup_text
+#ezd_markup_text.ext<- paste0(ezd_markup_text,".txt")
 if(run.ezdrama&check.python)
   system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
   print("finished python ezd")
@@ -394,7 +402,7 @@ return(role.3)
 ###################
 #process.ezd() # performs ezd transformation and writes to file
 if(run.ezdrama)
-  process.ezd(check.python) # performs ezd transformation and writes to file
+  process.ezd(check.python,F) # performs ezd transformation and writes to file
 #############
 tei<-xml.cor.1() # reads from created .xml to finalize xml
 ################
@@ -478,6 +486,26 @@ nodes.to.remove<-which(m1)
       )
     print(nodes.to.remove)
 ### wks.
+########
+### edit personlist sex
+role.3[,1]
+sex.array<-c("MALE","FEMALE","MALE","MALE","MALE","FEMALE","FEMALE","MALE","MALE","MALE","MALE","UNKNOWN")
+role.3<-cbind(role.3[,1:length(role.3[1,])],sex.array)
+tei.person<-xml_find_all(tei,"//person")
+xml.att.id<-xml_attr(tei.person,"id")
+xml.att.id
+xml.att.sex<-xml_attr(tei.person,"sex")
+xml.att.sex
+person.id<-c("vldmn","rz","lteril","ydle","irkhm","ikhne","dbrh","freydele","bermn","isr","edelmn","khr")
+role.3<-cbind(role.3[,1:length(role.3[1,])],person.id)
+k<-2
+for (k in 1:length(role.3[,8])){
+  id<-role.3[k,8]
+  sex<-role.3[k,7]
+  m<-id==xml.att.id
+  xml_set_attr(tei.person[m],"sex",sex)
+}
+
 ########
 # edit TEI header
     xml_set_attr(tei,"xmlns","http://www.tei-c.org/ns/1.0")
