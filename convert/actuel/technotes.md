@@ -11,7 +11,8 @@
 - [x] validate .xml
 - [ ] add play meta information
 - [ ] transliterate author/ play name
-- [ ] assign sex to personlist items
+- [x] assign sex to personlist items
+- [x] assign uniqe sp who="#id" to speakers
 
 
 #### python for local ezdrama
