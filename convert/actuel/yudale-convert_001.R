@@ -251,7 +251,7 @@ xmltop<-read_xml(xml.src)
 
   # xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
   
-speaker.who.cor<-data.frame(neg=c("fishl","freydede","freydle","freyde","rz"),pos=c("fishel","freydele","freydele","freydele","rze"))
+speaker.who.cor<-data.frame(neg=c("fishl","freydede","freydle","freyde","rze"),pos=c("fishel","freydele","freydele","freydele","rz"))
 speaker.who.cor$neg<-paste0("#",speaker.who.cor$neg)
 speaker.who.cor$pos<-paste0("#",speaker.who.cor$pos)
 xmlt2<-xmltop%>%xml_ns_strip()
