@@ -1,0 +1,44 @@
+<fileDesc>
+      <titleStmt>
+        <title type="main">דעֶר מאַן אונטעֶרן טיִש</title>
+        <title type="main" xml:lang="eng">The Man under the Table</title>
+        <title type="sub">א װאדעֶװיִל איִן אײן אקט</title>
+        <title type="sub" xml:lang="eng">A Vaudeville in One Act</title>
+        <author>
+          <persName>
+            <forename>יאזעף</forename>
+            <surname>לאטײנער</surname>
+          </persName>
+          <persName xml:lang="eng">
+            <forename>Joseph</forename>
+            <surname>Lateiner</surname>
+          </persName>
+          <idno type="wikidata">Q43771</idno>
+        </author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher xml:id="dracor">DraCor</publisher>
+        <idno type="URL">https://dracor.org</idno>
+        <availability>
+          <licence>
+            <ab>CC0 1.0</ab>
+            <ref target="https://creativecommons.org/publicdomain/zero/1.0/">Licence</ref>
+          </licence>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl type="digitalSource">
+          <name>Polona</name>
+          <idno type="URL">https://polona.pl/preview/20e93fe9-db3c-408d-aad8-6351108e0760</idno>
+          <availability status="free">
+            <p>In the public domain.</p>
+          </availability>
+          <bibl type="originalSource">
+            <author>יאזעף לאטײנער</author>: <title>דעֶר מאַן אונטעֶרן טיִש. א װאדעֶװיִל איִן אײן
+              אקט</title>. <pubPlace>װארשׁא</pubPlace>: <publisher>יִודיִשעֶ
+              טהעֶאַטעֶר⸗בּיִבּליִאָטעֶק</publisher>
+            <date>1907</date>. (ז. <biblScope unit="page" from="1" to="16">1–16</biblScope>.)
+          </bibl>
+        </bibl>
+      </sourceDesc>
+    </fileDesc>

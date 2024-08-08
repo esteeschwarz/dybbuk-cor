@@ -9,8 +9,8 @@
 - [ ] front: title page, frontispiz, STmarkup in .txt and convert
 - [x] code verse passages in txt
 - [x] validate .xml
-- [ ] add play meta information
-- [ ] transliterate author/ play name
+- [ ] add play meta information according to: [sample.file.desc](TEI/sample.filedesc.xml)
+  - [ ] transliterate author/ play name
 - [x] assign sex to personlist items
 - [x] assign uniqe sp who="#id" to speakers
 - [ ] outside task: restore linebreaks according to source transcript
