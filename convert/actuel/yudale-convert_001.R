@@ -509,19 +509,34 @@ for (k in 1:length(role.3[,8])){
 }
 
 ########
+# add tei/filedesc
+xml.filedesc<-read_xml(path.chose("sample.filedesc.xml"))
+desc.author<-xml_find_all(xml.filedesc,"//author")
+filedesc<-xml_find_all(tei,"//text")
+filedesc.ns<-tei%>%xml_ns_strip%>%xml_find_all("//fileDesc")
+title<-xml_find_all(filedesc.ns,"//title")
+xml_add_sibling(title,"title","Yudale der Blinder")
+xml_set_attr(xml_child(xml_child(filedesc.ns),3),"doof","dummy")
+xml_add_sibling(title,"title","Volksstück in vier Akten")
+# THIS can only be run after all changes to TEI corpus have been applied,
+# the nodeset is gone afterwards without ns_strip
 # edit TEI header
+xmltemp<-tempfile()
+
+fin.tei.head<-function(tei){
     xml_set_attr(tei,"xmlns","http://www.tei-c.org/ns/1.0")
     xml_set_attr(tei,"xml:id","tochange")
     xml_set_attr(tei,"xml:lang","ger")
+   # xml_set
     
-    
-    xmltemp<-tempfile()
 
 write_xml(tei,xmltemp)
+}
 # wks. TODO reformat xmlformat.pl...
 # next: remove () in <stage>CHK, remove : in <speaker>CHK, castlist role, single line stage directions CHK
 # <edit>markup restore CHK 
 ##### >>> THIS HAS to be future done according the dracor editorial annotation scheme!!!!!!!
+fin.tei.head(tei)
 xmlt<-readLines(xmltemp)
 # TODO: consistent markup > +!xxx!+
 # editorial markup
@@ -562,6 +577,8 @@ xmlt[m2]<-gsub(regp2,'<pb n="\\1"/>',xmlt[m2])
 # add xml header
 xmlhead<-readLines(path.chose("xml_dracor_header.xml", local = T))
 xmlt.plus.header<-c(xmlhead,xmlt)
+### wks.
+
 write.final.xml<-function(xmlsrc,xmltarget){
 writeLines(xmlsrc,xmltarget)
 library(tools)
@@ -579,4 +596,4 @@ system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xm
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 write.final.xml(xmlt.plus.header,xmltarget.dev)
-write.final.xml(xmlt.plus.header,xmltarget.prod)
+#write.final.xml(xmlt.plus.header,xmltarget.prod)
