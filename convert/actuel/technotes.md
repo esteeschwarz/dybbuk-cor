@@ -1,6 +1,8 @@
 # 14317.coding.info
 #### TODO
 - [x] pagebreak tagging
+   - [ ] move \<pb> 1&2 to frontispiz and castlist
+   - [ ] unwrap \<pb> if not in paragraph
 - [x] castlist speaker:role & castgroups
 - [x] stage directions remove `().`
 - [x] speaker remove `:`
@@ -36,7 +38,9 @@ issues:
 - \<note resp = "xxx"> : dito
 - \<sp who = "#khr" line xml1293: empty line, not \<p>, chk in transcript /  textline was assigned $stage, txt557
 - empty speaker in castlist (first) / solved with above
-- \<pb> are wrapped in \<p> or \<l> elements, have to stand alone if not within paragraph
 
 #### transkribus api
 - [documentation](https://readcoop.eu/transkribus/docu/rest-api/)
+
+#### general
+- \<pb> are wrapped in \<p> or \<l> elements after ezd processing, better to stand single element if not within paragraph
