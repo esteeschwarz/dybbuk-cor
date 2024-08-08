@@ -13,6 +13,7 @@
 - [ ] transliterate author/ play name
 - [x] assign sex to personlist items
 - [x] assign uniqe sp who="#id" to speakers
+- [ ] outside task: restore linebreaks according to source transcript
 
 
 #### python for local ezdrama
@@ -36,4 +37,6 @@ issues:
 - \<sp who = "#khr" line xml1293: empty line, not \<p>, chk in transcript /  textline was assigned $stage, txt557
 - empty speaker in castlist (first) / solved with above
 - \<pb> are wrapped in \<p> or \<l> elements, have to stand alone if not within paragraph
-- 
+
+#### transkribus api
+- [documentation](https://readcoop.eu/transkribus/docu/rest-api/)

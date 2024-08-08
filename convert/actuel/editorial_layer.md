@@ -27,3 +27,6 @@ die transkriptionsfehler wurden korrigiert. andersschreibung wurde beibehalten, 
 the text is vocalised to a great extend i.e. besides the speakers every word is clearly annotated. we compared the rules to a first other text (*Sholem bayis*, Yitskhok-Leybush Perets, <https://github.com/REYD-TTS/yiddish-tts-texts/blob/master/txt/sholem.txt>, cf. [yiddish book center](https://www.yiddishbookcenter.org/collections/yiddish-books/spb-nybc200014/peretz-isaac-leib-pinski-di-verk-fun-yitshak-leybush-perets-tsvelf-d-h-draytsn-bend-vol-3)) and it seems that they used different rules for vocalisation spelling, like e.g. (patterns):   
 
 נאך , דאס where the niqqud in *yudale* appear under the preceding consonant (like in hebrew script) while in Peret's text (which is generally annotated very rarely) they are placed under the vowel. this is a consistent rule.
+
+# general
+it would have been a good idea to instead of to deleting linebreaks in the source transcript to in the first stage replace them by a markup, as now in the working text any reference to the original source page is gone. the dracor scheme doesnt seem to support multiple \<p> elements in one speech act \<sp> besides for verse passages. for possible feedback of outside transkribus corrected text into transkribus and for editorial reasons it would now be nice to have the linebreaks preserved.
