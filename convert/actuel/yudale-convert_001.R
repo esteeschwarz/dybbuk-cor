@@ -6,12 +6,14 @@
 # Q:
 
 ### set T if new ezd parsing from actualised .txt source
+library(tools)
+###
 run.ezdrama=T
 ### else F will use the latest first stage .xml output of ezdrama for further
 ### xml adaptations
 ###################
 ### for device dependent routine if apply ezd (above = T), T on lapsi
-run.python.prepare=F
+run.python.prepare=T
 ### run with all sources from git
 run.src.git = F
 #check.local()
@@ -577,4 +579,4 @@ system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xm
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 write.final.xml(xmlt.plus.header,xmltarget.dev)
-#write.final.xml(xmlt.plus.header,xmltarget.prod)
+write.final.xml(xmlt.plus.header,xmltarget.prod)
