@@ -42,8 +42,8 @@ class Parser():
     def __init__(self,
                  bracketstages = True,
                  is_prose = True,
-                 dracor_id = 'insert_id',
-                 dracor_lang = 'insert_lang'):
+                 dracor_id = 'insertID',
+                 dracor_lang = 'ger'):
         ## initializing a new TEI/XML bs-tree that will be populated from ezdrama text:
         self.tree_root = Tag(name='TEI')
         self.tree_root['xmlns'] = "http://www.tei-c.org/ns/1.0"

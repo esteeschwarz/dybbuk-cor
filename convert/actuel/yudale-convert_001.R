@@ -11,7 +11,7 @@ run.ezdrama=T
 ### xml adaptations
 ###################
 ### for device dependent routine if apply ezd (above = T), T on lapsi
-run.python.prepare=T
+run.python.prepare=F
 ### run with all sources from git
 run.src.git = F
 #check.local()
@@ -153,7 +153,7 @@ if (!run.src.git)
   if(file.exists("~/checkdevice.R"))
     source("~/checkdevice.R")
     return(run.python.prepare)
-return(run.src.git)
+return(run.ezdrama)
 }
 check.local()
 check.python<-prepare.python(check.local())
