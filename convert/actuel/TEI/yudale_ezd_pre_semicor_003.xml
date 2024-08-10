@@ -30,75 +30,75 @@
     <profileDesc>
       <particDesc>
         <listPerson>
-          <person sex="MALE" xml:id="edelmn">
-            <persName>עדעלמאן</persName>
-          </person>
-          <person sex="MALE" xml:id="bermn">
-            <persName>בערמאן</persName>
-          </person>
-          <person sex="MALE" xml:id="irkhm">
-            <persName>ירוחם</persName>
-          </person>
-          <person sex="MALE" xml:id="lteril">
-            <persName>אלטעריל</persName>
-          </person>
-          <person sex="MALE" xml:id="le">
-            <persName>אלע</persName>
-          </person>
-          <person sex="MALE" xml:id="freydle">
-            <persName>פריידאלע</persName>
-          </person>
-          <person sex="MALE" xml:id="isr">
-            <persName>איסר</persName>
-          </person>
-          <person sex="MALE" xml:id="dbrh">
-            <persName>דבורה</persName>
-          </person>
           <person sex="MALE" xml:id="ydle">
             <persName>יודאלע</persName>
           </person>
-          <person sex="MALE" xml:id="khr">
-            <persName>קאהר</persName>
-          </person>
-          <person sex="MALE" xml:id="freydede">
-            <persName>פריידעדע</persName>
+          <person sex="MALE" xml:id="fishel">
+            <persName>פישׁעל</persName>
           </person>
           <person sex="MALE" xml:id="khzn">
             <persName>חזן</persName>
           </person>
-          <person sex="MALE" xml:id="beyde">
-            <persName>ביידע</persName>
-          </person>
-          <person sex="MALE" xml:id="ikhne">
-            <persName>יאכנע</persName>
-          </person>
-          <person sex="MALE" xml:id="vldmn">
-            <persName>וואלדמאן</persName>
-          </person>
-          <person sex="MALE" xml:id="rze">
-            <persName>ראזע</persName>
-          </person>
-          <person sex="MALE" xml:id="fishl">
-            <persName>פישׁל</persName>
-          </person>
           <person sex="MALE" xml:id="freydele">
             <persName>פריידעלע</persName>
           </person>
-          <person sex="MALE" xml:id="rz">
-            <persName>ראזא</persName>
+          <person sex="MALE" xml:id="bermn">
+            <persName>בערמאן</persName>
           </person>
           <person sex="MALE" xml:id="freyde">
             <persName>פריידע</persName>
           </person>
-          <person sex="MALE" xml:id="fishel">
-            <persName>פישׁעל</persName>
+          <person sex="MALE" xml:id="rze">
+            <persName>ראזע</persName>
+          </person>
+          <person sex="MALE" xml:id="irkhm">
+            <persName>ירוחם</persName>
+          </person>
+          <person sex="MALE" xml:id="freydle">
+            <persName>פריידאלע</persName>
+          </person>
+          <person sex="MALE" xml:id="lteril">
+            <persName>אלטעריל</persName>
+          </person>
+          <person sex="MALE" xml:id="vldmn">
+            <persName>וואלדמאן</persName>
+          </person>
+          <person sex="MALE" xml:id="rz">
+            <persName>ראזא</persName>
+          </person>
+          <person sex="MALE" xml:id="dbrh">
+            <persName>דבורה</persName>
+          </person>
+          <person sex="MALE" xml:id="fishl">
+            <persName>פישׁל</persName>
+          </person>
+          <person sex="MALE" xml:id="edelmn">
+            <persName>עדעלמאן</persName>
+          </person>
+          <person sex="MALE" xml:id="ikhne">
+            <persName>יאכנע</persName>
+          </person>
+          <person sex="MALE" xml:id="khr">
+            <persName>קאהר</persName>
+          </person>
+          <person sex="MALE" xml:id="le">
+            <persName>אלע</persName>
+          </person>
+          <person sex="MALE" xml:id="beyde">
+            <persName>ביידע</persName>
+          </person>
+          <person sex="MALE" xml:id="isr">
+            <persName>איסר</persName>
+          </person>
+          <person sex="MALE" xml:id="freydede">
+            <persName>פריידעדע</persName>
           </person>
         </listPerson>
       </particDesc>
     </profileDesc>
     <revisionDesc>
       <listChange>
-        <change when="2024-08-08">DESCRIBE CHANGE</change>
+        <change when="2024-08-10">DESCRIBE CHANGE</change>
       </listChange>
     </revisionDesc>
   </teiHeader>
@@ -397,7 +397,7 @@
         </sp>
         <sp who="#isr">
           <speaker>איסר:</speaker>
-          <p>אַלְטֶערִיל דֶער בֶּן יָחִיד פוּן דֶעם גְרוׂיסֶען גְבִיר ר‘ הֶערְצֶעלֶע &lt;edit&gt;digit6.30&lt;/edit&gt;וַואלְדמַאן חַא חַא חַא אוּן װָאס טְהוּט דָא אַלְטֶערִיל? 7:</p>
+          <p>אַלְטֶערִיל דֶער בֶּן יָחִיד פוּן דֶעם גְרוׂיסֶען גְבִיר ר‘ הֶערְצֶעלֶע &lt;note&gt;digit6.30&lt;/note&gt;וַואלְדמַאן חַא חַא חַא אוּן װָאס טְהוּט דָא אַלְטֶערִיל? 7:</p>
         </sp>
         <sp who="#freydele">
           <speaker>פריידעלע:</speaker>
@@ -1722,7 +1722,7 @@
         </sp>
         <sp who="#rz">
           <speaker>ראזא:</speaker>
-          <p>גָאלְד! פֶערפְלוּכְטֶעס גָאלְד! מֶענְשֶׁען פֶערְוַואנְדֶעלְסְטוּ אִין בֶּעסְ&lt;edit&gt;digit35.30&lt;/edit&gt;טִיעֶן! פוּן מַלְאָכִים מַאכְסְטוּ טֵייפֶעל, אָה גָאט! נוּּר דוּ אַלֵיין וֵוייסְט</p>
+          <p>גָאלְד! פֶערפְלוּכְטֶעס גָאלְד! מֶענְשֶׁען פֶערְוַואנְדֶעלְסְטוּ אִין בֶּעסְ&lt;note&gt;digit35.30&lt;/note&gt;טִיעֶן! פוּן מַלְאָכִים מַאכְסְטוּ טֵייפֶעל, אָה גָאט! נוּּר דוּ אַלֵיין וֵוייסְט</p>
           <p>34: אַצִינְד מַיין צֶערְבְּרָאכֶען הֶערְץ! וָואס זָאל אִיךְ טְהוּן? הֶעלְף מִיר גָאטֶענְיוּ! הֶעלְף מִיר! <stage>(אָב)</stage></p>
         </sp>
         <stage>יוּדַאלֶע גֶעפיהרט פון פראָפֿעסאָר.</stage>
@@ -2574,7 +2574,7 @@
         </sp>
         <sp who="#vldmn">
           <speaker>וואלדמאן:</speaker>
-          <p>אוּנְעֶרְפַארֶענֶעס קִינְד װָאס דוּ בִּיסְט! דִיר אִיז דָאס &lt;edit&gt;digit55.28&lt;/edit&gt;פְרוׂיעֶנְגֶעשְׁׁלֶעכְט נָאךְְ נִישְׁׁט בֶּעקַאנְט, נָאךְְ פְרֶעמְד! דוּ וֵוייסְט נָאךְְ נִישְׁׁט דָאס אֵיין פְרוׂי קֶען װֵיינֶען װֶען זִי וִוׂיל, קֶען חַלֶשְׁׁ‘ן װֶען זִי װִיל, קֶען אוׂיךְְ זַײן מְשׁוּגָע װֶען זִי װִיל.</p>
+          <p>אוּנְעֶרְפַארֶענֶעס קִינְד װָאס דוּ בִּיסְט! דִיר אִיז דָאס &lt;note&gt;digit55.28&lt;/note&gt;פְרוׂיעֶנְגֶעשְׁׁלֶעכְט נָאךְְ נִישְׁׁט בֶּעקַאנְט, נָאךְְ פְרֶעמְד! דוּ וֵוייסְט נָאךְְ נִישְׁׁט דָאס אֵיין פְרוׂי קֶען װֵיינֶען װֶען זִי וִוׂיל, קֶען חַלֶשְׁׁ‘ן װֶען זִי װִיל, קֶען אוׂיךְְ זַײן מְשׁוּגָע װֶען זִי װִיל.</p>
           <p>54:</p>
         </sp>
         <sp who="#irkhm">

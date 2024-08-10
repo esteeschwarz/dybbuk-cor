@@ -510,14 +510,31 @@ for (k in 1:length(role.3[,8])){
 
 ########
 # add tei/filedesc
-xml.filedesc<-read_xml(path.chose("sample.filedesc.xml"))
-desc.author<-xml_find_all(xml.filedesc,"//author")
-filedesc<-xml_find_all(tei,"//text")
-filedesc.ns<-tei%>%xml_ns_strip%>%xml_find_all("//fileDesc")
-title<-xml_find_all(filedesc.ns,"//title")
-xml_add_sibling(title,"title","Yudale der Blinder")
-xml_set_attr(xml_child(xml_child(filedesc.ns),3),"doof","dummy")
-xml_add_sibling(title,"title","Volksstück in vier Akten")
+# csv.meta<-read.csv(path.chose("yudale.desc.csv"),sep = ";")
+# #csv.meta$text
+# xml.filedesc<-read_xml(path.chose("sample.filedesc.xml"))
+# desc.author<-xml_find_all(xml.filedesc,"//author")
+filedesc<-xml_find_all(tei,"//fileDesc")
+# filedesc.ns<-tei%>%xml_ns_strip%>%xml_find_all("//fileDesc")
+# title<-xml_find_all(filedesc.ns,"//title")
+# #title<-xml_find_all(xml.filedesc,"//title")
+# xml_add_sibling(title,"title")
+# xml_set_attr(xml_child(xml_child(filedesc.ns),3),"type","sub")
+# xml_set_attr(xml_child(xml_child(filedesc.ns),3),"xml:lang","eng")
+# xml_set_text(xml_child(xml_child(filedesc.ns),3),
+#              csv.meta$text[csv.meta$att1.value=="sub"&csv.meta$att2.value=="eng"])
+# xml_text(xml_child(xml_child(filedesc.ns),3))
+# xml_text(title)
+# xml_add_sibling(title,"title","Volksstück in vier Akten")
+# ### new with metadata .csv
+# l.minus<-length(csv.meta$tag[csv.meta$tag=="title"])
+# for(k in 1:4){
+#   q1<-xml_find_all(csv.meta$tag[k])
+#   
+# }
+xml.filedesc<-read_xml(path.chose("yudale.filedesc.xml"))
+xml_replace(filedesc,xml.filedesc)
+
 # THIS can only be run after all changes to TEI corpus have been applied,
 # the nodeset is gone afterwards without ns_strip
 # edit TEI header
@@ -538,15 +555,19 @@ write_xml(tei,xmltemp)
 ##### >>> THIS HAS to be future done according the dracor editorial annotation scheme!!!!!!!
 fin.tei.head(tei)
 xmlt<-readLines(xmltemp)
+#writeLines(xmlt,"xmltemp.xml")
+
 # TODO: consistent markup > +!xxx!+
 # editorial markup
 # this method has to be changed, editorial annotation better in comment element in .txt
-m<-grepl("&lt;(/?edit)&gt;",xmlt)
+# m<-grepl("&lt;(/?edit)&gt;",xmlt)
+#sum(m3)
 m<-grep("\\+!.+!\\+",xmlt)
 m2<-grep("edit",xmlt[m]) # for editorial notes
+xmlt[m]
+xmlt[m2]
 xmlt[m][m2]
 m<-m[m2]
-#sum(m)
 xmlt[m]<-gsub("\\+!(.+)!\\+",'<note>\\1</note>',xmlt[m])
 ### the following is not validated
 #xmlt[m]<-gsub("\\+!(.+)!\\+",'<note type="editorial" resp="#ST">\\1</note>',xmlt[m])
@@ -572,11 +593,20 @@ m2<-grepl(regp2,xmlt)
 sum(m1)
 xmlt[m1]<-gsub(regp1,'<pb n="\\1"/>',xmlt[m1])
 xmlt[m2]<-gsub(regp2,'<pb n="\\1"/>',xmlt[m2])
+reg.lt<-"&lt;"
+reg.gt<-"&gt;"
+m3<-grep(reg.lt,xmlt)
+xmlt[m3]
+xmlt[m3]<-gsub(reg.lt,"<",xmlt[m3])
+m3<-grep(reg.gt,xmlt)
+xmlt[m3]<-gsub(reg.gt,">",xmlt[m3])
 ### wks.
 ########
 # add xml header
 xmlhead<-readLines(path.chose("xml_dracor_header.xml", local = T))
 xmlt.plus.header<-c(xmlhead,xmlt)
+#writeLines(xmlt.plus.header,"testxml.xml")
+#writeLines(xmlt,"testxml.xml")
 ### wks.
 
 write.final.xml<-function(xmlsrc,xmltarget){
@@ -596,4 +626,4 @@ system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xm
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 write.final.xml(xmlt.plus.header,xmltarget.dev)
-#write.final.xml(xmlt.plus.header,xmltarget.prod)
+write.final.xml(xmlt.plus.header,xmltarget.prod)

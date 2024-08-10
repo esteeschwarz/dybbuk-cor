@@ -1,0 +1,22 @@
+tag;att1;att1.value;att2;att2.value;text
+fileDesc.titleStmt.title;type;main;;;יוּדַאלֶע דֶער בְּלִינְדֶער אָדֶע אְֶמֶת וָשֶׁקֶר
+fileDesc.titleStmt.title;type;main;xml:lang;eng;Yudale the Blind
+fileDesc.titleStmt.title;type;sub;;;פאָלקסשׁטיק אין 4 אַקטען
+fileDesc.titleStmt.title;type;sub;xml:lang;eng;Folkpiece in 4 Acts
+fileDesc.titleStmt.persName.author.forename;;;;;יאזעף
+fileDesc.titleStmt.persName.author.surname;;;;;לאטײנער
+fileDesc.titleStmt.persName.author.forename;xml:lang;eng;;;Joseph
+fileDesc.titleStmt.persName.author.surname;xml:lang;eng;;;Lateiner
+fileDesc.titleStmt.persName.author.idno;type;wikidata;;;Q43771
+pubStmt.idno;type;URL;;;
+sourceDesc.bibl.name;;;;;;
+sourceDesc.bibl.idno;type;url;;;
+sourceDesc.bibl.bibl;type;originalSource;;;
+sourceDesc.bibl.bibl.author;;;;;יאזעף לאטײנער
+sourceDesc.bibl.bibl.title;;;;;יוּדַאלֶע דֶער בְּלִינְדֶער אָדֶע אְֶמֶת וָשֶׁקֶר
+sourceDesc.bibl.bibl.pubPlace;;;;;;
+sourceDesc.bibl.bibl.publisher;;;;;פֿערלאַג פֿוּן אמקרויט עט פריינד, בוכהאנדלונג, פשעמישל
+sourceDesc.bibl.bibl.date;;;;;;1908
+sourceDesc.bibl.bibl.biblscope;unit;page;;;1-64
+
+
