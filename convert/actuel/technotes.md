@@ -12,7 +12,7 @@
 - [x] code verse passages in txt
 - [x] validate .xml
 - [ ] add play meta information according to: [sample.file.desc](TEI/sample.filedesc.xml)
-  - [ ] transliterate author/ play name
+  - [x] transliterate author/ play name
 - [x] assign sex to personlist items
 - [x] assign uniqe sp who="#id" to speakers
 - [ ] outside task: restore linebreaks according to source transcript
