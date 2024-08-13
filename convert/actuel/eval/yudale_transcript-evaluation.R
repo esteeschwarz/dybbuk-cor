@@ -1,7 +1,7 @@
 #20240813(19.18)
 #14334.transcript evaluation
 #####################
-# creates transcript token df with frequencies and most used alternative
+# creates transcript token df with frequencies and most used spelling alternative
 # (of to date checked pages)
 ########################################################################
 mini<-"/Volumes/EXT"
@@ -43,7 +43,7 @@ tok.sort.gold
 ### get duplicates w/o niqqud
 tok.sort.gold$sansniqqud<-gsub("\\p{M}", "", tok.sort.gold$WORD, perl = TRUE)
 tok.sort.gold$duplicated<-duplicated(tok.sort.gold$sansniqqud)
-sum(m.dup)
+sum(m.dup) # still 365 duplicates i.e. alternative spelling
 tok.sort.gold.dup<-tok.sort.gold[order(tok.sort.gold$duplicated,decreasing = T),]
 tok.sort.gold.dup.sans<-tok.sort.gold[order(tok.sort.gold$sansniqqud,decreasing = F),]
 ### get max truth
