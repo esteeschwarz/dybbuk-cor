@@ -137,7 +137,7 @@ prepare.python<-function(run=F){
 #py_install("transliterate")
 # py_discover_config()
  #py_config()
- use_miniconda("/Users/guhl/Library/r-miniconda/bin/python")
+ use_miniconda("/Users/guhl/Library/r-miniconda/bin/python") # on lapsi!
  # use_python_version("3.10")
 # install_python(version = '3.10')
 # edited in textfile manually
@@ -180,6 +180,7 @@ check.src<-function(what){
 # single line stage direction markup:
 ezd_markup_text<-check.src(what = "xml")
 ezd_markup_text
+qfile<-ezd_markup_text
 process.ezd<-function(check.python,ezd_markup_text){
 check.local()
 # check.src<-function(check.local){
@@ -225,13 +226,19 @@ text.m.pb[1:50]
 
 ### convert with local ezdrama parser:
 #ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
-
-
+run_on_tape<-function(){
+  
+  source_python("~/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.src.py")
+}
+check.python
  #library(reticulate)
 #ezd_markup_text.ext<- paste0(ezd_markup_text,".txt")
-if(run.ezdrama&check.python)
+if(run.ezdrama&check.python){
+  if(tapee)
+    run_on_tape()
   system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
   print("finished python ezd")
+}
 } #end ezd process .txt
 # 2nd way:
 # library(reticulate)
@@ -301,7 +308,7 @@ xml_text(allstage)<-allstage.m
 return(tei)
 } #end xml.cor.1
 # if(run.ezdrama)
-#   process.ezd() # performs ezd transformation and writes to file
+  # process.ezd() # performs ezd transformation and writes to file
 #tei<-xml.cor.1() # reads from created .xml to finalize xml # run for test castediting
 ##############################
 # castlist speaker role:
@@ -614,8 +621,11 @@ writeLines(xmlsrc,xmltarget)
 library(tools)
 file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
 system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
+file.ns
+cat("written",xmltarget,"\n")
 # wks. ##########################################
 }
+
 # write.final.xml<-function(xmltarget){
 #   writeLines(xmlt,xmltarget)
 #   library(tools)
@@ -626,4 +636,4 @@ system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xm
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 write.final.xml(xmlt.plus.header,xmltarget.dev)
-write.final.xml(xmlt.plus.header,xmltarget.prod)
+#write.final.xml(xmlt.plus.header,xmltarget.prod)
