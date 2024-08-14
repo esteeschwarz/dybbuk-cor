@@ -17,6 +17,9 @@
 - [x] assign uniqe sp who="#id" to speakers
 - [ ] outside task: restore linebreaks according to source transcript
 - [ ] tag hebrew passages! \<foreign>
+- [ ] \<standoff> wikidata entity analogue: <https://wikidata.org/entity/Q122457531>
+- [ ] dracor id vergeben: yi000003
+- [ ] extern: dracor entity (\<standoff>)
 
 
 #### python for local ezdrama
