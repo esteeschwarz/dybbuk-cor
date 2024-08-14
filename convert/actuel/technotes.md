@@ -18,7 +18,7 @@
 - [ ] outside task: restore linebreaks according to source transcript
 - [ ] tag hebrew passages! \<foreign>
 - [x] \<standoff> wikidata entity analogue: <https://www.wikidata.org/entity/Q125510805>
-- [ ] dracor id vergeben: yi000003
+- [x] dracor id vergeben: yi000003
 - [ ] extern: dracor entity (\<standoff>)
 
 

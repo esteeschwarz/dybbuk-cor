@@ -14,6 +14,7 @@ run.ezdrama=T
 ###################
 ### for device dependent routine if apply ezd (above = T), T on lapsi
 run.python.prepare=T
+tapee<-F
 ### run with all sources from git
 run.src.git = F
 #check.local()
@@ -515,13 +516,12 @@ for (k in 1:length(role.3[,8])){
   xml_set_attr(tei.person[m],"sex",sex)
 }
 
-########
+### finalise TEI
 # add tei/filedesc
 # csv.meta<-read.csv(path.chose("yudale.desc.csv"),sep = ";")
 # #csv.meta$text
 # xml.filedesc<-read_xml(path.chose("sample.filedesc.xml"))
 # desc.author<-xml_find_all(xml.filedesc,"//author")
-filedesc<-xml_find_all(tei,"//fileDesc")
 # filedesc.ns<-tei%>%xml_ns_strip%>%xml_find_all("//fileDesc")
 # title<-xml_find_all(filedesc.ns,"//title")
 # #title<-xml_find_all(xml.filedesc,"//title")
@@ -540,8 +540,13 @@ filedesc<-xml_find_all(tei,"//fileDesc")
 #   
 # }
 xml.filedesc<-read_xml(path.chose("yudale.filedesc.xml"))
+filedesc<-xml_find_all(tei,"//fileDesc")
 xml_replace(filedesc,xml.filedesc)
 
+### add standoff (wikidata/dracor id)
+xml.standoff<-read_xml(path.chose("yudale.standoff.xml"))
+standoff<-xml_find_all(tei,"//standOff")
+xml_replace(standoff,xml.standoff)
 # THIS can only be run after all changes to TEI corpus have been applied,
 # the nodeset is gone afterwards without ns_strip
 # edit TEI header
