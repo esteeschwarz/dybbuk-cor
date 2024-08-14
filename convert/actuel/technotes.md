@@ -17,7 +17,7 @@
 - [x] assign uniqe sp who="#id" to speakers
 - [ ] outside task: restore linebreaks according to source transcript
 - [ ] tag hebrew passages! \<foreign>
-- [ ] \<standoff> wikidata entity analogue: <https://wikidata.org/entity/Q122457531>
+- [x] \<standoff> wikidata entity analogue: <https://www.wikidata.org/entity/Q125510805>
 - [ ] dracor id vergeben: yi000003
 - [ ] extern: dracor entity (\<standoff>)
 

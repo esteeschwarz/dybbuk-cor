@@ -1,0 +1,11 @@
+<standOff>
+    <listEvent>
+        <event type="print" when="1908">
+            <desc/>
+        </event>
+    </listEvent>
+    <listRelation>
+        <relation name="wikidata" active="https://dracor.org/entity/yi000003"
+            passive="https://www.wikidata.org/entity/Q129084769"/>
+    </listRelation>
+</standOff>
