@@ -622,10 +622,18 @@ xmlt.plus.header<-c(xmlhead,xmlt)
 ### wks.
 
 write.final.xml<-function(xmlsrc,xmltarget){
-writeLines(xmlsrc,xmltarget)
 library(tools)
 file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
-system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
+#indent<-""
+file.base<-basename(xmltarget)
+xmltarget.temp<-paste0("~/boxHKW/21S/DH/local/EXC2020/dybbuk/TEI/",file.base)
+m<-grep("yidracor",xmltarget)
+ifelse(length(m)==0,indent<-"indent.",indent<-"")
+  writeLines(xmlsrc,xmltarget.temp)
+print(xmltarget)
+print(file_ext(xmltarget))
+print(paste0("xmlformat ",xmltarget.temp," > ",paste0(file.ns,indent,file_ext(xmltarget))))
+system(paste0("xmlformat ",xmltarget.temp," > ",paste0(file.ns,indent,file_ext(xmltarget))))
 file.ns
 cat("written",xmltarget,"\n")
 # wks. ##########################################
