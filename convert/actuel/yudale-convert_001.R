@@ -659,4 +659,4 @@ xmltarget.dracor<-"~/Documents/GitHub/clones/yidracor/TEI/lateiner-yudale-der-bl
 
 write.final.xml(xmlt.plus.header,xmltarget.dev)
 #write.final.xml(xmlt.plus.header,xmltarget.prod)
-write.final.xml(xmlt.plus.header,xmltarget.dracor)
+#write.final.xml(xmlt.plus.header,xmltarget.dracor)
