@@ -30,50 +30,47 @@
     <profileDesc>
       <particDesc>
         <listPerson>
-          <person sex="MALE" xml:id="freydele">
-            <persName>פריידעלע</persName>
-          </person>
-          <person sex="MALE" xml:id="bermn">
-            <persName>בערמאן</persName>
-          </person>
-          <person sex="MALE" xml:id="fishl">
-            <persName>פישׁל</persName>
-          </person>
           <person sex="MALE" xml:id="beyde">
             <persName>ביידע</persName>
-          </person>
-          <person sex="MALE" xml:id="ikhne">
-            <persName>יאכנע</persName>
-          </person>
-          <person sex="MALE" xml:id="freydle">
-            <persName>פריידאלע</persName>
-          </person>
-          <person sex="MALE" xml:id="isr">
-            <persName>איסר</persName>
-          </person>
-          <person sex="MALE" xml:id="lteril">
-            <persName>אלטעריל</persName>
-          </person>
-          <person sex="MALE" xml:id="freyde">
-            <persName>פריידע</persName>
-          </person>
-          <person sex="MALE" xml:id="rz">
-            <persName>ראזא</persName>
-          </person>
-          <person sex="MALE" xml:id="khr">
-            <persName>קאהר</persName>
-          </person>
-          <person sex="MALE" xml:id="ydle">
-            <persName>יודאלע</persName>
           </person>
           <person sex="MALE" xml:id="le">
             <persName>אלע</persName>
           </person>
-          <person sex="MALE" xml:id="vldmn">
-            <persName>וואלדמאן</persName>
+          <person sex="MALE" xml:id="fishel">
+            <persName>פישׁעל</persName>
+          </person>
+          <person sex="MALE" xml:id="isr">
+            <persName>איסר</persName>
+          </person>
+          <person sex="MALE" xml:id="bermn">
+            <persName>בערמאן</persName>
+          </person>
+          <person sex="MALE" xml:id="khzn">
+            <persName>חזן</persName>
+          </person>
+          <person sex="MALE" xml:id="rz">
+            <persName>ראזא</persName>
+          </person>
+          <person sex="MALE" xml:id="freydle">
+            <persName>פריידאלע</persName>
+          </person>
+          <person sex="MALE" xml:id="khr">
+            <persName>קאהר</persName>
           </person>
           <person sex="MALE" xml:id="dbrh">
             <persName>דבורה</persName>
+          </person>
+          <person sex="MALE" xml:id="freyde">
+            <persName>פריידע</persName>
+          </person>
+          <person sex="MALE" xml:id="freydele">
+            <persName>פריידעלע</persName>
+          </person>
+          <person sex="MALE" xml:id="lteril">
+            <persName>אלטעריל</persName>
+          </person>
+          <person sex="MALE" xml:id="ydle">
+            <persName>יודאלע</persName>
           </person>
           <person sex="MALE" xml:id="rze">
             <persName>ראזע</persName>
@@ -81,17 +78,20 @@
           <person sex="MALE" xml:id="irkhm">
             <persName>ירוחם</persName>
           </person>
-          <person sex="MALE" xml:id="freydede">
-            <persName>פריידעדע</persName>
-          </person>
-          <person sex="MALE" xml:id="khzn">
-            <persName>חזן</persName>
+          <person sex="MALE" xml:id="fishl">
+            <persName>פישׁל</persName>
           </person>
           <person sex="MALE" xml:id="edelmn">
             <persName>עדעלמאן</persName>
           </person>
-          <person sex="MALE" xml:id="fishel">
-            <persName>פישׁעל</persName>
+          <person sex="MALE" xml:id="ikhne">
+            <persName>יאכנע</persName>
+          </person>
+          <person sex="MALE" xml:id="freydede">
+            <persName>פריידעדע</persName>
+          </person>
+          <person sex="MALE" xml:id="vldmn">
+            <persName>וואלדמאן</persName>
           </person>
         </listPerson>
       </particDesc>
@@ -445,7 +445,7 @@
         </sp>
         <sp who="#isr">
           <speaker>איסר:</speaker>
-          <p><stage>(בּיי די טהיר)</stage> אֵיידֶער אִיךְ גֶעה אִיבֶּערְלֶעגְט אֵייךְ גוּט דֶעם &lt;sic&gt;שִׁידָךְ&lt;/sic&gt; נאךְְ אַ מָאהל אִיהר זָאלְט אַזוׂי לֶעבֶּען מִיט מִיר לָאז זֵײן אִין אַ גוּטֶע שָׁעָה, מַזָל טוׂב! <stage>(אב).</stage></p>
+          <p><stage>(בּיי די טהיר)</stage> אֵיידֶער אִיךְ גֶעה אִיבֶּערְלֶעגְט אֵייךְ גוּט דֶעם שִׁידָךְ&lt;note place="foot"&gt;sic!&lt;/note&gt; נאךְְ אַ מָאהל אִיהר זָאלְט אַזוׂי לֶעבֶּען מִיט מִיר לָאז זֵײן אִין אַ גוּטֶע שָׁעָה, מַזָל טוׂב! <stage>(אב).</stage></p>
         </sp>
         <sp who="#irkhm">
           <speaker>ירוחם:</speaker>
