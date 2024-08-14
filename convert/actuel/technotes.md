@@ -16,6 +16,7 @@
 - [x] assign sex to personlist items
 - [x] assign uniqe sp who="#id" to speakers
 - [ ] outside task: restore linebreaks according to source transcript
+- [ ] tag hebrew passages! \<foreign>
 
 
 #### python for local ezdrama
