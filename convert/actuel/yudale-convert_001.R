@@ -547,6 +547,13 @@ xml_replace(filedesc,xml.filedesc)
 xml.standoff<-read_xml(path.chose("yudale.standoff.xml"))
 standoff<-xml_find_all(tei,"//standOff")
 xml_replace(standoff,xml.standoff)
+
+### remove jonah notes on editing
+allp<-xml_find_all(tei,"//p")
+allp[10:20]
+m<-grep("stop|STOP",allp)
+allp[m]
+xml_remove(allp[[m]])
 # THIS can only be run after all changes to TEI corpus have been applied,
 # the nodeset is gone afterwards without ns_strip
 # edit TEI header
