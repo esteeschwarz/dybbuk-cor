@@ -48,3 +48,6 @@ issues:
 
 #### general
 - \<pb> are wrapped in \<p> or \<l> elements after ezd processing, better to stand single element if not within paragraph
+
+#### transcript evaluation
+using R package collostructions for computing ties of vocalised spelling variant (gold transcription) to token w/o nikkud. with this we calculate the most often used variant to vocalise (transcribed) a type. from that we find the most probable correction for the train set.
