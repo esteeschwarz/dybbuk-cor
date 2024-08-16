@@ -32,18 +32,18 @@ m.train<-m:length(text)
   tokens.train<-tokenize_word1(text[m.train])
 ## with lines information
   tok.df.gold<-cbind(tokens.gold)
-  install.packages("abind")
+ # install.packages("abind")
   library(abind)
   t1<-abind(tok.df.gold[[26]][1],"f1")
   t1
   tok.freq.gold<-freq.list(unlist(tokens.gold))
 tok.freq.gold
-tok.sort.gold<-tok.freq[order(tok.freq.gold$WORD),]
+tok.sort.gold<-tok.freq.gold[order(tok.freq.gold$WORD),]
 tok.sort.gold
 ### get duplicates w/o niqqud
 tok.sort.gold$sansniqqud<-gsub("\\p{M}", "", tok.sort.gold$WORD, perl = TRUE)
 tok.sort.gold$duplicated<-duplicated(tok.sort.gold$sansniqqud)
-sum(m.dup) # still 365 duplicates i.e. alternative spelling
+#sum(m.dup) # still 365 duplicates i.e. alternative spelling
 tok.sort.gold.dup<-tok.sort.gold[order(tok.sort.gold$duplicated,decreasing = T),]
 tok.sort.gold.dup.sans<-tok.sort.gold[order(tok.sort.gold$sansniqqud,decreasing = F),]
 ### get max truth
@@ -76,6 +76,22 @@ m.w
   #tok.sort.gold.dup.sans$tok.most[m.w]<-levels(tok.sort.gold.dup.sans$WORD)[tok.sort.gold.dup.sans$which.max.tok[m]]
   tok.sort.gold.dup.sans$tok.most[m.w]<-as.character(tok.sort.gold.dup.sans$WORD[[tok.which.max2]])
 }
+library(collostructions)
+# f1<-freq.list(data.frame(tok.sort.gold.dup.sans$WORD,
+#                          tok.sort.gold.dup.sans$sansniqqud))
+tie.df<-tok.sort.gold.dup.sans[74:length(tok.sort.gold.dup.sans$WORD),]
+tie1<-collex.covar(data.frame(tie.df$WORD,
+tie.df$sansniqqud))
+tie1
+tie.df<-data.frame(token=unlist(tokens.gold),token.u=gsub("\\p{M}", "", unlist(tokens.gold), perl = TRUE))
+m<-grep("[^א-ת]",tie.df$token.u)
+m<-grep("\\p{Hebrew}",tie.df$token.u,perl = T)
+m[1]
+tie.df$token.u[m]
+tie.df<-tie.df[m,]
+tie1<-collex.covar(tie.df)
+                              
+#write.csv(tie1,"ties.df.csv")
 #levels(tok.sort.gold.dup.sans$WORD)[114]
 #tok.sort.gold.dup.sans$WORD[[111]]
 #write.csv(tok.sort.gold.dup.sans,"~/Documents/GitHub/dybbuk-cor/convert/actuel/eval/yudale_tok_freq.csv")
