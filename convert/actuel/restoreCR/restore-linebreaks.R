@@ -2,10 +2,17 @@
 #14342.linebreaks restore essai
 ###############################
 # Q: https://scm.cms.hu-berlin.de/schluesselstellen/quid
-
+# pip install Quid
+# $ quid compare sourcetext targettext
 ###############################
 library(jsonlite)
-quid<-read_json("quid_result-6.json")
+#quid<-read_json("quid_result-6.json")
+quidsrc<-"quidcli-001.json"
+quid<-readLines(quidsrc)
+quidmod<-"quid_result-8.json"
+writeLines(quid[2:length(quid)],quidmod)
+quid<-read_json(quidmod)
+#quid<-read_json("quidcli-001.json")
 # looks good
 library(readtext)
 transcript_ed<-readtext("yudale_edit_01-06.txt")$text
@@ -13,7 +20,8 @@ transcript_pre<-readtext("yudale_pre_01-06.txt")$text
 corpus.ed.chars<-unlist(strsplit(transcript_ed,""))
 corpus.pre.chars<-unlist(strsplit(transcript_pre,""))
 corpus.cr.res<-corpus.pre.chars
-
+runs<-1
+k<-1
 ###############################
 put_linebreaks<-function(runs){
 #runs<-11
@@ -46,21 +54,42 @@ char.pre<-pos.t$text
 char.ed<-unlist(strsplit(char.ed,""))
 #char.ed
 char.pre<-unlist(strsplit(char.pre,""))
+char.pre
 pos.cr.pre<-grep("\n",char.pre)
 pos.cr.pre
-pos.cr.pre<-c(50,60)
-#pos.cr.pre<-pos.cr.pre-1
+precr<-char.pre[pos.cr.pre]
+edcr<-char.ed[pos.cr.pre]
+pos.cr.syn<-precr==edcr
+which(pos.cr.syn)
+pos.cr.pre<-pos.cr.pre[!pos.cr.syn]
 pos.cr.pre
-sub<-c(-1:length(pos.cr.pre))
-sub<-sub[1:(length(sub)-length(pos.cr.pre))]
+#pos.cr.pre<-c(50,60)
+#pos.cr.pre<-pos.cr.pre-1
+#pos.cr.pre
+#sub<-c(-1:length(pos.cr.pre))
+subf<--2
+x<-length(pos.cr.pre)-subf
+x
+sub<-c(subf:x)
+x<-length(sub)-length(pos.cr.pre)
 sub
-pos.cr.pre.f<-pos.cr.pre+sub
+length(pos.cr.pre)
+sub
+length(sub)
+# x<-sub[1]+length(pos.cr.pre)
+# x
+# sub.1<-c(sub[1]:x)
+# sub.1
+sub.l<-length(sub)
+pos.cr.pre.f<-pos.cr.pre[1:sub.l]+sub
+pos.cr.pre.f<-pos.cr.pre.f[!is.na(pos.cr.pre.f)]
 pos.cr.pre.f
 # check for niqqud on position:
-print(char.ed.cr[pos.cr.pre.f])
+#print(char.ed.cr[pos.cr.pre.f])
+char.ed.cr<-char.ed
+
 m<-grep("\\p{M}",char.ed.cr,perl = T)
 #pos.cr.pre
-char.ed.cr<-char.ed
 c<-2
 for(c in pos.cr.pre.f){
   # go to next whitespace in place
@@ -102,8 +131,8 @@ corpus.compact<-paste0(corpus.cr.res,collapse = "")
 return(corpus.compact)  
 }
 corpus.compact<-put_linebreaks(1:length(quid))
-corpus.compact<-put_linebreaks(6)
-cat(corpus.compact)
+#corpus.compact<-put_linebreaks(6)
+#cat(corpus.compact)
 # wks, but niqqud appear as single token, 
 # so linebreaks in that envrironment should not be allowd
 #corpus.compact<-paste0(corpus.restored,collapse = "")

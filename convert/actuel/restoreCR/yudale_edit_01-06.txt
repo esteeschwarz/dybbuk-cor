@@ -1,5 +1,10 @@
 @test: edit 1-6 with removed linebreaks
 this is a sample edited text where all the linebreaks of the original text have been removed.
+here follow niqqud issues:
+
+עיינע ליניע מית ניקקוד נַאךְ ודער פור דעמ לַינברֶק.
+
+
 
 #עֶרשְׁטֶער אַקט
 $אָרים צימֶער ביי ירוחם.
