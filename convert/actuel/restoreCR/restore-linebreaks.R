@@ -20,8 +20,9 @@ transcript_pre<-readtext("yudale_pre_01-06.txt")$text
 corpus.ed.chars<-unlist(strsplit(transcript_ed,""))
 corpus.pre.chars<-unlist(strsplit(transcript_pre,""))
 corpus.cr.res<-corpus.pre.chars
-runs<-1
-k<-1
+#runs<-1
+k<-22
+k
 ###############################
 put_linebreaks<-function(runs){
 #runs<-11
@@ -54,20 +55,23 @@ char.pre<-pos.t$text
 char.ed<-unlist(strsplit(char.ed,""))
 #char.ed
 char.pre<-unlist(strsplit(char.pre,""))
-char.pre
+cat("pre\n")
+print(char.pre)
+cat("edit\n")
+print(char.ed)
 pos.cr.pre<-grep("\n",char.pre)
 pos.cr.pre
 precr<-char.pre[pos.cr.pre]
 edcr<-char.ed[pos.cr.pre]
 pos.cr.syn<-precr==edcr
-which(pos.cr.syn)
-pos.cr.pre<-pos.cr.pre[!pos.cr.syn]
+if(length(which(pos.cr.syn))>0)
+  pos.cr.pre<-pos.cr.pre[!pos.cr.syn]
 pos.cr.pre
 #pos.cr.pre<-c(50,60)
 #pos.cr.pre<-pos.cr.pre-1
 #pos.cr.pre
 #sub<-c(-1:length(pos.cr.pre))
-subf<--2
+subf<--0
 x<-length(pos.cr.pre)-subf
 x
 sub<-c(subf:x)
@@ -86,20 +90,52 @@ pos.cr.pre.f<-pos.cr.pre.f[!is.na(pos.cr.pre.f)]
 pos.cr.pre.f
 # check for niqqud on position:
 #print(char.ed.cr[pos.cr.pre.f])
+print(char.ed[pos.cr.pre.f])
 char.ed.cr<-char.ed
-
+print(char.ed.cr)
+print(char.pre)
+#print(char.ed.cr[pos.cr.pre.f])
 m<-grep("\\p{M}",char.ed.cr,perl = T)
+print(char.ed[m])
 #pos.cr.pre
-c<-2
-for(c in pos.cr.pre.f){
+c<-1
+c
+space<-0
+insert.cr<-function(){
+for(c in 1:length(pos.cr.pre.f)){
   # go to next whitespace in place
-  
-  range<-char.ed.cr[c]
-if(c%in%m) # if position is a niqqud
+range<-char.ed.cr[c]
+n<-pos.cr.pre.f[c]  
+if(n%in%m) # if position is a niqqud
   c<-c+2
-
-char.ed.cr<-append(char.ed.cr,"\n",after = c)
+n<-pos.cr.pre.f[c]  
+n
+sp<-char.ed.cr[n]
+sp
+length(sp)
+move.array<-c(" ","@","\n")
+whiteplus<-function(sp,n){
+  while (sp!=" "&!is.na(sp!=" ")&sp!="@"&sum(n)>0){
+    n<-n-1
+    sp<-char.ed.cr[n]
+    sp
+  }
+  return(n)
 }
+if(!is.na(sp)&sum(n)>0)
+  n<-whiteplus(sp,n)
+n
+pos.x<-space+n
+#char.ed.cr<-append(char.ed.cr,"\n",after = pos.x)
+char.ed.cr[pos.x]<-"\n"
+#space<-space-1
+}
+c
+return(char.ed.cr)
+}
+if (length(pos.cr.pre.f)>0)
+char.ed.cr<-insert.cr()
+
 print(char.ed.cr)
 cat("pre\n")
 cat(paste0(char.pre,collapse = ""))
@@ -107,7 +143,7 @@ cat(paste0(char.pre,collapse = ""))
 cat("edited\n")
 cat(paste0(char.ed,collapse = ""))
 
-cat("restored\n")
+cat("restored",k,"\n")
 cat(paste0(char.ed.cr,collapse = ""))
 
 #wks.
@@ -124,6 +160,7 @@ cat(paste0(char.ed.cr,collapse = ""))
 #cat(trans.char.res)
 corpus.compact<-paste0(corpus.cr.res,collapse = "")
 #cat(corpus.compact)
+cat ("finished run",k,"\n")
 }
 #print(  corpus.pre.chars[pos.t$start:pos.t$end])
   #trans.char.pre<-paste0(corpus.pre.chars[pos.s$start:pos.s$end],collapse = "")
