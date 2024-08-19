@@ -24,7 +24,7 @@ die transkriptionsfehler wurden korrigiert. andersschreibung wurde beibehalten, 
 
 #### niqqud
 1.  
-the text is vocalised to a great extend i.e. besides the speakers every word is clearly annotated. we compared the rules to a first other text (*Sholem bayis*, Yitskhok-Leybush Perets, <https://github.com/REYD-TTS/yiddish-tts-texts/blob/master/txt/sholem.txt>, cf. [yiddish book center](https://www.yiddishbookcenter.org/collections/yiddish-books/spb-nybc200014/peretz-isaac-leib-pinski-di-verk-fun-yitshak-leybush-perets-tsvelf-d-h-draytsn-bend-vol-3)) and it seems that they used different rules for vocalisation spelling, like e.g. (patterns):   
+the text is vocalised to a great extend i.e. besides the speakers every word is clearly annotated. we compared the rules to other texts (*Sholem bayis*, Yitskhok-Leybush Perets, <https://github.com/REYD-TTS/yiddish-tts-texts/blob/master/txt/sholem.txt>, cf. [yiddish book center](https://www.yiddishbookcenter.org/collections/yiddish-books/spb-nybc200014/peretz-isaac-leib-pinski-di-verk-fun-yitshak-leybush-perets-tsvelf-d-h-draytsn-bend-vol-3) or modern poems on [lyrikline](https://www.lyrikline.org/de/gedichte/14927)) and it seems that they used different rules for vocalisation spelling, like e.g. (patterns):   
 
 נאך , דאס where the niqqud in *yudale* appear under the preceding consonant (like in hebrew script) while in Peret's text (which is generally annotated very rarely) they are placed under the vowel. this is a consistent rule.
 
