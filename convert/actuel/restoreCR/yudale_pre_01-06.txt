@@ -1,13 +1,13 @@
-@test: original 1-6 with conserved linebreaks
-this is a sample editted text 
-where all the leinbreaks 
-of the original text 
-have been removed.
-here follow niqqud issues:
+@test: original 1-6 with conserved linebreaks/
+this is a sample editted text/
+where all the leinbreaks/
+of the original text/
+have been removed./
+here follow niqqud issues:/
 
-עיינע ליניע מית ניקקוד נַאך
-ודער פור דעמ
-לַינברֶק.
+עיינע ליניע מית ניקקוד נַאך/
+ודער פור דעמ/
+לַינברֶק./
 
 
 
