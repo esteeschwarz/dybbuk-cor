@@ -657,6 +657,7 @@ xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_nor
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 xmltarget.dracor<-"~/Documents/GitHub/clones/yidracor/TEI/lateiner-yudale-der-blinder.xml"
 
+writeLines(xmlt.plus.header,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.temp.xml")
 write.final.xml(xmlt.plus.header,xmltarget.dev)
 #write.final.xml(xmlt.plus.header,xmltarget.prod)
 #write.final.xml(xmlt.plus.header,xmltarget.dracor)
