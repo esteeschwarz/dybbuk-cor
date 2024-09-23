@@ -623,6 +623,19 @@ xmlt[m3]<-gsub(reg.lt,"<",xmlt[m3])
 m3<-grep(reg.gt,xmlt)
 xmlt[m3]<-gsub(reg.gt,">",xmlt[m3])
 ### wks.
+### foreign tags
+reg.he<-"\\+!foreign.xml:lang=he!(.+)\\+?!\\+"
+reg.he<-"foreign"
+#reg.he<-"\\+!foreign.xml:lang=he!(.+)!\\+"
+m4<-grep(reg.he,xmlt)
+xmlt[m4]
+xmlt.f<-xmlt
+
+m.he<-stri_extract_all_regex(xmlt.f,reg.he,simplify = T,omit_no_match = T)
+m.he<-m.he[m.he!=""]
+m.he
+xmlt.f[m4]<-gsub(reg.he,'<foreign xml:lang="he">\\1<foreign>',xmlt[m4])
+writeLines(xmlt.f[m4],"archive/testforeign.xml")
 ########
 # add xml header
 xmlhead<-readLines(path.chose("xml_dracor_header.xml", local = T))
@@ -662,5 +675,5 @@ xmltarget.dracor<-"~/Documents/GitHub/clones/yidracor/TEI/lateiner-yudale-der-bl
 
 writeLines(xmlt.plus.header,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.temp.xml")
 write.final.xml(xmlt.plus.header,xmltarget.dev)
-#write.final.xml(xmlt.plus.header,xmltarget.prod)
+write.final.xml(xmlt.plus.header,xmltarget.prod)
 write.final.xml(xmlt.plus.header,xmltarget.dracor)

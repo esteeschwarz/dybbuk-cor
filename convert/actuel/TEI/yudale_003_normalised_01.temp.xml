@@ -52,65 +52,65 @@
     <profileDesc>
       <particDesc>
         <listPerson>
-          <person sex="MALE" xml:id="irkhm">
-            <persName>ירוחם</persName>
-          </person>
-          <person sex="MALE" xml:id="rze">
-            <persName>ראזע</persName>
-          </person>
-          <person sex="MALE" xml:id="fishl">
-            <persName>פישׁל</persName>
-          </person>
-          <person sex="MALE" xml:id="freydede">
-            <persName>פריידעדע</persName>
-          </person>
-          <person sex="MALE" xml:id="freydele">
-            <persName>פריידעלע</persName>
-          </person>
-          <person sex="FEMALE" xml:id="ikhne">
-            <persName>יאכנע</persName>
-          </person>
-          <person sex="MALE" xml:id="lteril">
-            <persName>אלטעריל</persName>
-          </person>
           <person sex="FEMALE" xml:id="dbrh">
             <persName>דבורה</persName>
           </person>
-          <person sex="UNKNOWN" xml:id="khr">
-            <persName>קאהר</persName>
-          </person>
-          <person sex="MALE" xml:id="bermn">
-            <persName>בערמאן</persName>
-          </person>
-          <person sex="MALE" xml:id="khzn">
-            <persName>חזן</persName>
-          </person>
-          <person sex="MALE" xml:id="fishel">
-            <persName>פישׁעל</persName>
-          </person>
-          <person sex="MALE" xml:id="ydle">
-            <persName>יודאלע</persName>
-          </person>
-          <person sex="MALE" xml:id="freyde">
-            <persName>פריידע</persName>
-          </person>
-          <person sex="MALE" xml:id="beyde">
-            <persName>ביידע</persName>
+          <person sex="MALE" xml:id="irkhm">
+            <persName>ירוחם</persName>
           </person>
           <person sex="MALE" xml:id="edelmn">
             <persName>עדעלמאן</persName>
           </person>
-          <person sex="MALE" xml:id="freydle">
-            <persName>פריידאלע</persName>
+          <person sex="MALE" xml:id="freyde">
+            <persName>פריידע</persName>
+          </person>
+          <person sex="MALE" xml:id="fishel">
+            <persName>פישׁעל</persName>
+          </person>
+          <person sex="MALE" xml:id="bermn">
+            <persName>בערמאן</persName>
+          </person>
+          <person sex="UNKNOWN" xml:id="khr">
+            <persName>קאהר</persName>
+          </person>
+          <person sex="MALE" xml:id="fishl">
+            <persName>פישׁל</persName>
+          </person>
+          <person sex="FEMALE" xml:id="rz">
+            <persName>ראזא</persName>
           </person>
           <person sex="MALE" xml:id="vldmn">
             <persName>וואלדמאן</persName>
           </person>
+          <person sex="MALE" xml:id="khzn">
+            <persName>חזן</persName>
+          </person>
+          <person sex="MALE" xml:id="ydle">
+            <persName>יודאלע</persName>
+          </person>
+          <person sex="MALE" xml:id="freydle">
+            <persName>פריידאלע</persName>
+          </person>
+          <person sex="MALE" xml:id="freydele">
+            <persName>פריידעלע</persName>
+          </person>
+          <person sex="MALE" xml:id="freydede">
+            <persName>פריידעדע</persName>
+          </person>
           <person sex="MALE" xml:id="le">
             <persName>אלע</persName>
           </person>
-          <person sex="FEMALE" xml:id="rz">
-            <persName>ראזא</persName>
+          <person sex="MALE" xml:id="rze">
+            <persName>ראזע</persName>
+          </person>
+          <person sex="FEMALE" xml:id="ikhne">
+            <persName>יאכנע</persName>
+          </person>
+          <person sex="MALE" xml:id="beyde">
+            <persName>ביידע</persName>
+          </person>
+          <person sex="MALE" xml:id="lteril">
+            <persName>אלטעריל</persName>
           </person>
           <person sex="MALE" xml:id="isr">
             <persName>איסר</persName>
@@ -317,7 +317,7 @@
         </sp>
         <sp who="#irkhm">
           <speaker>ירוחם</speaker>
-          <p>+!foreign.xml:lang=he!הַשֵׁם יִשְׁמְרֵנִי!+ וָואס דֶען נִישְׁט קֵיין יוּד זָאל עֶר זַײן?</p>
+          <p><foreign xml:lang="he">הַשֵׁם יִשְׁמְרֵנִי</foreign> וָואס דֶען נִישְׁט קֵיין יוּד זָאל עֶר זַײן?</p>
         </sp>
         <sp who="#isr">
           <speaker>איסר</speaker>
@@ -795,9 +795,9 @@
         </sp>
         <sp who="#beyde">
           <speaker>ביידע</speaker>
-          <p>+!foreign.xml:lang=he!אֶשָׂא עֵינַי אֶל הֶהָרִים!+, דִיא אוֹיגֶען הֶעבֶּען מִיר צוּ דִיר אַרוֹיף</p>
+          <p><foreign xml:lang="he">אֶשָׂא עֵינַי אֶל הֶהָרִים</foreign>, דִיא אוֹיגֶען הֶעבֶּען מִיר צוּ דִיר אַרוֹיף</p>
           <p>וֶוען וִוירְד צו מיינע לֵיידֶען וֶוערֶען אַ סוֹף.</p>
-          <p>+!foreign.xml:lang=he!מֵאַיִן יָבׂא עֶזְרִי!+ — מֵעִם ד‘ עוֹשֵה שָׁמַיִם וָאָרֶץ.</p>
+          <p><foreign xml:lang="he">מֵאַיִן יָבׂא עֶזְרִי</foreign> — מֵעִם ד‘ עוֹשֵה שָׁמַיִם וָאָרֶץ.</p>
         </sp>
         <sp who="#dbrh">
           <speaker>דבורה</speaker>
@@ -1289,7 +1289,7 @@
         <stage>ביי ירוחם, פסח סדר נאכט, ירוחם אויף דעם העסעבעט, ארום דעם טיש יאכנע פריידעלע, בערמאן, פישעל, משוררים, אלע מיט הגדות, מען האלט שוין אין מיטען בענטשען.</stage>
         <sp who="#irkhm">
           <speaker>ירוחם</speaker>
-          <p><stage>חזניש זינגענד</stage> +!foreign.xml:lang=he!הָרַחֲמָן הוּא!+ יִשְׁלַח לָנוּ אֶת אֵלִיָהוּ הַנָבִיא זָכוּר לַטוֹב וִיבַשֵׂר לָנוּ בְּשׂוּרוֹת טוֹבוֹת יְשׁוּעוֹת וְנֶחָמות <stage>פישעל העלפט איהם אונטער מיט א באס</stage> +!foreign.xml:lang=he!הָרַחֲמָן הוּא!+ יְבָרֵךְ אֶת אִשְׁתִּי וְאֶת כָּל בְּנֵי בֵּיתִי.</p>
+          <p><stage>חזניש זינגענד</stage> <foreign xml:lang="he">הָרַחֲמָן הוּא</foreign> יִשְׁלַח לָנוּ אֶת אֵלִיָהוּ הַנָבִיא זָכוּר לַטוֹב וִיבַשֵׂר לָנוּ בְּשׂוּרוֹת טוֹבוֹת יְשׁוּעוֹת וְנֶחָמות <stage>פישעל העלפט איהם אונטער מיט א באס</stage> <foreign xml:lang="he">הָרַחֲמָן הוּא</foreign> יְבָרֵךְ אֶת אִשְׁתִּי וְאֶת כָּל בְּנֵי בֵּיתִי.</p>
         </sp>
         <sp who="#fishel">
           <speaker>פישׁל</speaker>
@@ -1321,11 +1321,11 @@
         </sp>
         <sp who="#irkhm">
           <speaker>ירוחם</speaker>
-          <p>+!foreign.xml:lang=he!עַל הַגוֹיִם!+!</p>
+          <p><foreign xml:lang="he">עַל הַגוֹיִם</foreign>!</p>
         </sp>
         <sp who="#le">
           <speaker>אלע</speaker>
-          <p>+!foreign.xml:lang=he!עַל הַגוֹיִם!+!</p>
+          <p><foreign xml:lang="he">עַל הַגוֹיִם</foreign>!</p>
           <p><pb n="25"/></p>
         </sp>
         <stage>אויפטריט פראפעסאר עדעלמאן אין דער טהיר</stage>
@@ -1347,7 +1347,7 @@
         </sp>
         <sp who="#fishel">
           <speaker>פישׁל</speaker>
-          <p>דֶער חַזָן פְרֶעגֶט דִיךְ +!foreign.xml:lang=he!מַה שְׁמֶךְ!+? +!foreign.xml:lang=he!מֵאַיִן בָּאתָ!+? ווָאס פַאר אַ רוּחַ הָאט זִיךְ אַהֶער גֶעבְּרַאכְט!</p>
+          <p>דֶער חַזָן פְרֶעגֶט דִיךְ <foreign xml:lang="he">מַה שְׁמֶךְ</foreign>? <foreign xml:lang="he">מֵאַיִן בָּאתָ</foreign>? ווָאס פַאר אַ רוּחַ הָאט זִיךְ אַהֶער גֶעבְּרַאכְט!</p>
         </sp>
         <sp who="#edelmn">
           <speaker>עדעלמאן</speaker>
@@ -1363,7 +1363,7 @@
         </sp>
         <sp who="#edelmn">
           <speaker>עדעלמאן</speaker>
-          <p>אִיךְ הָאבּ גֶעהָערְט פוּן דֶער פֶערְנֶע אַייעֶר +!foreign.xml:lang=he!הָרַחֲמָן הוּא!+ יִשְׁלַח לֶנוּ אֶת אֵלִיָהוּ הַנָבִיא וִיבַשֵׂר לָנוּ בְּשׂוּרוֹת טוֹבוֹת...</p>
+          <p>אִיךְ הָאבּ גֶעהָערְט פוּן דֶער פֶערְנֶע אַייעֶר <foreign xml:lang="he">הָרַחֲמָן הוּא</foreign> יִשְׁלַח לֶנוּ אֶת אֵלִיָהוּ הַנָבִיא וִיבַשֵׂר לָנוּ בְּשׂוּרוֹת טוֹבוֹת...</p>
         </sp>
         <sp who="#fishel">
           <speaker>פישׁל</speaker>
@@ -1421,7 +1421,7 @@
         </sp>
         <sp who="#irkhm">
           <speaker>ירוחם</speaker>
-          <p>+!foreign.xml:lang=he!מוֹרֶה מוֹרֵינוּּ הָרַב ר’אֶלְחָנָן כֹּהֵן צֶדֶק, זְכוּתוֹ יָגֵן עָלֵינוּּ!+! נָא נָא?</p>
+          <p><foreign xml:lang="he">מוֹרֶה מוֹרֵינוּּ הָרַב ר’אֶלְחָנָן כֹּהֵן צֶדֶק, זְכוּתוֹ יָגֵן עָלֵינוּּ</foreign>! נָא נָא?</p>
         </sp>
         <sp who="#edelmn">
           <speaker>עדעלמאן</speaker>
@@ -1847,22 +1847,78 @@
             <p><pb n="36"/></p>
           </sp>
         </div>
-        <div type="scene"><head>פֶערוואַנדלונג.</head>
-          (פרעכטיגער זאַאַל),
-          (קאָהר, אַלטֶעריל, פֿריידע, ירוחם, יאכנע, דבורה‘לע דערנאָך איסר, אלע אויסגעפוצט, שפעטער יודאַלע מיט אַ אויגען בינדע, פראָפֿעסאָר עדעלמאָן, וואלדמאן, ראָזאַ).
-          <sp who="#freydele"><speaker>פריידעלע</speaker><l>אַךְ וִוי אוּנְגֶעדוּלְדִיג אִיךְ וַוארְט אוֹיף אִיהם דָא</l><l>אִיךְ זָאל שׁוֹין דֶערְלֶעבֶּען דִי שָׁעָה.</l></sp>
-          <sp who="#khr"><speaker>קאהר </speaker><l>זִי זָאל שׁוֹין דֶערלֶעבֶּען דִי שָׁעָה.</l></sp>
-          <sp who="#lteril"><speaker>אלטעריל</speaker><l>אִיךְ זָאג דִיר עֶס קְלַאפְּט מִיר מַיין הֶערְץ פַאר פְרֵיידֶע</l><l>אַזוֹי זָאל אִיךְ אִיהם זֶעהן גֶעזוּנְדְטֶערְהֵייט</l></sp>
-          <sp who="#khr"><speaker>קאהר</speaker><l>אַזוֹי זָאל עֶר אִיהם זֶעהן גֶעזוּנְדְטֶערְהֵייט.</l></sp>
-          <sp who="#beyde"><speaker>ביידע</speaker><l>דָאס וֶועט טַאקֶע, אוֹי אוֹי טַאקֶע זַײן אַ וואוּּנדֶער</l></sp>
-          <sp who="#lteril"><speaker>אלטעריל</speaker><l>הֶערְט אִיךְ בֶּעהט אַייךְ וָואס זָאגְט אִיהר קִינְדֶער</l><l>זֶעהֶען וֶועט פְּלוּצִים אַ בְּלִינְדֶער.</l></sp>
-          <sp who="#beyde"><speaker>ביידע</speaker><l>אִיךְ זָאג אַייךְ מֶעהר נִיט חְלֶעבֶּען אַז גוּט זָאוַואס צו זֶעהֶען</l><p>מִיט אִיהם זִיךְ פְרֵייעֶן זָאגְט אַלֶע יָאה.</p></sp>
-          <sp who="#khr"><speaker>קאהר</speaker><l>יָאה שֶׁעהן.</l></sp>
-          <sp who="#beyde"><speaker>ביידע</speaker><l>אַזַא שִׂמְחָה צו דֶערְלֶעבֶּען</l><l>אַזַא שִׂמְחָה צוּ דֶערְלֶעבֶּען.</l><l>אַ רוׂפֵא מוּמְחֶה וֶועט אוּנְז דִי פְרֵיידֶע גֶעבֶּען</l><l>אַזַא שִׂמְחָה פַאר טַאטֶע מַאמֶע פְרֵייעֶן זָאלֶען מִיר זִיךְ</l><l>אַלֶע צוּזַאמֶען</l><l>זֵייט גְרֵייט... צוּם טַאנְץ</l><l>טַאנְצְזְשֶׁע אַלֶע טַאנְצֶזְשֶׁע אַלֶע! צוּם טַאנְץ</l><l><pb n="37"/></l></sp>
-          <sp who="#khr"><speaker>קאהר</speaker><l>אַזַא שִׂמְחָה... <stage>ביסס</stage></l><l>אַלֶע צוּ זָאמֶען</l><l>פְרֵייעֶן אַלֶע זָאלֶען מִיר זִיךְ שֶׁעהן</l><l>אוּנְזֶער יוּדַא‘לֶע וֶועט בַּאלְד זֶעהן</l><l>אָמֵן.</l></sp>
-          <sp who="#edelmn"><speaker>עדעלמאן</speaker><p>נוּן אִין גָאטֶעס נָאמֶען אַרוּנְטֶער מִיט דֶער בִּינְדֶע <stage>נעמט אראָב לאנגזאם די בינדע.</stage></p></sp>
-          <sp who="#ydle"><speaker>יודאלע</speaker><p><stage>איין אויגענבליק וִוי געבלענדעט דערנאָך שרייט ער אויס</stage> לִיכְט, לִיכְט, אָה בְּלַייבּ בַּיי מִיר וַוייטֶער דוּ זִיעסע גֶעטְלִיכֶע קְוֶועלֶע, פֶערְשְׁוואוּּּנְדֶע קֵיינְמָאל פוּן דִי שֶׁעהנֶע לִיכְטִיגֶע וֶועלְט. דוּ, דוּ בִּיסְט וִויעדֶער מֵיין... מֵיין... <stage>קניעט</stage> אָה אִיךְ דַאנְק דִיר גָאט <stage>אויף</stage> אוּן אַצִינְד לָאזְט מִיךְ צוּם עֶרְשְׁטֶען מָאל זֶעהֶען וָואס פִיר אֵיין עֶנְגֶעל גָאט הָאט מִיר צוּ גֶעשִׁיקְט <stage>זוכט צוִוישׁען אַלֶע פֿרוֹיען</stage> אִיךְ הָאבּ עֶס פְרִיהֶער גֶעזָאגְט, דָאס צוִוישֶׁען טוֹיזֶענְד פְרוֹיעֶן וֶוערְדֶע אִיךְ זִי דֶערְקֶענֶען <stage>געהט צו צו ראָזא</stage> אוּן דוּ בִּיסְט עֶס, זָאגֶען מִיר דַיינֶע אוֹיגֶען דָאס דוּ בִּיסְט עֶס, רוּפְט מֵיינֶע זֶעעלֶע</p><p><stage>אומארמט זי</stage> זֶעהט מַיינֶע צוּקוּנְפְטִיגֶע פְרוֹי פַאר גָאט אוּן פַאר אַייךְ אַלֶע <stage>געהט מיט איהר אב.</stage></p></sp>
-          <sp who="#dbrh"><speaker>דבורה</speaker><p><stage>גיבט איין ווילדען געשריי</stage> אָה דֵײן, חַא חַא חַא, <stage>דערנאך איין יאַמער געוויין פֿאַלט אויף ירוחם אין אונמאכט, אלע שטוינען פֿערלייגען די הענד.</stage></p></sp>
+        <div type="scene">
+          <head>פֶערוואַנדלונג.</head>
+          <stage>פרעכטיגער זאַאַל</stage>
+          <stage>קאָהר, אַלטֶעריל, פֿריידע, ירוחם, יאכנע, דבורה‘לע דערנאָך איסר, אלע אויסגעפוצט, שפעטער יודאַלע מיט אַ אויגען בינדע, פראָפֿעסאָר עדעלמאָן, וואלדמאן, ראָזאַ</stage>
+          <sp who="#freydele">
+            <speaker>פריידעלע</speaker>
+            <l>אַךְ וִוי אוּנְגֶעדוּלְדִיג אִיךְ וַוארְט אוֹיף אִיהם דָא</l>
+            <l>אִיךְ זָאל שׁוֹין דֶערְלֶעבֶּען דִי שָׁעָה.</l>
+          </sp>
+          <sp who="#khr">
+            <speaker>קאהר </speaker>
+            <l>זִי זָאל שׁוֹין דֶערלֶעבֶּען דִי שָׁעָה.</l>
+          </sp>
+          <sp who="#lteril">
+            <speaker>אלטעריל</speaker>
+            <l>אִיךְ זָאג דִיר עֶס קְלַאפְּט מִיר מַיין הֶערְץ פַאר פְרֵיידֶע</l>
+            <l>אַזוֹי זָאל אִיךְ אִיהם זֶעהן גֶעזוּנְדְטֶערְהֵייט</l>
+          </sp>
+          <sp who="#khr">
+            <speaker>קאהר</speaker>
+            <l>אַזוֹי זָאל עֶר אִיהם זֶעהן גֶעזוּנְדְטֶערְהֵייט.</l>
+          </sp>
+          <sp who="#beyde">
+            <speaker>ביידע</speaker>
+            <l>דָאס וֶועט טַאקֶע, אוֹי אוֹי טַאקֶע זַײן אַ וואוּּנדֶער</l>
+          </sp>
+          <sp who="#lteril">
+            <speaker>אלטעריל</speaker>
+            <l>הֶערְט אִיךְ בֶּעהט אַייךְ וָואס זָאגְט אִיהר קִינְדֶער</l>
+            <l>זֶעהֶען וֶועט פְּלוּצִים אַ בְּלִינְדֶער.</l>
+          </sp>
+          <sp who="#beyde">
+            <speaker>ביידע</speaker>
+            <l>אִיךְ זָאג אַייךְ מֶעהר נִיט חְלֶעבֶּען אַז גוּט זָאוַואס צו זֶעהֶען</l>
+            <p>מִיט אִיהם זִיךְ פְרֵייעֶן זָאגְט אַלֶע יָאה.</p>
+          </sp>
+          <sp who="#khr">
+            <speaker>קאהר</speaker>
+            <l>יָאה שֶׁעהן.</l>
+          </sp>
+          <sp who="#beyde">
+            <speaker>ביידע</speaker>
+            <l>אַזַא שִׂמְחָה צו דֶערְלֶעבֶּען</l>
+            <l>אַזַא שִׂמְחָה צוּ דֶערְלֶעבֶּען.</l>
+            <l>אַ רוׂפֵא מוּמְחֶה וֶועט אוּנְז דִי פְרֵיידֶע גֶעבֶּען</l>
+            <l>אַזַא שִׂמְחָה פַאר טַאטֶע מַאמֶע פְרֵייעֶן זָאלֶען מִיר זִיךְ</l>
+            <l>אַלֶע צוּזַאמֶען</l>
+            <l>זֵייט גְרֵייט... צוּם טַאנְץ</l>
+            <l>טַאנְצְזְשֶׁע אַלֶע טַאנְצֶזְשֶׁע אַלֶע! צוּם טַאנְץ</l>
+            <l><pb n="37"/></l>
+          </sp>
+          <sp who="#khr">
+            <speaker>קאהר</speaker>
+            <l>אַזַא שִׂמְחָה... <stage>ביסס</stage></l>
+            <l>אַלֶע צוּ זָאמֶען</l>
+            <l>פְרֵייעֶן אַלֶע זָאלֶען מִיר זִיךְ שֶׁעהן</l>
+            <l>אוּנְזֶער יוּדַא‘לֶע וֶועט בַּאלְד זֶעהן</l>
+            <l>אָמֵן.</l>
+          </sp>
+          <sp who="#edelmn">
+            <speaker>עדעלמאן</speaker>
+            <p>נוּן אִין גָאטֶעס נָאמֶען אַרוּנְטֶער מִיט דֶער בִּינְדֶע <stage>נעמט אראָב לאנגזאם די בינדע.</stage></p>
+          </sp>
+          <sp who="#ydle">
+            <speaker>יודאלע</speaker>
+            <p><stage>איין אויגענבליק וִוי געבלענדעט דערנאָך שרייט ער אויס</stage> לִיכְט, לִיכְט, אָה בְּלַייבּ בַּיי מִיר וַוייטֶער דוּ זִיעסע גֶעטְלִיכֶע קְוֶועלֶע, פֶערְשְׁוואוּּּנְדֶע קֵיינְמָאל פוּן דִי שֶׁעהנֶע לִיכְטִיגֶע וֶועלְט. דוּ, דוּ בִּיסְט וִויעדֶער מֵיין... מֵיין... <stage>קניעט</stage> אָה אִיךְ דַאנְק דִיר גָאט <stage>אויף</stage> אוּן אַצִינְד לָאזְט מִיךְ צוּם עֶרְשְׁטֶען מָאל זֶעהֶען וָואס פִיר אֵיין עֶנְגֶעל גָאט הָאט מִיר צוּ גֶעשִׁיקְט <stage>זוכט צוִוישׁען אַלֶע פֿרוֹיען</stage> אִיךְ הָאבּ עֶס פְרִיהֶער גֶעזָאגְט, דָאס צוִוישֶׁען טוֹיזֶענְד פְרוֹיעֶן וֶוערְדֶע אִיךְ זִי דֶערְקֶענֶען <stage>געהט צו צו ראָזא</stage> אוּן דוּ בִּיסְט עֶס, זָאגֶען מִיר דַיינֶע אוֹיגֶען דָאס דוּ בִּיסְט עֶס, רוּפְט מֵיינֶע זֶעעלֶע</p>
+            <p><stage>אומארמט זי</stage> זֶעהט מַיינֶע צוּקוּנְפְטִיגֶע פְרוֹי פַאר גָאט אוּן פַאר אַייךְ אַלֶע <stage>געהט מיט איהר אב.</stage></p>
+          </sp>
+          <sp who="#dbrh">
+            <speaker>דבורה</speaker>
+            <p><stage>גיבט איין ווילדען געשריי</stage> אָה דֵײן, חַא חַא חַא, <stage>דערנאך איין יאַמער געוויין פֿאַלט אויף ירוחם אין אונמאכט, אלע שטוינען פֿערלייגען די הענד.</stage></p>
+          </sp>
           <stage>ענדע פון צווייטען אקט.
             פארהאנג.
             <pb n="38"/></stage>
@@ -2992,12 +3048,12 @@
           </sp>
           <sp who="#khzn">
             <speaker>חזן</speaker>
-            <p><stage>פאנגט אן</stage> +!foreign.xml:lang=he!בָּרוּךְ אַתָּה ד׳+!</p>
+            <p><stage>פאנגט אן</stage> <foreign xml:lang="he">בָּרוּךְ אַתָּה ד׳</foreign></p>
             <p><pb n="63"/></p>
           </sp>
           <sp who="#khr">
             <speaker>קאהר</speaker>
-            <p>+!foreign.xml:lang=he!!בָּרוּךְ הוּא וּבָרוּךְ שְׁמוֹ.+</p>
+            <p><foreign xml:lang="he">!בָּרוּךְ הוּא וּבָרוּךְ שְׁמוֹ.</foreign></p>
           </sp>
           <sp who="#vldmn">
             <speaker>וואלדמאן</speaker>
