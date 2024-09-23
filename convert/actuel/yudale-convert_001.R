@@ -553,7 +553,10 @@ allp<-xml_find_all(tei,"//p")
 allp[10:20]
 m<-grep("stop|STOP",allp)
 allp[m]
-xml_remove(allp[[m]])
+m
+#xml_text(allp[[m]])
+if(length(m)>0)
+  xml_remove(allp[[m]])
 # THIS can only be run after all changes to TEI corpus have been applied,
 # the nodeset is gone afterwards without ns_strip
 # edit TEI header
@@ -660,4 +663,4 @@ xmltarget.dracor<-"~/Documents/GitHub/clones/yidracor/TEI/lateiner-yudale-der-bl
 writeLines(xmlt.plus.header,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.temp.xml")
 write.final.xml(xmlt.plus.header,xmltarget.dev)
 #write.final.xml(xmlt.plus.header,xmltarget.prod)
-#write.final.xml(xmlt.plus.header,xmltarget.dracor)
+write.final.xml(xmlt.plus.header,xmltarget.dracor)
