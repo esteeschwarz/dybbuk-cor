@@ -635,7 +635,7 @@ m.he<-stri_extract_all_regex(xmlt.f,reg.he,simplify = T,omit_no_match = T)
 m.he<-m.he[m.he!=""]
 m.he
 xmlt.f[m4]<-gsub(reg.he,'<foreign xml:lang="he">\\1<foreign>',xmlt[m4])
-writeLines(xmlt.f[m4],"archive/testforeign.xml")
+#writeLines(xmlt.f[m4],"archive/testforeign.xml")
 ########
 # add xml header
 xmlhead<-readLines(path.chose("xml_dracor_header.xml", local = T))
