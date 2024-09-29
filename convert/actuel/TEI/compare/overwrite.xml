@@ -3,7 +3,7 @@
 <?xml-model href="https://dracor.org/schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="yi000003" xml:lang="yid">
  <teiHeader>
-  <fileDesc><meta>snc.1.estee</meta>
+  <fileDesc>
    <titleStmt>
     <title type="main">יוּדַאלֶע דֶער בְּלִינְדֶער אָדֶע אְֶמֶת וָשֶׁקֶר</title>
     <title type="main" xml:lang="eng">Yudale the Blind</title>
@@ -44,49 +44,49 @@
 <!-- not allowed     <pubPlace>tochange</pubPlace>-->
       <publisher>פֿערלאַג פֿוּן
               .אמקרויט עט פריינד, בוכהאנדלונג, פשעמישל</publisher>
-<!-- not allowed  <date>1908</date>. (ז. <biblScope unit="page" from="1" to="64">1–64</biblScope>.)-->
-     </bibl>
+      <date>1908</date>. (ז. <biblScope unit="page" from="1" to="64">1–64</biblScope>.)
+          </bibl>
     </bibl>
    </sourceDesc>
   </fileDesc>
   <profileDesc>
    <particDesc>
     <listPerson>
-     <person sex="UNKNOWN" xml:id="le">
-      <persName>אלע</persName>
-     </person>
-     <person sex="MALE" xml:id="vldmn">
-      <persName>וואלדמאן</persName>
-     </person>
-     <person sex="MALE" xml:id="khzn">
-      <persName>חזן</persName>
-     </person>
-     <person sex="MALE" xml:id="edelmn">
-      <persName>עדעלמאן</persName>
-     </person>
-     <person sex="UNKNOWN" xml:id="beyde">
-      <persName>ביידע</persName>
-     </person>
-     <person sex="MALE" xml:id="irkhm">
-      <persName>ירוחם</persName>
-     </person>
-     <person sex="MALE" xml:id="isr">
-      <persName>איסר</persName>
-     </person>
-     <person sex="MALE" xml:id="ydle">
-      <persName>יודאלע</persName>
-     </person>
      <person sex="FEMALE" xml:id="rz">
       <persName>ראזא</persName>
      </person>
      <person sex="MALE" xml:id="fishel">
       <persName>פישׁעל</persName>
      </person>
-     <person sex="UNKNOWN" xml:id="khr">
-      <persName>קאהר</persName>
+     <person sex="MALE" xml:id="vldmn">
+      <persName>וואלדמאן</persName>
+     </person>
+     <person sex="FEMALE" xml:id="freydele">
+      <persName>פריידעלע</persName>
+     </person>
+     <person sex="UNKNOWN" xml:id="le">
+      <persName>אלע</persName>
+     </person>
+     <person sex="MALE" xml:id="isr">
+      <persName>איסר</persName>
+     </person>
+     <person sex="MALE" xml:id="edelmn">
+      <persName>עדעלמאן</persName>
+     </person>
+     <person sex="MALE" xml:id="khzn">
+      <persName>חזן</persName>
+     </person>
+     <person sex="FEMALE" xml:id="dbrh">
+      <persName>דבורה</persName>
      </person>
      <person sex="MALE" xml:id="lteril">
       <persName>אלטעריל</persName>
+     </person>
+     <person sex="MALE" xml:id="ydle">
+      <persName>יודאלע</persName>
+     </person>
+     <person sex="UNKNOWN" xml:id="beyde">
+      <persName>ביידע</persName>
      </person>
      <person sex="FEMALE" xml:id="ikhne">
       <persName>יאכנע</persName>
@@ -94,11 +94,11 @@
      <person sex="MALE" xml:id="bermn">
       <persName>בערמאן</persName>
      </person>
-     <person sex="FEMALE" xml:id="dbrh">
-      <persName>דבורה</persName>
+     <person sex="MALE" xml:id="irkhm">
+      <persName>ירוחם</persName>
      </person>
-     <person sex="FEMALE" xml:id="freydele">
-      <persName>פריידעלע</persName>
+     <person sex="UNKNOWN" xml:id="khr">
+      <persName>קאהר</persName>
      </person>
     </listPerson>
    </particDesc>
