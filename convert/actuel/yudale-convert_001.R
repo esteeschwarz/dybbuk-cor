@@ -178,6 +178,21 @@ check.src<-function(what){
   return(ezd_markup_text)
   
 }
+# 14402.reconstruct jonah changes in script: <l> tags for duets, linebreak issue
+library(readtext)
+# remove <p> wrap of linebreaks:
+ezd.preprocess.txt<-function(text){
+  txt<-readLines(text)
+  m<-grep("^[0-9]{1,2}:",txt)
+  txt.pb<-txt[m]
+  txt.r<-readtext(check.src("txt"))$text
+  txt.r<-gsub("\n( ?)([0-9]{1,2}:?)\n","\\2",txt.r)
+  txt.r<-gsub("\n([0-9]{1,2}:?)\n","\\1",txt.r)
+   writeLines(txt.r,"text.rm.pb.txt")
+  
+}
+m.pb<-ezd.preprocess.txt(check.src("txt"))
+#m.pb
 # single line stage direction markup:
 ezd_markup_text<-check.src(what = "xml")
 ezd_markup_text
@@ -675,5 +690,5 @@ xmltarget.dracor<-"~/Documents/GitHub/clones/yidracor/TEI/lateiner-yudale-der-bl
 
 writeLines(xmlt.plus.header,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.temp.xml")
 write.final.xml(xmlt.plus.header,xmltarget.dev)
-write.final.xml(xmlt.plus.header,xmltarget.prod)
+#write.final.xml(xmlt.plus.header,xmltarget.prod)
 write.final.xml(xmlt.plus.header,xmltarget.dracor)
