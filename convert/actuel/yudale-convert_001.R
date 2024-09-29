@@ -513,24 +513,40 @@ nodes.to.remove<-which(m1)
   nodes.to.remove<-nodes.to.remove[nodes.to.remove<length(castlist)]
   nodes.to.remove<-nodes.to.remove[!is.na(nodes.to.remove)]
     xml_remove(
-      castlist[nodes.to.remove],free = T
+      castlist[nodes.to.remove],
+      free = F
       )
     print(nodes.to.remove)
+    print(castlist)
+### remove obsolete nodes in header personlist
+    # sp.cg<-unique(role.3[,3])
+    # sp.cg<-as.double(sp.cg)
+    # sp.cg<-sp.cg[!is.na(sp.cg)]
+    # sp.cg
+    # m1<-role.3[,3]%in%sp.cg
+    #m<-which(m)
+    tei.person<-xml_find_all(tei,"//person")
+    #person.new<-xml_find_all(tei,"//person")
+    
+    
 #}
 ### wks.
 ########
 ### edit personlist sex
 role.3[,1]
-sex.array<-c("MALE","FEMALE","MALE","MALE","MALE","FEMALE","FEMALE","FEMALE","MALE","MALE","MALE","UNKNOWN","UNKNOWN","UNKNOWN")
+sex.array<-c("MALE","FEMALE","MALE","MALE","MALE","FEMALE","FEMALE","FEMALE","MALE","MALE","MALE","UNKNOWN","UNKNOWN","UNKNOWN","MALE","MALE")
 role.3<-cbind(role.3[,1:length(role.3[1,])],sex.array)
-tei.person<-xml_find_all(tei,"//person")
+#tei.person<-xml_find_all(tei,"//person")
 xml.att.id<-xml_attr(tei.person,"id")
 xml.att.id
 xml.att.sex<-xml_attr(tei.person,"sex")
 xml.att.sex
-person.id<-c("vldmn","rz","lteril","ydle","irkhm","ikhne","dbrh","freydele","bermn","isr","edelmn","khr","beyde","le")
+person.id<-c("vldmn","rz","lteril","ydle","irkhm","ikhne","dbrh","freydele","bermn","isr","edelmn","khr","beyde","le","fishel","khzn")
 role.3<-cbind(role.3[,1:length(role.3[1,])],person.id)
-role.3<-rbind(role.3,c("alle","2","3","4","5","6","UNKNOWN","le"),c("beyde","2","3","4","5","6","UNKNOWN","beyde"))
+role.3<-rbind(role.3,c("alle","","","","","","UNKNOWN","le"),
+              c("beyde","","","","","","UNKNOWN","beyde"),
+              c("fishel(missing)","","","","","","MALE","fishel"),
+              c("khzn(missing)","","","","","","MALE","khzn"))
 k<-2
 for (k in 1:length(role.3[,8])){
   id<-role.3[k,8]
@@ -538,6 +554,30 @@ for (k in 1:length(role.3[,8])){
   m<-id==xml.att.id
   xml_set_attr(tei.person[m],"sex",sex)
 }
+person.id.x<-xml_attr(tei.person,"id")
+print(person.id.x)
+m<-person.id.x%in%role.3[,8]
+sum(m)
+person.out<-!m
+m1<-person.id.x%in%role.3[,8]
+# for (cg in person.id.x){
+#   m2<-match(cg,role.3[,3])  
+#   m1[m2]<-F
+#   m1
+# }
+m1<-!m1
+m1
+nodes.to.remove<-which(m1)
+person.id.x[nodes.to.remove]
+nodes.to.remove<-nodes.to.remove[nodes.to.remove<length(tei.person)]
+nodes.to.remove<-nodes.to.remove[!is.na(nodes.to.remove)]
+xml_remove(
+  tei.person[nodes.to.remove],
+  free = F
+)
+print(nodes.to.remove)
+print(tei.person)
+
 
 ### finalise TEI
 # add tei/filedesc
@@ -587,8 +627,8 @@ xmltemp<-tempfile()
 
 fin.tei.head<-function(tei){
     xml_set_attr(tei,"xmlns","http://www.tei-c.org/ns/1.0")
-    xml_set_attr(tei,"xml:id","tochange")
-    xml_set_attr(tei,"xml:lang","ger")
+    xml_set_attr(tei,"xml:id","yi000003")
+    xml_set_attr(tei,"xml:lang","yid")
    # xml_set
     
 
