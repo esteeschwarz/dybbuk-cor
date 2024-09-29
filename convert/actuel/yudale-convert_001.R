@@ -569,7 +569,7 @@ m1<-!m1
 m1
 nodes.to.remove<-which(m1)
 person.id.x[nodes.to.remove]
-nodes.to.remove<-nodes.to.remove[nodes.to.remove<length(tei.person)]
+nodes.to.remove<-nodes.to.remove[nodes.to.remove<=length(tei.person)]
 nodes.to.remove<-nodes.to.remove[!is.na(nodes.to.remove)]
 xml_remove(
   tei.person[nodes.to.remove],
