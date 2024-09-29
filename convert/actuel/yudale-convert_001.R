@@ -282,7 +282,7 @@ xmltop<-read_xml(xml.src)
 
   # xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
   
-speaker.who.cor<-data.frame(neg=c("fishl","freydede","freydle","freyde","rze"),pos=c("fishel","freydele","freydele","freydele","rz"))
+speaker.who.cor<-data.frame(neg=c("fishel","freydede","freydle","freyde","rze"),pos=c("fishl","freydele","freydele","freydele","rz"))
 speaker.who.cor$neg<-paste0("#",speaker.who.cor$neg)
 speaker.who.cor$pos<-paste0("#",speaker.who.cor$pos)
 xmlt2<-xmltop%>%xml_ns_strip()
@@ -541,11 +541,11 @@ xml.att.id<-xml_attr(tei.person,"id")
 xml.att.id
 xml.att.sex<-xml_attr(tei.person,"sex")
 xml.att.sex
-person.id<-c("vldmn","rz","lteril","ydle","irkhm","ikhne","dbrh","freydele","bermn","isr","edelmn","khr","beyde","le","fishel","khzn")
+person.id<-c("vldmn","rz","lteril","ydle","irkhm","ikhne","dbrh","freydele","bermn","isr","edelmn","khr","beyde","le","fishl","khzn")
 role.3<-cbind(role.3[,1:length(role.3[1,])],person.id)
 role.3<-rbind(role.3,c("alle","","","","","","UNKNOWN","le"),
               c("beyde","","","","","","UNKNOWN","beyde"),
-              c("fishel(missing)","","","","","","MALE","fishel"),
+              c("fishl(missing)","","","","","","MALE","fishl"),
               c("khzn(missing)","","","","","","MALE","khzn"))
 k<-2
 for (k in 1:length(role.3[,8])){
