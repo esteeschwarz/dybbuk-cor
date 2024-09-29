@@ -20,6 +20,8 @@ run.src.git = F
 #check.local()
 ### chose .txt file explicitly, comment in/out for configuration
 ### set in L168, check.src()
+path.dir<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI"
+
 path.chose<-function(file,local=TRUE){
 ifelse(local,
   path.dir<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI",
@@ -186,10 +188,14 @@ ezd.preprocess.txt<-function(text){
   m<-grep("^[0-9]{1,2}:",txt)
   txt.pb<-txt[m]
   txt.r<-readtext(check.src("txt"))$text
-  txt.r<-gsub("\n( ?)([0-9]{1,2}:?)\n","\\2",txt.r)
-  txt.r<-gsub("\n([0-9]{1,2}:?)\n","\\1",txt.r)
-   writeLines(txt.r,"text.rm.pb.txt")
-  
+  txt.r2<-gsub("\n( ?)([0-9]{1,2}:)\n","\\2",txt.r)
+  txt.r2<-gsub("\n([0-9]{1,2}:)\n","\\1",txt.r2)
+  txt.r2<-gsub("\n(:[0-9]{1,2})\n","\\1",txt.r2)
+  txt.r2<-gsub("\n([0-9]{1,2}:)( ?)\n","\\1",txt.r2)
+  txt.r2<-gsub("([0-9]{1,2}:)([@#$~)(])","\\1\n\\2",txt.r2)
+  writeLines(txt.r2,paste0(path.dir,"/archive/text.rm.pb.txt"))
+  writeLines(txt.r2,check.src("txt"))
+  return(txt.r)
 }
 m.pb<-ezd.preprocess.txt(check.src("txt"))
 #m.pb
@@ -325,7 +331,7 @@ return(tei)
 } #end xml.cor.1
 # if(run.ezdrama)
   # process.ezd() # performs ezd transformation and writes to file
-#tei<-xml.cor.1() # reads from created .xml to finalize xml # run for test castediting
+tei<-xml.cor.1() # reads from created .xml to finalize xml # run for test castediting
 ##############################
 # castlist speaker role:
 xml.cor.2<-function(){
@@ -496,7 +502,7 @@ sp.cg<-as.double(sp.cg)
 sp.cg<-sp.cg[!is.na(sp.cg)]
 sp.cg
 m1<-role.3[,3]%in%sp.cg
-m<-which(m)
+#m<-which(m)
 castnew<-xml_find_all(tei,"//castList")
 for (cg in sp.cg){
 m2<-match(cg,role.3[,3])  
@@ -510,19 +516,21 @@ nodes.to.remove<-which(m1)
       castlist[nodes.to.remove],free = T
       )
     print(nodes.to.remove)
+#}
 ### wks.
 ########
 ### edit personlist sex
 role.3[,1]
-sex.array<-c("MALE","FEMALE","MALE","MALE","MALE","FEMALE","FEMALE","MALE","MALE","MALE","MALE","UNKNOWN")
+sex.array<-c("MALE","FEMALE","MALE","MALE","MALE","FEMALE","FEMALE","FEMALE","MALE","MALE","MALE","UNKNOWN","UNKNOWN","UNKNOWN")
 role.3<-cbind(role.3[,1:length(role.3[1,])],sex.array)
 tei.person<-xml_find_all(tei,"//person")
 xml.att.id<-xml_attr(tei.person,"id")
 xml.att.id
 xml.att.sex<-xml_attr(tei.person,"sex")
 xml.att.sex
-person.id<-c("vldmn","rz","lteril","ydle","irkhm","ikhne","dbrh","freydele","bermn","isr","edelmn","khr")
+person.id<-c("vldmn","rz","lteril","ydle","irkhm","ikhne","dbrh","freydele","bermn","isr","edelmn","khr","beyde","le")
 role.3<-cbind(role.3[,1:length(role.3[1,])],person.id)
+role.3<-rbind(role.3,c("alle","2","3","4","5","6","UNKNOWN","le"),c("beyde","2","3","4","5","6","UNKNOWN","beyde"))
 k<-2
 for (k in 1:length(role.3[,8])){
   id<-role.3[k,8]
