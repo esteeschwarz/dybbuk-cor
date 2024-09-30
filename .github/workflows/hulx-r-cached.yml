@@ -2,7 +2,7 @@ name: hulx install R, cache libs and run script
 on:
   push:
     paths: ['convert/actuel/TEI/*.txt']
-    branches: [ estee-dev ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 #14056.f1
