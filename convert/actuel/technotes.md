@@ -51,3 +51,10 @@ issues:
 
 #### transcript evaluation
 using R package collostructions for computing ties of vocalised spelling variant (gold transcription) to token w/o nikkud. with this we calculate the most often used variant to vocalise (transcribed) a type. from that we find the most probable correction for the train set.
+
+#### automate workflow
+workflow to convert transkript.txt to TEI.xml via ezdrama and R refactoring script
+- [ ] install R
+- [ ] install packages
+- [ ] cache all
+- [ ] run script

@@ -1,0 +1,64 @@
+name: Run R Script and Validate Output
+
+on:
+  push:
+   # branches:
+     # - estee-dev
+    paths:
+      - "convert/actuel/TEI/*.txt"
+
+jobs:
+  run-r-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+
+    - name: Install Python dependencies
+      run: |
+        pip install transliterate
+		pip install yiddish
+		pip install bs4
+
+    - name: Run Python script
+      run: |
+        python actuel/parser.local.py
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+
+    - name: Install R dependencies
+      run: |
+        Rscript -e 'install.packages(c("tools","xml2","stringi","purrr"))'
+
+    - name: Run R script
+      run: |
+        Rscript actuel/tei-refact.R
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add path/to/output_file
+        git commit -m 'Add output file from R script'
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Validate output file
+      run: |
+        Rscript path/to/validation_script.R path/to/output_
+
+jobs:
+  validate_tei:
+    runs-on: ubuntu-latest
+    name: Validate against TEI_all
+    steps:
+      - name: Checkout
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+      - name: Validate
+        uses: dracor-org/tei-validate-action@94b08b8bf0dd1810fe7962aa59435b46c769bbcb # v1.2.0

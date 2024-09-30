@@ -1,0 +1,87 @@
+Sure! Here's a step-by-step guide to create a GitHub Actions workflow that runs a Python script on a file, then runs an R script to generate a new file, pushes this file to the repository, and performs a special validation action on that file.
+
+1. **Create a new workflow file**:
+   - In your repository, navigate to `.github/workflows/` and create a new file, e.g., `run-python-r-scripts.yml`.
+
+2. **Define the workflow**:
+   - Use the following example to define your workflow:
+
+```yaml
+name: Run Python and R Scripts
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-scripts:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install Python dependencies
+      run: |
+        pip install transliterate
+		pip install yiddish
+		pip install bs4
+
+    - name: Run Python script
+      run: |
+        python path/to/your_python_script.py
+
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+
+    - name: Install R dependencies
+      run: |
+        Rscript -e 'install.packages("your_required_package")'
+
+    - name: Run R script
+      run: |
+        Rscript path/to/your_r_script.R
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add path/to/output_file
+        git commit -m 'Add output file from R script'
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Validate output file
+      run: |
+        Rscript path/to/validation_script.R path/to/output_file
+```
+
+3. **Explanation**:
+   - **Checkout repository**: This step checks out your repository so the workflow can access it.
+   - **Set up Python**: This step sets up Python on the runner.
+   - **Install Python dependencies**: This step installs any Python packages your script needs.
+   - **Run Python script**: This step runs your Python script which processes the initial file.
+   - **Set up R**: This step sets up R on the runner.
+   - **Install R dependencies**: This step installs any R packages your script needs.
+   - **Run R script**: This step runs your R script which generates the output file.
+   - **Commit and push changes**: This step commits the new file and pushes it back to the repository. The `GITHUB_TOKEN` is used to authenticate the push.
+   - **Validate output file**: This step runs a validation script on the output file.
+
+Make sure to replace `path/to/your_python_script.py`, `path/to/your_r_script.R`, `path/to/output_file`, and `path/to/validation_script.R` with the actual paths in your repository.
+
+Would you like more details on any of these steps?
+
+Quelle: Unterhaltung mit Copilot, 30.9.2024
+(1) Executing GitHub Actions jobs or steps only when specific files change. https://www.meziantou.net/executing-github-actions-jobs-or-steps-only-when-specific-files-change.htm.
+(2) How to setup github actions to run my python script on schedule?. https://github.com/orgs/community/discussions/26539.
+(3) Building and testing Python - GitHub Docs. https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-python.
+(4) How to Run Python Script in GitHub Actions - GeeksforGeeks. https://www.geeksforgeeks.org/run-python-script-in-github-actions/.
+(5) Triggering a workflow - GitHub Docs. https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow.
+(6) undefined. https://help.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow.

@@ -1,0 +1,206 @@
+name: hulx install R, cache libs and run script
+on:
+  push:
+    paths: ['convert/actuel/TEI/*.txt']
+    branches: [ estee-dev ]
+  pull_request:
+    branches: [ main ]
+#14056.f1
+#name: R-CMD-check
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+ # pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    #  env: 
+     #  testcacher
+    steps:
+      - uses: actions/checkout@v4
+     # - uses: r-lib/actions/setup-r@master
+      #  with:
+       #     r-version: '4.2'
+      - name: show libs befor restore #doesnt exists
+        run: ls
+
+      - name: Restore cached primes
+        id: cache-primes-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            rlibs
+          key: cache-r-dep-${{ runner.os }}-r-3.6.1-${{ hashFiles('rdependencies.csv') }}
+          restore-keys: |
+               cache-r-dep-${{ runner.os }}-r-3.6.1-${{ hashFiles('rdependencies.csv') }}
+               cache-r-dep-${{ runner.os }}-r-3.6.1-
+               cache-r-dep-
+      # - name: md libdir
+      #   run: |
+      #         mkdir rlibs
+      - name: show libs
+        run: |
+            ls 
+            echo "whats in libs after restore cache from v3 at v4?"
+            ls 
+
+      # - name: hard install libs
+      #   run: |
+      #        install.packages('xfun',lib="rlibs",repos = 'https://cloud.r-project.org')
+      #   shell: Rscript {0}  
+    #  - uses: r-lib/actions/setup-pandoc@v2
+      # - name: Install mdBook
+      #   uses: extractions/setup-crate@v1
+      #   with:
+      #     owner: rust-lang
+      #     name: mdBook
+      - name: Cache R packages
+        id: cache-r
+#        if: runner.os != 'Windows'
+        uses: actions/cache@v3
+        # env: 
+        #   cache-name: testcacher
+        with:
+          
+          path: | 
+              rlibs
+              $R_LIBS_USER
+
+          key: cache-r-dep-${{ runner.os }}-r-3.6.1-${{ hashFiles('rdependencies.csv') }}
+       #   key: cache-r-dep-Linux-r-3.6.1-2f051200a682436eb92484a70968b5860b38b9e609a371c0c297dfe45be58d5c # #where to look for changes
+          restore-keys: |
+               cache-r-dep-Linux-r-3.6.1-a42cab0d5f45dd1ec15252ed75c2477318577804254598d0694e53a4a2ef819a
+               cache-r-dep-${{ runner.os }}-r-3.6.1-
+    
+    #  - if: ${{ steps.cache-r.outputs.cache-hit != 'true' }}
+      - name: force install deps 
+        run: |
+             print("no cache hit, install new not cached pkg")
+             dir.create("rlibs")
+             print(list.files("rlibs"))
+             dep<-read.csv("rdependencies.csv")
+             rlib<-"rlibs"
+             repos<-'https://cloud.r-project.org'
+             dep.array<-dep$pkg[dep$chk!=1]
+             print(dep.array)
+             source("install-dependencies.R")
+             #for(k in 1:length(dep.array)){
+             #cat("libs to install:",dep.array[k],"\n")
+             #cat("suspended\n")
+             #install.packages(dep.array[k],lib=rlib,repos=repos)
+             #}
+             
+             #install.packages('remotes', lib='rlibs',repos = 'https://cloud.r-project.org')
+             #library(remotes, lib.loc="rlibs") 
+             #saveRDS(remotes::dev_package_deps(dependencies = TRUE), 'depends.Rds')
+        shell: Rscript {0}
+      - name: show libs after installing
+        run: ls rlibs
+      # - name: Install mdBook
+      #   uses: extractions/setup-crate@v1
+      #   with:
+      #     owner: rust-lang
+      #     name: mdBook
+
+#       - name: Cache R packages
+#         id: cache-r
+# #        if: runner.os != 'Windows'
+#         uses: actions/cache@v3
+#         # env: 
+#         #   cache-name: testcacher
+#         with:
+#          #path: ${{ env.R_LIBS_USER }}
+#           path: rlibs
+
+#           key: ${{ runner.os }}-r-3.6.1-${{ hashFiles('depends.Rds') }}
+#           restore-keys: ${{ runner.os }}-r-3.6.1-
+      
+#       - if: ${{ steps.cache-r.outputs.cache-hit != 'true' }}
+#         run: | 
+#           echo "testcache, hit!=true"
+         # RScript -e 'installed.libraries()' > rlibsinst.txt  
+
+    #  - name: Install packages
+        # run:  |
+        #   install.packages('rmarkdown', lib='rlibs',repos = 'https://cloud.r-project.org')
+        #   install.packages('markdown', lib='rlibs',repos = 'https://cloud.r-project.org')
+        # shell: Rscript {0}
+      - name: Save cache libs
+        id: cache-primes-save
+        run: echo "out"
+#         uses: actions/cache/save@v4
+#         with:
+#           path: |
+#             rlibs
+# #          key: ${{ steps.cache-primes-restore.outputs.cache-deps }}
+#           key: ${{ steps.cache-primes-restore.outputs }}-rdeps
+    #  - name: build pages
+       # id: pages
+     #   uses: actions/configure-pages@v4
+      
+      # - name: build book
+      #   run: mdbook build -d ./book  
+      - name: test r install & libs
+        run: |
+             test<-"testartifact"
+             test<-(list.files())
+            # writeLines(test,"./testart.md")
+             print(list.files("."))
+             source("test-r.R")
+        shell: Rscript {0}
+      - run: |
+        #   ls ./docx
+           ls .
+           echo "r installed"
+          # ls ./pages/_book
+      # - name: upload docx
+      #   #- run: mkdir -p path/to/artifact
+      #   #- run: echo hello > /world.txt
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #      name: pfaff_corpus-class-overview
+      #      path: ./pages/pfaff_corpus-class-overview.docx
+    #  - name: getlibs
+     #   run: |
+         #    print("libs da?")
+      #  shell: Rscript {0}  
+      # - name: build book
+      #   #run: mdbook build -d ./mdbook/workflow/book
+        
+      #   run: |
+      #      source("scripts/testrun.R")
+      #      source("pages/knitpagesrmd.R")
+      #   shell: Rscript {0} 
+      
+      # - name: Upload mdbook
+      #   uses: actions/upload-pages-artifact@v2
+      #   with:
+      #     path: ./mdbook/workflow/book
+   #   - name: Upload pages
+     #   uses: actions/upload-pages-artifact@v2
+      #  with:
+        #  path: ./pages/_book
+      # Deployment job
+      - name: Check
+        run: |
+            print("check last, removed all calls")
+            # library(renv,lib.loc="rlibs")
+            # library(rcmdcheck,lib.loc="rlibs")
+            # renv::restore()
+            # rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')
+        shell: Rscript {0}
+
+  
+
+      - name: Commit and push changes
+        run: |
+         git config --global user.name 'github-actions[bot]'
+         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+         git add ./testart.md
+         git commit -m 'Add output file from R script'
+         git push
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
