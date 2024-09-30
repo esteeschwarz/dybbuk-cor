@@ -2,7 +2,7 @@ name: hulx install R, cache libs and run script
 on:
   push:
     paths: ['convert/actuel/TEI/*.txt']
-    branches: [ main ]
+    #branches: [ main ]
   pull_request:
     branches: [ main ]
 #14056.f1
@@ -146,43 +146,12 @@ jobs:
         run: |
              test<-"testartifact"
              test<-(list.files())
-            # writeLines(test,"./testart.md")
              print(list.files("."))
              source("test-r.R")
         shell: Rscript {0}
-      - run: |
-        #   ls ./docx
-           ls .
-           echo "r installed"
-          # ls ./pages/_book
-      # - name: upload docx
-      #   #- run: mkdir -p path/to/artifact
-      #   #- run: echo hello > /world.txt
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #      name: pfaff_corpus-class-overview
-      #      path: ./pages/pfaff_corpus-class-overview.docx
-    #  - name: getlibs
-     #   run: |
-         #    print("libs da?")
-      #  shell: Rscript {0}  
-      # - name: build book
-      #   #run: mdbook build -d ./mdbook/workflow/book
-        
-      #   run: |
-      #      source("scripts/testrun.R")
-      #      source("pages/knitpagesrmd.R")
-      #   shell: Rscript {0} 
-      
-      # - name: Upload mdbook
-      #   uses: actions/upload-pages-artifact@v2
-      #   with:
-      #     path: ./mdbook/workflow/book
-   #   - name: Upload pages
-     #   uses: actions/upload-pages-artifact@v2
-      #  with:
-        #  path: ./pages/_book
-      # Deployment job
+
+ 
+     
       - name: Check
         run: |
             print("check last, removed all calls")
