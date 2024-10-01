@@ -138,9 +138,11 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-             pip install transliterate
-		         pip install yiddish
-		         pip install bs4
+            ls
+            echo "pipped"
+           # pip install transliterate
+		       # pip install yiddish
+		       # pip install bs4
 
       - name: Run Python script
         run: |
