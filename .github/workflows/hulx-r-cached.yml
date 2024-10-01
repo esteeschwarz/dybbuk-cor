@@ -73,7 +73,8 @@ jobs:
           restore-keys: |
                cache-r-dep-Linux-r-3.6.1-a42cab0d5f45dd1ec15252ed75c2477318577804254598d0694e53a4a2ef819a
                cache-r-dep-${{ runner.os }}-r-3.6.1-
-               cache-r-dep-${{ runner.os }}-r-3.6.1-rdeps    
+               cache-r-dep-${{ runner.os }}-r-3.6.1-rdeps
+               cache-r-dep-Linux-r-3.6.1-ccd2b1374fa8061c472e31c792ef8053959a9cc93da6c15cc1586fb1d0898585    
     #  - if: ${{ steps.cache-r.outputs.cache-hit != 'true' }}
       - name: force install deps 
         run: |
@@ -166,13 +167,13 @@ jobs:
 
   
 
-      # - name: Commit and push changes
-      #   run: |
-      #    git config --global user.name 'github-actions[bot]'
-      #    git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-      #    git add ./testart.md
-      #    git commit -m 'Add output file from R script'
-      #    git push
-      #   env:
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push changes
+        run: |
+         git config --global user.name 'esteeschwarz'
+         git config --global user.email 'esteeschwarz@users.noreply.github.com'
+         git add ./testart.md
+         git commit -m 'Add output file from R script'
+         git push
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
