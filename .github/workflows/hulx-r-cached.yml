@@ -133,12 +133,12 @@ jobs:
       - name: Save cache libs
         id: cache-primes-save
         run: echo "out"
-#         uses: actions/cache/save@v4
-#         with:
-#           path: |
-#             rlibs
+         uses: actions/cache/save@v4
+         with:
+           path: |
+             rlibs
 # #          key: ${{ steps.cache-primes-restore.outputs.cache-deps }}
-#           key: ${{ steps.cache-primes-restore.outputs }}-rdeps
+           key: ${{ steps.cache-primes-restore.outputs }}-rdeps
     #  - name: build pages
        # id: pages
      #   uses: actions/configure-pages@v4
