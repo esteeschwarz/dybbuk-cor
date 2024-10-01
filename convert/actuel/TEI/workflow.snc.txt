@@ -27,3 +27,4 @@
 21. install wks., script not, typical parser library error like on local: install lxml
 22. file not found, wrong py dir
 23. push failed, files not added
+24. wks., now try write from hello.py
