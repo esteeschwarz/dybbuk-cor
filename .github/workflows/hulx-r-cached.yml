@@ -88,7 +88,7 @@ jobs:
              repos<-'https://cloud.r-project.org'
              dep.array<-dep$pkg[dep$chk!=1]
              print(dep.array)
-             source("install-dependencies.R")
+             source("convert/actuel/install-dependencies.R")
              #for(k in 1:length(dep.array)){
              #cat("libs to install:",dep.array[k],"\n")
              #cat("suspended\n")

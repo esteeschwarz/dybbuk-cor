@@ -3,3 +3,4 @@
 3. show R working dir
 4. works in top dir, was given wrong dir for rdependiencies.csv
 5. typo
+6. wrong dir
