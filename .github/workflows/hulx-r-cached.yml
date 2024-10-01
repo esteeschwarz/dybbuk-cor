@@ -146,7 +146,7 @@ jobs:
              pip install bs4
              pip install lxml
              echo "packages installed"
-             sudo apt-get install xmlformat
+             sudo apt-get install xmlformat-perl
            
 
       - name: Run Python script
