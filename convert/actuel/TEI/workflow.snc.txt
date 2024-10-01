@@ -31,3 +31,4 @@
 25. wks., now try call python from R
 26. wrong dir
 28. xmlformat no install
+29. minor
