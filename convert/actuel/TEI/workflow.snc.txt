@@ -7,3 +7,4 @@
 1. wrong dir
 2. libraries installed, but still wrong dir test-r.R
 3. cache was not saved due push action not successfull and build exited, insert manual cache save routine
+4. yaml syntax
