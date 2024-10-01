@@ -140,9 +140,9 @@ jobs:
         run: |
             ls
             echo "pipped"
-           # pip install transliterate
-		       # pip install yiddish
-		       # pip install bs4
+            #pip install transliterate
+		        #pip install yiddish
+		        #pip install bs4
 
       - name: Run Python script
         run: |
