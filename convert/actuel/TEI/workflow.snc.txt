@@ -14,3 +14,4 @@
 8. still no push permissions
 9. syntax
 10. syntax
+11. successful pushing testart.md
