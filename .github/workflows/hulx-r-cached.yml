@@ -32,9 +32,9 @@ jobs:
         with:
           path: |
             rlibs
-          key: cache-r-dep-${{ runner.os }}-r-3.6.1-${{ hashFiles('convert/rdependencies.csv') }}
+          key: cache-r-dep-${{ runner.os }}-r-3.6.1-${{ hashFiles('convert/actuel/rdependencies.csv') }}
           restore-keys: |
-               cache-r-dep-${{ runner.os }}-r-3.6.1-${{ hashFiles('convert/rdependencies.csv') }}
+               cache-r-dep-${{ runner.os }}-r-3.6.1-${{ hashFiles('convert/actuel/rdependencies.csv') }}
                cache-r-dep-${{ runner.os }}-r-3.6.1-
                cache-r-dep-
       # - name: md libdir
@@ -68,7 +68,7 @@ jobs:
               rlibs
               $R_LIBS_USER
 
-          key: cache-r-dep-${{ runner.os }}-r-3.6.1-${{ hashFiles('convert/rdependencies.csv') }}
+          key: cache-r-dep-${{ runner.os }}-r-3.6.1-${{ hashFiles('convert/actuel/rdependencies.csv') }}
        #   key: cache-r-dep-Linux-r-3.6.1-2f051200a682436eb92484a70968b5860b38b9e609a371c0c297dfe45be58d5c # #where to look for changes
           restore-keys: |
                cache-r-dep-Linux-r-3.6.1-a42cab0d5f45dd1ec15252ed75c2477318577804254598d0694e53a4a2ef819a
@@ -80,9 +80,10 @@ jobs:
              print("no cache hit, install new not cached pkg")
              dir.create("rlibs")
              print(list.files("rlibs"))
-             print("show where R works:")
+             print("show where R works:") # in top dir
              print(list.files())
-             dep<-read.csv("convert/rdependencies.csv")
+             print(get.wd())
+             dep<-read.csv("convert/actuel/rdependencies.csv")
              rlib<-"rlibs"
              repos<-'https://cloud.r-project.org'
              dep.array<-dep$pkg[dep$chk!=1]

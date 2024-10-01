@@ -1,3 +1,4 @@
 1. test.1
 2. wrong .csv dir, test trigger again
 3. show R working dir
+4. works in top dir, was given wrong dir for rdependiencies.csv

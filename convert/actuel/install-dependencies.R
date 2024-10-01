@@ -4,7 +4,7 @@ cat(">>>>>> rlibs dir:\n")
 libs<-list.files("rlibs")
 print(libs)
 
-dep<-read.csv("convert/rdependencies.csv")
+dep<-read.csv("convert/actuel/rdependencies.csv")
 
 rlib<-"rlibs"
 repos<-'https://cloud.r-project.org'
