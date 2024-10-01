@@ -150,7 +150,7 @@ jobs:
 
       - name: Run Python script
         run: |
-             python convert/actuel/hello.py
+             #python convert/actuel/hello.py
              python convert/actuel/parser.git.py
       - name: Save cache libs
         id: cache-primes-save

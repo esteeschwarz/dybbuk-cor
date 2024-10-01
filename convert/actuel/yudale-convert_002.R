@@ -6,5 +6,5 @@
 #####################################
 # test routine
 # call python script from R
-system("python hello.py ")
+system("python /home/runner/work/dybbuk-cor/dybbuk-cor/convert/actuel/hello.py ")
 print("python script called, file written?")
