@@ -32,3 +32,4 @@
 26. wrong dir
 28. xmlformat no install
 29. minor
+30. library missing
