@@ -82,7 +82,7 @@ jobs:
              print(list.files("rlibs"))
              print("show where R works:") # in top dir
              print(list.files())
-             print(get.wd())
+             print(getwd())
              dep<-read.csv("convert/actuel/rdependencies.csv")
              rlib<-"rlibs"
              repos<-'https://cloud.r-project.org'
