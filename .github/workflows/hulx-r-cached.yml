@@ -80,6 +80,8 @@ jobs:
              print("no cache hit, install new not cached pkg")
              dir.create("rlibs")
              print(list.files("rlibs"))
+             print("show where R works:")
+             print(list.files())
              dep<-read.csv("convert/rdependencies.csv")
              rlib<-"rlibs"
              repos<-'https://cloud.r-project.org'
