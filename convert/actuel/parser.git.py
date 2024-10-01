@@ -533,5 +533,5 @@ class Parser():
 if __name__ == "__main__":
     parser = Parser()
 #    parser.process_file(sys.argv[1])
-    parser.process_file("TEI/yudale_ezd_pre_semicor_003.txt")
+    parser.process_file("/home/runner/work/dybbuk-cor/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt")
    # parser.process_file(r.qfile)

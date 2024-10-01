@@ -25,3 +25,4 @@
 19. not rlibs
 20. not push
 21. install wks., script not, typical parser library error like on local: install lxml
+22. file not found, wrong py dir
