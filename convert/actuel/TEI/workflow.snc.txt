@@ -24,3 +24,4 @@
 18. push not, tried to push rlibs which should not
 19. not rlibs
 20. not push
+21. install wks., script not, typical parser library error like on local: install lxml
