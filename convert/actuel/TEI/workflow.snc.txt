@@ -20,3 +20,4 @@
 14. syntax
 15. syntax
 16. syntax
+17. wks, python installed

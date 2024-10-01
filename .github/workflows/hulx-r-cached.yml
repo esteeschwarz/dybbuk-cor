@@ -141,6 +141,10 @@ jobs:
              ls
              python --version
              echo "pipped"
+             pip install transliterate
+             pip install yiddish
+             pip install bs4
+             echo "packages installed"
            
 
       - name: Run Python script
