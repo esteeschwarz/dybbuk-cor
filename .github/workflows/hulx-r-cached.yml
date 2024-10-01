@@ -150,7 +150,7 @@ jobs:
              test<-"testartifact"
              test<-(list.files())
              print(list.files("."))
-             source("test-r.R")
+             source("convert/actuel/test-r.R")
         shell: Rscript {0}
 
  
