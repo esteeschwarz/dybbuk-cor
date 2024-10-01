@@ -30,3 +30,4 @@
 24. wks., now try write from hello.py
 25. wks., now try call python from R
 26. wrong dir
+27. x

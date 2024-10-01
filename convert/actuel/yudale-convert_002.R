@@ -23,25 +23,20 @@ print("python script called, file written?")
 ### set T if new ezd parsing from actualised .txt source
 library(tools)
 ###
-run.ezdrama=T
+#run.ezdrama=T
 ### else F will use the latest first stage .xml output of ezdrama for further
 ### xml adaptations
 ###################
-### for device dependent routine if apply ezd (above = T), T on lapsi
-run.python.prepare=T
-tapee<-F
-### run with all sources from git
-run.src.git = F
-#check.local()
-### chose .txt file explicitly, comment in/out for configuration
-### set in L168, check.src()
-path.dir<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI"
-
-path.chose<-function(file,local=TRUE){
-  ifelse(local,
-         path.dir<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI",
-         path.dir<-"https://raw.githubusercontent/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI")
-  chose.file<-file
+local<-T
+path.local.home<-"~/Documents/GitHub/dybbuk-cor"
+path.git.tei<-"convert/actuel/TEI"
+path.git.home<-"/home/runner/work/dybbuk-cor/dybbuk-cor"
+path.dir<-paste(path.git.home,path.git.tei,sep = "/")
+path.chose<-function(file,workflow=TRUE){
+  ifelse(workflow,
+         path.dir,
+         path.dir<-paste(path.local.home,"convert/actuel/TEI",sep = "/"))
+         chose.file<-file
   #chose.file<-"yudale_ezd_pre_semicor_003.txt" # last used working version
   #chose.file<-"yudale_ezd_pre_semicor_003STfwd.txt" # forward edited version 
   ### > chose finalised .xml output file at script bottom
@@ -51,147 +46,16 @@ path.chose<-function(file,local=TRUE){
     chose.file<-path.chose.file
   return(chose.file)
 }
-# not run
-temp.dep<-function(){
-  src<-"~/boxHKW/21S/DH/local/EXC2020/dybbuk/yudale_xml-edited006.14312-FIN/yudale_xml-edited006.14312-FIN.m.txt"
-  text<-readLines(src)
-  # regex arrays
-  # speaker:
-  m<-grep(":",text)
-  length(m)
-  head(text[m],15)
-  
-  #manual
-  #frontispiz
-  a1<-21:30
-  #dramatis personae
-  a2<-37:50
-  #head 1
-  a3<-56
-  ######
-  #tag speaker
-  m.sp<-m[2:length(m)]
-  ###
-  text.1<-text
-  #text.1[m.sp]<-paste0(text.1[m.sp],"@")
-  text.1[m.sp]<-paste0("@",text.1[m.sp])
-  text.1[m.sp[1:10]]
-  text.2<-text.1
-  #wks.
-  #####
-  # m<-grep("[()]",text.1)
-  # length(m)
-  # m1<-m>=a3
-  # m<-m[m1]
-  # reg1<-"[()]"
-  # text.1[m[1]]
-  # text.1[m[1]]<-gsub(reg1,"$",text.1[m[1]])
-  # text.1[m[1]]
-  # text.1[m]<-gsub(reg1,"$",text.1[m])
-  # 
-  text.1[56:100]
-  # NOTE ezdrama
-  #$ means new stage direction. NB: brackets like this () are converted to stage directions automatically and do not require any special treatment with metasymbols. In case you don't want brackets to be treated as metasymbols, initialize Parser with bracketstages = False (this parameter is True by default) NB 2: the $ will also put into the current stage tag all next lines before any new metasymbol
-  ###
-  # acts
-  # library(stringi)
-  # ract<-stri_split_regex(text.1[56]," ",simplify = T)
-  # ract
-  # m2<-grep(ract,text.1)
-  # length(m2)
-  # ract.c <- gsub("\\p{M}", "", ract, perl = TRUE)
-  # m3<-grep(ract.c,text.1)
-  # length(m3)
-  # 
-  # text.1[m3]
-  actm<-c(56,577)
-  text.1[56]<-paste0("#",text.1[56])
-  text.1[actm]
-  text.1[577]<-paste0("#",text.1[577])
-  
-  #dramatis_personae
-  cast<-37
-  text.1[37]<-paste0("^",text.1[37])
-  
-  #interpunktion to the end of sentence
-  m<-grep("(^[?!.-])",text.1)
-  text.1[43]
-  text.2[43]
-  gsub("(^[?!.-])(.*)","\\2\\1",text.2[43])
-  
-  #remove speaker niqqud
-  text.cor<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semikorrigiert.txt")
-  m<-grep("@.+:",text.cor)
-  text.cor[m]
-  text.cor[m]<-gsub("(\\p{M})","",text.cor[m],perl = T)  
-  
-  # remove linebreaks
-  text.cor<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_002.txt")
-  reg1<-"((?<!:)\n)([^)(@#$])"
-  reg2<-"^(" #whole stage line
-  m<-grep(reg1,text.cor)
-  text.cor.tx<-readtext::readtext("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_002.txt")$text
-  text.cor.tx.2<-gsub(reg1," \\1",text.cor.tx,perl = T)
-  # #pagebreaks
-  # m<-grep("[0-9]{1,2}",text.1)
-  # length(m)
-  #no. first correct in transcription source
-  ###
-  writeLines(text.1,"~/boxHKW/21S/DH/local/EXC2020/dybbuk/TEI/yudale_ezd_pre.txt")
-  
-  writeLines(text.cor.tx.2,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_002.txt")
-  
-  text.cor.3<-readLines("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_002.txt")
-  text.cor.3[359]
-} #end legacy function
 ######################
-prepare.python<-function(run=F){
-  if (run){
-    library(reticulate)
-    #use_virtualenv("r-miniconda")
-    # use_python_version()
-    #py_eval("1+1")
-    #py_list_packages()
-    #py_install("transliterate")
-    # py_discover_config()
-    #py_config()
-    use_miniconda("/Users/guhl/Library/r-miniconda/bin/python") # on lapsi!
-    # use_python_version("3.10")
-    # install_python(version = '3.10')
-    # edited in textfile manually
-    #virtualenv_list()
-    #virtualenv_remove("r-reticulate")
-    #virtualenv_create(version = "3.10")
-    #install_python(version = '3.10')
-  }
-  return(run)
-}
 ### for device dependent routine
-#run.python.prepare=T
-check.local<-function(){
-  if (!run.src.git)
-    if(file.exists("~/checkdevice.R"))
-      source("~/checkdevice.R")
-  return(run.python.prepare)
-  return(run.ezdrama)
-}
-check.local()
-check.python<-prepare.python(check.local())
-check.python
 #############################
 check.src<-function(what){
-  
-  ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
-  # ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
-  ezd_markup_text.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
-  #ifelse(check.python,return(ezd_markup_text),ezd_markup_text.git)
-  #chose.file<-"yudale_ezd_pre_semicor_003.txt" # last used working version
-  #chose.file<-"yudale_ezd_pre_semicor_003STfwd.txt" # forward edited version 
+  ezd_markup_text<-paste(path.dir,"yudale_ezd_pre_semicor_003.txt",sep = "/")
   ezd_markup_text<-file_path_sans_ext(ezd_markup_text)
   ifelse(what=="xml",ezd_markup_text <- paste0(ezd_markup_text,".xml"),
          ezd_markup_text <- paste0(ezd_markup_text,".txt"))
-  if(check.python)
-    return(path.chose("yudale_ezd_pre_semicor_003.txt",local = T))
+   if(local)
+     return(path.chose("yudale_ezd_pre_semicor_003.txt",workflow = F))
   return(ezd_markup_text)
   
 }
@@ -208,78 +72,25 @@ ezd.preprocess.txt<-function(text){
   txt.r2<-gsub("\n(:[0-9]{1,2})\n","\\1",txt.r2)
   txt.r2<-gsub("\n([0-9]{1,2}:)( ?)\n","\\1",txt.r2)
   txt.r2<-gsub("([0-9]{1,2}:)([@#$~)(])","\\1\n\\2",txt.r2)
-  writeLines(txt.r2,paste0(path.dir,"/archive/text.rm.pb.txt"))
   writeLines(txt.r2,check.src("txt"))
   return(txt.r)
 }
-m.pb<-ezd.preprocess.txt(check.src("txt"))
+
+local<-T
+# writes <pb> corrected file > only once, then transcript is corrected
+#m.pb<-ezd.preprocess.txt(check.src("txt"))
 #m.pb
 # single line stage direction markup:
 ezd_markup_text<-check.src(what = "xml")
 ezd_markup_text
 qfile<-ezd_markup_text
-process.ezd<-function(check.python,ezd_markup_text){
-  check.local()
-  # check.src<-function(check.local){
-  # 
-  #   ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
-  #  # ezd_markup_text.sf<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/CopyOfyudale_ezd_pre_semicor_003.txt"
-  #   ezd_markup_text.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
-  #   #ifelse(check.python,return(ezd_markup_text),ezd_markup_text.git)
-  #   if(check.python)
-  #     return(path.chose())
-  # }
-  # # single line stage direction markup:
+process.ezd<-function(){
+  #check.local()
+  # ifelse(local,path.local.home,path.git.home)
   ezd_markup_text<-check.src("txt")
-  #  ezd_markup_text<- paste0(ezd_markup_text,".txt")
-  
-  ### depr., we will do this in xml  
-  fun.depr.2<-function(){
-    text.m<-readLines(ezd_markup_text)
-    #text.m<-readLines(check.src())
-    #text.m<-readLines(ezd_markup_text.sf)
-    m<-grepl("^[(][^)(]{1,150}[)]{1}\\.$",text.m) #grep all single line stage directions
-    
-    # TODO: check transcript for . at the end of each stage line!!!
-    m3<-grepl("^[(][^)(]{1,150}[)]\\.?$",text.m) #grep all single line stage directions
-    
-    sum(m)
-    sum(m3) # +7 lines!!!
-    head(text.m[m])
-    m<-m3
-    text.m[m3]
-    text.m[m]<-paste0("$",text.m[m])
-    text.m[m]<-gsub("[)(]","",text.m[m])
-    
-    # pagebreak
-    text.m.pb<-gsub(":?([0-9]{1,2}):?",'<!--<pb n="\\1"/>-->',text.m)
-    text.m.pb[1:50]
-    ######################################
-    # MIND: not activate, will overwrite markup text! only if changes applied in script.
-    #writeLines(text.m.pb,ezd_markup_text)
-    #wks.
-  }
-  ###################################
-  
-  ### convert with local ezdrama parser:
-  #ezd_markup_text<-"/Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.txt"
-  run_on_tape<-function(){
-    
-    source_python("~/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.src.py")
-  }
-  check.python
-  #library(reticulate)
-  #ezd_markup_text.ext<- paste0(ezd_markup_text,".txt")
-  if(run.ezdrama&check.python){
-    if(tapee)
-      run_on_tape()
-    system(paste0("python3 /Users/guhl/Documents/GitHub/dybbuk-cor/convert/actuel/parser.local.py ",ezd_markup_text))
+    system(paste0("python ",ifelse(local,path.local.home,path.git.home),"/convert/actuel/","parser.git.py ",ezd_markup_text))
     print("finished python ezd")
-  }
 } #end ezd process .txt
-# 2nd way:
-# library(reticulate)
-# source_python()
 xml.cor.1<-function(){
   library(xml2)
   library(purrr)
@@ -291,8 +102,8 @@ xml.cor.1<-function(){
   file.xml
   #  xml.src.local<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml"
   xml.src.local<-file.xml
-  xml.src.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml"
-  xml.src<-ifelse(run.src.git,xml.src.git,xml.src.local)
+ # xml.src.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml"
+  #xml.src<-ifelse(run.src.git,xml.src.git,xml.src.local)
   xmltop<-read_xml(xml.src)
   
   # xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
@@ -345,7 +156,7 @@ xml.cor.1<-function(){
   return(tei)
 } #end xml.cor.1
 # if(run.ezdrama)
-# process.ezd() # performs ezd transformation and writes to file
+process.ezd() # performs ezd transformation and writes to file
 tei<-xml.cor.1() # reads from created .xml to finalize xml # run for test castediting
 ##############################
 # castlist speaker role:
@@ -411,28 +222,6 @@ xml.cor.2<-function(){
   }
   
   ##############
-  group.list.dep<-function(){
-    get.cg.ingroup<-function(x)grepl(",",xml_text(x))
-    cg.sep<-lapply(castlist, get.cg.ingroup)
-    cg.sep.u<-unlist(cg.sep)
-    cg.group<-xml_text(castlist[cg.sep.u])
-    cg.single<-stri_split_regex(cg.group,",",simplify = T)
-    cg.single<-gsub("^ ","",cg.single)
-    cg.single
-    role.3[cg.sep.u,1]
-    df<-cbind(t(cg.single),role.3[cg.sep.u,2],role.3[cg.sep.u,3],role.3[cg.sep.u,4])
-    role.3.2<-rbind(role.3[!cg.sep.u,],df)
-    role.3.2[,1]<-gsub("[+0-9cg!.]","",role.3.2[,1])
-    role.3<-role.3.2
-    for (k in 1:length(role.3[,2])){
-      cg<-role.3[k,3]
-      if (role.3[k,2]==""&role.3[k,3]!=""){
-        m5.3<-role.3[,3]==cg&role.3[,2]!=""
-        if(sum(m5.3)>0)
-          role.3[k,2]<-role.3[m5.3,2]
-      }
-    }
-  }
   role.3[is.na(role.3)]<-""
   for (k in 1:length(role.3[,2])){
     cg<-role.3[k,3]
@@ -447,10 +236,10 @@ xml.cor.2<-function(){
 } #end xml.cor.2
 ###################
 #process.ezd() # performs ezd transformation and writes to file
-if(run.ezdrama)
-  process.ezd(check.python,F) # performs ezd transformation and writes to file
+#if(run.ezdrama)
+#  process.ezd() # performs ezd transformation and writes to file
 #############
-tei<-xml.cor.1() # reads from created .xml to finalize xml
+#tei<-xml.cor.1() # reads from created .xml to finalize xml
 ################
 # castgroup editing
 role.3<-xml.cor.2() # gets castlist df template for castgroup/role editing
@@ -721,15 +510,15 @@ xmlt.plus.header<-c(xmlhead,xmlt)
 #writeLines(xmlt.plus.header,"testxml.xml")
 #writeLines(xmlt,"testxml.xml")
 ### wks.
-
+file.base
 write.final.xml<-function(xmlsrc,xmltarget){
   library(tools)
   file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
   #indent<-""
   file.base<-basename(xmltarget)
-  xmltarget.temp<-paste0("~/boxHKW/21S/DH/local/EXC2020/dybbuk/TEI/",file.base)
-  m<-grep("yidracor",xmltarget)
-  ifelse(length(m)==0,indent<-"indent.",indent<-"")
+  xmltarget.temp<-paste0(ifelse(local,path.git.tei),file.base)
+ # m<-grep("yidracor",xmltarget)
+  #ifelse(length(m)==0,indent<-"indent.",indent<-"")
   writeLines(xmlsrc,xmltarget.temp)
   print(xmltarget)
   print(file_ext(xmltarget))
@@ -750,11 +539,13 @@ write.final.xml<-function(xmlsrc,xmltarget){
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 xmltarget.dracor<-"~/Documents/GitHub/clones/yidracor/TEI/lateiner-yudale-der-blinder.xml"
-
+xmltarget.git<-paste(path.git.home,path.git.tei,"lateiner-yudale-der-blinder.xml",sep = "/")
+xmltarget.git
 #writeLines(xmlt.plus.header,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.temp.xml")
 #write.final.xml(xmlt.plus.header,xmltarget.dev)
-write.final.xml(xmlt.plus.header,xmltarget.prod)
-write.final.xml(xmlt.plus.header,xmltarget.dracor)
+#write.final.xml(xmlt.plus.header,xmltarget.prod)
+#write.final.xml(xmlt.plus.header,xmltarget.dracor)
+write.final.xml(xmlt.plus.header,xmltarget.git)
 
 
 ############################################## << end pasted script

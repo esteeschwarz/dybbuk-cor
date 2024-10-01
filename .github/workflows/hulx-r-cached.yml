@@ -146,6 +146,7 @@ jobs:
              pip install bs4
              pip install lxml
              echo "packages installed"
+             sudo apt-get install xmlformat
            
 
       - name: Run Python script
