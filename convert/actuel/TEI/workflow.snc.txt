@@ -21,3 +21,4 @@
 15. syntax
 16. syntax
 17. wks, python installed
+18. push not, tried to push rlibs which should not
