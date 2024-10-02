@@ -517,7 +517,7 @@ local<-F
 write.final.xml<-function(xmlsrc,xmltarget){
   library(tools)
   file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
-  #indent<-""
+  indent<-""
   file.base<-basename(xmltarget)
   path.dir
   xmltarget.temp<-paste0(file.base,".temp",".xml")
