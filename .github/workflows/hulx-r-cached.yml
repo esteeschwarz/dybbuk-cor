@@ -44,7 +44,8 @@ jobs:
         run: |
             ls 
             echo "whats in libs after restore cache from v3 at v4?"
-            ls 
+            ls
+            R_LIBS_USER=/home/runner/work/dybbuk-cor/dybbuk-cor/rlibs 
 
       # - name: hard install libs
       #   run: |
@@ -174,7 +175,7 @@ jobs:
              test<-(list.files())
              print(list.files("."))
              source("convert/actuel/test-r.R")
-             source("convert/actuel/yudale-convert_002.R")
+             #source("convert/actuel/yudale-convert_002.R")
         shell: Rscript {0}
 
  
