@@ -60,7 +60,7 @@ check.src<-function(what){
   
 }
 # 14402.reconstruct jonah changes in script: <l> tags for duets, linebreak issue
-library(readtext)
+#library(readtext)
 # remove <p> wrap of linebreaks:
 ezd.preprocess.txt<-function(text){
   txt<-readLines(text)

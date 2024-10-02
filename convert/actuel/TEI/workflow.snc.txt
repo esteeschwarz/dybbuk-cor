@@ -32,4 +32,5 @@
 26. wrong dir
 28. xmlformat no install
 29. minor
-30. library missing
+30. library missing, readtext
+31. readtext not installable, chk. mini how did on server
