@@ -6,3 +6,6 @@ test<-"testartifact"
 print(.libPaths())
 
 try(library(xml2,lib.loc = "./rlibs")) # test libdir
+
+# start transform
+source("convert/actuel/yudale-convert_002.R")

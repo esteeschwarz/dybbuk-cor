@@ -36,3 +36,4 @@
 31. readtext not installable, chk. mini how did on server
 32. library() not, rlibs seem not found
 33. still
+34. error if nothing to push

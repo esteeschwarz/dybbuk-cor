@@ -27,7 +27,7 @@ library(tools)
 ### else F will use the latest first stage .xml output of ezdrama for further
 ### xml adaptations
 ###################
-local<-T
+local<-F
 path.local.home<-"~/Documents/GitHub/dybbuk-cor"
 path.git.tei<-"convert/actuel/TEI"
 path.git.home<-"/home/runner/work/dybbuk-cor/dybbuk-cor"
