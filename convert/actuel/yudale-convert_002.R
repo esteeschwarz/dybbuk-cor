@@ -76,7 +76,7 @@ ezd.preprocess.txt<-function(text){
   return(txt.r)
 }
 
-local<-T
+#local<-F
 # writes <pb> corrected file > only once, then transcript is corrected
 #m.pb<-ezd.preprocess.txt(check.src("txt"))
 #m.pb
