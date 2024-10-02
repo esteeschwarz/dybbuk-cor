@@ -408,12 +408,12 @@ print(tei.person)
 #   q1<-xml_find_all(csv.meta$tag[k])
 #   
 # }
-xml.filedesc<-read_xml(path.chose("yudale.filedesc.xml"))
+xml.filedesc<-read_xml(path.chose("yudale.filedesc.xml",workflow = T))
 filedesc<-xml_find_all(tei,"//fileDesc")
 xml_replace(filedesc,xml.filedesc)
 
 ### add standoff (wikidata/dracor id)
-xml.standoff<-read_xml(path.chose("yudale.standoff.xml"))
+xml.standoff<-read_xml(path.chose("yudale.standoff.xml",workflow = T))
 standoff<-xml_find_all(tei,"//standOff")
 xml_replace(standoff,xml.standoff)
 
@@ -507,7 +507,7 @@ xmlt.f[m4]<-gsub(reg.he,'<foreign xml:lang="he">\\1<foreign>',xmlt[m4])
 #writeLines(xmlt.f[m4],"archive/testforeign.xml")
 ########
 # add xml header
-xmlhead<-readLines(path.chose("xml_dracor_header.xml", local = T))
+xmlhead<-readLines(path.chose("xml_dracor_header.xml", workflow = T))
 xmlt.plus.header<-c(xmlhead,xmlt)
 #writeLines(xmlt.plus.header,"testxml.xml")
 #writeLines(xmlt,"testxml.xml")
