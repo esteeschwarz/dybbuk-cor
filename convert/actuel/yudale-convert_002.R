@@ -512,7 +512,7 @@ xmlt.plus.header<-c(xmlhead,xmlt)
 #writeLines(xmlt.plus.header,"testxml.xml")
 #writeLines(xmlt,"testxml.xml")
 ### wks.
-file.base
+#file.base
 write.final.xml<-function(xmlsrc,xmltarget){
   library(tools)
   file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
