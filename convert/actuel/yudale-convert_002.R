@@ -545,7 +545,7 @@ write.final.xml<-function(xmlsrc,xmltarget){
 xmltarget.prod<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.xml"
 xmltarget.dev<-"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.dev.xml"
 xmltarget.dracor<-"~/Documents/GitHub/clones/yidracor/TEI/lateiner-yudale-der-blinder.xml"
-xmltarget.git<-paste(path.git.home,path.git.tei,"validate","lateiner-yudale-der-blinder.xml",sep = "/")
+xmltarget.git<-paste(path.git.home,"tei","lateiner-yudale-der-blinder.xml",sep = "/")
 print(xmltarget.git)
 #writeLines(xmlt.plus.header,"~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_003_normalised_01.temp.xml")
 #write.final.xml(xmlt.plus.header,xmltarget.dev)
