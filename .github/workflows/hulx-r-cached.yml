@@ -199,7 +199,7 @@ jobs:
          git add /home/runner/work/dybbuk-cor/dybbuk-cor/convert/actuel/TEI/*.xml
          git add ./*.md
          #git rm -r /home/runner/work/dybbuk-cor/dybbuk-cor/rlibs
-         git commit -m '14404.add git workflow ezdrama .xml output'
+         git commit -m '14405.add git workflow ezdrama .xml output'
          git push
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
