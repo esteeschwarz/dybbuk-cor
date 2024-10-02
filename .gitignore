@@ -53,3 +53,4 @@ rsconnect/
 *pycache*
 
 rlibs
+.temp
