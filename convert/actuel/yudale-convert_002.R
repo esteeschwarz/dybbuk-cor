@@ -49,6 +49,7 @@ path.chose<-function(file,workflow=TRUE){
 ######################
 ### for device dependent routine
 #############################
+local<-F
 check.src<-function(what){
   ezd_markup_text<-paste(path.dir,"yudale_ezd_pre_semicor_003.txt",sep = "/")
   ezd_markup_text<-file_path_sans_ext(ezd_markup_text)
@@ -59,6 +60,7 @@ check.src<-function(what){
   return(ezd_markup_text)
   
 }
+check.src("xml")
 # 14402.reconstruct jonah changes in script: <l> tags for duets, linebreak issue
 #library(readtext)
 # remove <p> wrap of linebreaks:
@@ -104,7 +106,7 @@ xml.cor.1<-function(){
   xml.src.local<-file.xml
  # xml.src.git<-"https://raw.githubusercontent.com/esteeschwarz/dybbuk-cor/main/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml"
   #xml.src<-ifelse(run.src.git,xml.src.git,xml.src.local)
-  xmltop<-read_xml(xml.src)
+  xmltop<-read_xml(check.src("xml"))
   
   # xmltop<-read_xml("~/Documents/GitHub/dybbuk-cor/convert/actuel/TEI/yudale_ezd_pre_semicor_003.xml")
   
