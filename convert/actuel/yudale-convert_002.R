@@ -513,12 +513,14 @@ xmlt.plus.header<-c(xmlhead,xmlt)
 #writeLines(xmlt,"testxml.xml")
 ### wks.
 #file.base
+local<-F
 write.final.xml<-function(xmlsrc,xmltarget){
   library(tools)
   file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
   #indent<-""
   file.base<-basename(xmltarget)
-  xmltarget.temp<-paste0(ifelse(local,path.git.tei),file.base)
+  path.dir
+  xmltarget.temp<-paste0(file.base,".temp",".xml")
  # m<-grep("yidracor",xmltarget)
   #ifelse(length(m)==0,indent<-"indent.",indent<-"")
   writeLines(xmlsrc,xmltarget.temp)

@@ -42,3 +42,4 @@
 37. check.src("xml") wrong
 38. path.chose() wrong
 39. file.base
+40. write target
