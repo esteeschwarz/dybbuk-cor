@@ -49,3 +49,4 @@
 44. validate not wks
 45. dito, tei dir not created
 46. dito
+47. dito, forgot git add tei
