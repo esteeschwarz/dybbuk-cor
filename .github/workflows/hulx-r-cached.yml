@@ -202,6 +202,9 @@ jobs:
          #git rm -r /home/runner/work/dybbuk-cor/dybbuk-cor/rlibs
          git commit -m '14405.add git workflow ezdrama .xml output'
          git push
+         cd /home/runner/work/yidracor/yidracor/tei
+         ls
+         #cp 
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   validate_tei:
