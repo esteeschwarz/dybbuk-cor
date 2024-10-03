@@ -205,7 +205,10 @@ jobs:
          git clone https://github.com/esteeschwarz/yidracor.git
          cd yidracor/tei
          ls
-         cp /home/runner/work/dybbuk-cor/dybbuk-cor/tei/*.xml .
+         cp /home/runner/work/dybbuk-cor/dybbuk-cor/tei/lateiner-yudale-der-blinder.xml .
+         git add lateiner-yudale-der-blinder.xml
+         git commit -m '14406.add esteeschwarz/dybbuk workflow .xml output'
+         git push
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   validate_tei:
