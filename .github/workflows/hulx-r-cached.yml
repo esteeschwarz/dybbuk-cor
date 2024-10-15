@@ -77,20 +77,20 @@ jobs:
                cache-r-dep-${{ runner.os }}-r-3.6.1-rdeps
                cache-r-dep-Linux-r-3.6.1-ccd2b1374fa8061c472e31c792ef8053959a9cc93da6c15cc1586fb1d0898585
                cache-r-dep-Linux-r-3.6.1-fb329ad73dbee4665029b9b169b41956f40a0f5eb961657783504f661474a553    
-    #  - if: ${{ steps.cache-r.outputs.cache-hit != 'true' }}
-      - name: force install deps 
+      - if: ${{ steps.cache-r.outputs.cache-hit != 'true' }}
+     # - name: force install deps 
         run: |
              print("no cache hit, install new not cached pkg")
-             dir.create("rlibs")
-             print(list.files("rlibs"))
+             #dir.create("rlibs")
+             #print(list.files("rlibs"))
              print("show where R works:") # in top dir
              print(list.files())
              print(getwd())
-             dep<-read.csv("convert/actuel/rdependencies.csv")
-             rlib<-"rlibs"
-             repos<-'https://cloud.r-project.org'
-             dep.array<-dep$pkg[dep$chk!=1]
-             print(dep.array)
+             #dep<-read.csv("convert/actuel/rdependencies.csv")
+             #rlib<-"rlibs"
+             #repos<-'https://cloud.r-project.org'
+             #dep.array<-dep$pkg[dep$chk!=1]
+             #print(dep.array)
              source("convert/actuel/install-dependencies.R")
              #for(k in 1:length(dep.array)){
              #cat("libs to install:",dep.array[k],"\n")
