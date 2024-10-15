@@ -56,3 +56,4 @@
 52. clone into runner wks., now try push
 53. push not wks., reinstalls python stuff? / revert last changes
 54. git cache (with libs) deleted after 7 days, install libs didnt work, new essai
+55. wks., cache saved, now see if restored

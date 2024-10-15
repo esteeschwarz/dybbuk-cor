@@ -14,7 +14,7 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  build_tei:
     runs-on: ubuntu-latest
     #  env: 
      #  testcacher
@@ -212,6 +212,7 @@ jobs:
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   validate_tei:
+    needs: build_tei
     runs-on: ubuntu-latest
     name: Validate against TEI_all
     steps:

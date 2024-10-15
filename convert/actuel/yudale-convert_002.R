@@ -62,7 +62,6 @@ check.src<-function(what){
 }
 check.src("xml")
 # 14402.reconstruct jonah changes in script: <l> tags for duets, linebreak issue
-#library(readtext)
 # remove <p> wrap of linebreaks:
 ezd.preprocess.txt<-function(text){
   txt<-readLines(text)
@@ -168,7 +167,6 @@ xml.cor.2<-function(){
   cast.txt
   m.desc<-grep("-",cast.txt)
   library(stringi)
-  #library(purrr)
   role<-stri_split_regex(cast.txt," - ",simplify = T)
   role
   #role.markup<-stri_extract_all_regex(rol)
@@ -537,7 +535,6 @@ write.final.xml<-function(xmlsrc,xmltarget){
 
 # write.final.xml<-function(xmltarget){
 #   writeLines(xmlt,xmltarget)
-#   library(tools)
 #   file.ns<-gsub(file_ext(xmltarget),"",xmltarget)
 #   system(paste0("xmlformat ",xmltarget," > ",paste0(file.ns),"indent.",file_ext(xmltarget)))
 #   # wks. ##########################################
